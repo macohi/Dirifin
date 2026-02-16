@@ -152,7 +152,7 @@ class PlayState extends MState
 			{
 				bullet.dying = true;
 
-				FlxTween.tween(bullet, {alpha: 0}, 0.3, {
+				FlxTween.tween(bullet, {alpha: 0}, 0.15, {
 					ease: FlxEase.quadInOut,
 					onComplete: tween ->
 					{

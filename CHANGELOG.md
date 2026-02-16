@@ -7,13 +7,14 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [Unreleased]
 
+### Changed
+
+- Bullets now fade in half the time
+- The bullet sprite is scaled up
+
 ### Added
 
 - Bullet Sprite
-
-### Changed
-
-- The bullet sprite is scaled up
 
 ## [1.00 Pre-Release 1] - 2/16/2026
 
