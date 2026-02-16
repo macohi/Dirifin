@@ -12,10 +12,10 @@ class Enemy extends DirectionSprite
 		loadGraphic(AssetPaths.image('enemy'));
 		applyPixelScale();
 		
-		boundsPadding = this.width * 5;
+		boundsPadding = this.width * 10;
 	}
 
-	public var startMulti:Float = 4.0;
+	public var startMulti:Float = 9.0;
 
 	override function changeDirection(direction:PlayerDirection, ?player:Player)
 	{

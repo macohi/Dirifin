@@ -12,6 +12,7 @@ class PlayState extends MState
 
 	public var directionArrows:FlxTypedSpriteGroup<DirectionArrow>;
 
+	public var maxEnemies:Int = 8;
 	public var enemies:FlxTypedSpriteGroup<Enemy>;
 
 	override function create()
@@ -124,6 +125,9 @@ class PlayState extends MState
 	{
 		if (FlxG.random.bool(FlxG.random.float(0, 3)))
 		{
+			if (enemies.length >= maxEnemies)
+				return;
+
 			var newEnemy:Enemy = new Enemy();
 			newEnemy.screenCenter();
 			newEnemy.changeDirection(FlxG.random.int(0, 3), player);
@@ -133,8 +137,16 @@ class PlayState extends MState
 		for (enemy in enemies)
 		{
 			enemy.move();
+			var destroyEnemy = enemy.outOfBounds;
 
-			if (enemy.outOfBounds)
+			if (!destroyEnemy)
+			{
+				for (bullet in bullets)
+					if (!destroyEnemy)
+						destroyEnemy = bullet.overlaps(enemy);
+			}
+
+			if (destroyEnemy)
 			{
 				enemies.members.remove(enemy);
 				enemy.destroy();
