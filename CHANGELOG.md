@@ -7,6 +7,14 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [Unreleased]
 
+### Added
+
+- Bullet Sprite
+
+### Changed
+
+- The bullet sprite is scaled up
+
 ## [1.00 Pre-Release 1] - 2/16/2026
 
 Technically the inital release, no changes in the changelog

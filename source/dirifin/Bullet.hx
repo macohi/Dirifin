@@ -11,6 +11,10 @@ class Bullet extends DirectionSprite
 		super(speedDamp, x, y);
 
 		loadGraphic(AssetPaths.image('bullet'));
+		
+		scale.set(2, 2);
+		updateHitbox();
+
 		boundsPadding = this.width * 4;
 	}
 
