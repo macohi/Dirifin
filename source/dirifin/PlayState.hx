@@ -20,7 +20,7 @@ class PlayState extends MState
 
 	public var directionArrows:FlxTypedSpriteGroup<DirectionArrow>;
 
-	public var maxEnemies:Int = 8;
+	public var maxEnemies:Int = 6;
 	public var enemies:FlxTypedSpriteGroup<Enemy>;
 
 	public var camGame:FlxCamera;
