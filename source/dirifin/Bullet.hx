@@ -4,6 +4,8 @@ import flixel.util.FlxColor;
 
 class Bullet extends DirectionSprite
 {
+	public var dying:Bool = false;
+
 	override public function new(?speedDamp:Null<Float>, ?x:Float, ?y:Float)
 	{
 		super(speedDamp, x, y);

@@ -12,7 +12,7 @@ import macohi.overrides.MState;
 class PlayState extends MState
 {
 	public var player:Player;
-	
+
 	public var maxBullets:Int = 4;
 	public var bullets:FlxTypedSpriteGroup<Bullet>;
 
@@ -149,10 +149,18 @@ class PlayState extends MState
 		for (bullet in bullets.members)
 		{
 			bullet.move();
-			if (bullet.outOfBounds)
+			if (bullet.outOfBounds && !bullet.dying)
 			{
-				bullets.members.remove(bullet);
-				bullet.destroy();
+				bullet.dying = true;
+
+				FlxTween.tween(bullet, {alpha: 0}, 0.3, {
+					ease: FlxEase.quadInOut,
+					onComplete: tween ->
+					{
+						bullets.members.remove(bullet);
+						bullet.destroy();
+					}
+				});
 			}
 		}
 	}
