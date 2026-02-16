@@ -39,6 +39,8 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
+	<haxeflag name="--dce full" unless="debug" />
+
 	<define name="CRASH_HANDLER" if="desktop" />
 
 	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
