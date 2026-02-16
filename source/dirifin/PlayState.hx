@@ -1,5 +1,6 @@
 package dirifin;
 
+import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.tweens.FlxEase;
@@ -17,6 +18,8 @@ class PlayState extends MState
 
 	public var maxEnemies:Int = 8;
 	public var enemies:FlxTypedSpriteGroup<Enemy>;
+
+	public var hudCamera:FlxCamera;
 
 	override function create()
 	{
@@ -45,8 +48,15 @@ class PlayState extends MState
 		FlxG.camera.zoom = .5;
 		#end
 
+		hudCamera = new FlxCamera();
+		FlxG.cameras.add(hudCamera);
+		hudCamera.bgColor.alpha = 0; // Show the game scene behind the camera.
+
 		leftWatermark.text = Application.current.meta.get('version');
 		leftWatermark.visible = true;
+		leftWatermark.size = Math.round(8 * (FlxG.camera.zoom / 1));
+
+		leftWatermark.cameras = [hudCamera];
 	}
 
 	override function update(elapsed:Float)
