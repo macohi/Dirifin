@@ -9,10 +9,16 @@ class Enemy extends DirectionSprite
 	{
 		super(-0.1, x, y);
 
-		loadGraphic(AssetPaths.image('enemy'));
+		loadGraphic(AssetPaths.image('enemy'), true, 16, 16);
+		addAnimByFrames('LEFT', [0]);
+		addAnimByFrames('DOWN', [1]);
+		addAnimByFrames('UP', [2]);
+		addAnimByFrames('RIGHT', [3]);
 		applyPixelScale();
-		
+
 		boundsPadding = this.width * 10;
+
+		changeDirection(direction);
 	}
 
 	public var startMulti:Float = 9.0;
@@ -29,15 +35,21 @@ class Enemy extends DirectionSprite
 			case LEFT:
 				this.x -= player.width * startMulti;
 				this.flipX = true;
+				playAnim('LEFT');
 			case RIGHT:
 				this.x += player.width * startMulti;
+				playAnim('RIGHT');
 
 			case UP:
 				this.y -= player.height * startMulti;
 				this.angle = -90;
+				playAnim('UP');
 			case DOWN:
 				this.y += player.height * startMulti;
 				this.angle = 90;
+				playAnim('DOWN');
 		}
+
+		updateHitbox();
 	}
 }

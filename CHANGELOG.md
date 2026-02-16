@@ -15,6 +15,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
+- Enemy Direction... animations? Do you wanna call it that?
 - Player Sprite
 - SOUND EFFECTS!
 - Bullet Sprite
