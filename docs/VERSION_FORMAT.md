@@ -16,6 +16,8 @@ Minor versions are a +10 increment to the minor version number
 
 They are smaller content updates such as a new menu, new enemy type maybe.
 
+Or maybe a new ability? Hmm...
+
 ## Patch versions (\_._z)
 
 Patch versions are a +1 increment to the minor version number.
