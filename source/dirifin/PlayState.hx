@@ -38,6 +38,8 @@ class PlayState extends MState
 
 		#if ZOOM_OUT
 		FlxG.camera.zoom = .25;
+		#else
+		FlxG.camera.zoom = .5;
 		#end
 	}
 
