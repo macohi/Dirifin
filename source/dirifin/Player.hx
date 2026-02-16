@@ -19,5 +19,11 @@ class Player extends MSprite
 		super(x, y);
 
 		makeGraphic(64, 64);
+		changeDirection(this.direction);
+	}
+
+	public function changeDirection(direction:PlayerDirection)
+	{
+		this.direction = direction;
 	}
 }
