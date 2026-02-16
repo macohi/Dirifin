@@ -1,6 +1,7 @@
 package dirifin;
 
 import macohi.funkin.koya.backend.AssetPaths;
+import macohi.util.Direction;
 
 class Enemy extends DirectionSprite
 {
