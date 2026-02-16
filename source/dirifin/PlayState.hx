@@ -1,6 +1,7 @@
 package dirifin;
 
 import dirifin.Player.PlayerDirection;
+import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import macohi.overrides.MState;
 
@@ -57,9 +58,10 @@ class PlayState extends MState
 	{
 		super.update(elapsed);
 
-		addToInputQueue();
+		if (FlxG.keys.justPressed.ANY)
+			addToInputQueue();
 		processInputQueue();
-		
+
 		directionUpdate();
 		bulletUpdate();
 	}
@@ -68,9 +70,12 @@ class PlayState extends MState
 
 	public function addToInputQueue()
 	{
-		for (control in ['left', 'down', 'up', 'right', 'fire'])
+		for (control in ['fire', 'left', 'down', 'up', 'right'])
 			if (Controls.instance.justPressed(control))
+			{
 				inputQueue.push(control);
+				trace('inputQueue+: $inputQueue');
+			}
 	}
 
 	public function processInputQueue()
@@ -95,6 +100,7 @@ class PlayState extends MState
 			}
 
 			inputQueue.remove(input);
+			trace('inputQueue-: $inputQueue');
 		}
 	}
 
