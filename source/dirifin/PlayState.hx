@@ -169,6 +169,9 @@ class PlayState extends MState
 				enemies.members.remove(enemy);
 				enemy.destroy();
 			}
+
+			if (enemy.overlaps(player))
+				switchState(() -> new GameoverState());
 		}
 	}
 }
