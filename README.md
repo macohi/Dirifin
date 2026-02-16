@@ -24,5 +24,5 @@ If there are any issues with this or you run into a problem do let me know
 1. Clone this Repository
 2. Open the repository in your code editor
 3. Run `git submodule update --init --recursive`
-4. Run `.\source/macohi/install.bat` / Run the install batch file in there : This gives you the libraries without hmm or hxpkg n shit...
+4. Run `.\source/macohi/install.bat` / Run the install batch file in "macohi" : This gives you the libraries without hmm or hxpkg n shit...
 5. Run `lime test html5`, `lime test windows`, whatever.
