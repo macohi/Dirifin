@@ -34,6 +34,10 @@ class PlayState extends MState
 		generateDirectionArrows();
 
 		directionUpdate();
+
+		#if debug
+		FlxG.camera.zoom = .25;
+		#end
 	}
 
 	override function update(elapsed:Float)
@@ -118,12 +122,23 @@ class PlayState extends MState
 
 	public function enemyUpdate()
 	{
-		if (FlxG.random.bool(FlxG.random.float(0, 10)))
+		if (FlxG.random.bool(FlxG.random.float(0, 3)))
 		{
 			var newEnemy:Enemy = new Enemy();
 			newEnemy.screenCenter();
+			newEnemy.changeDirection(FlxG.random.int(0, 3), player);
+			enemies.add(newEnemy);
 		}
 
-		for (enemy in enemies) {}
+		for (enemy in enemies)
+		{
+			enemy.move();
+
+			if (enemy.outOfBounds)
+			{
+				enemies.members.remove(enemy);
+				enemy.destroy();
+			}
+		}
 	}
 }
