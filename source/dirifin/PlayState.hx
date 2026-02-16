@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import lime.app.Application;
 import macohi.overrides.MState;
 
 class PlayState extends MState
@@ -43,6 +44,9 @@ class PlayState extends MState
 		#else
 		FlxG.camera.zoom = .5;
 		#end
+
+		leftWatermark.text = Application.current.meta.get('version');
+		leftWatermark.visible = true;
 	}
 
 	override function update(elapsed:Float)
@@ -146,9 +150,7 @@ class PlayState extends MState
 			var destroyEnemy = enemy.outOfBounds;
 
 			if (!destroyEnemy)
-			{
 				for (bullet in bullets.members)
-				{
 					if (!destroyEnemy)
 					{
 						destroyEnemy = bullet.overlaps(enemy);
@@ -159,10 +161,6 @@ class PlayState extends MState
 							bullet.destroy();
 						}
 					}
-					else
-						continue;
-				}
-			}
 
 			if (destroyEnemy)
 			{
