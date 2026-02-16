@@ -28,14 +28,14 @@ class PlayState extends MState
 			da.ID = i;
 			directionArrows.add(da);
 
-			switch(i)
+			switch (i)
 			{
 				case PlayerDirection.LEFT:
 					da.x -= player.width;
 				case PlayerDirection.RIGHT:
 					da.x += player.width;
 					da.flipX = true;
-					
+
 				case PlayerDirection.UP:
 					da.y -= player.height;
 					da.angle = 90;
@@ -44,6 +44,8 @@ class PlayState extends MState
 					da.angle = -90;
 			}
 		}
+
+		directionControls();
 	}
 
 	override function update(elapsed:Float)
@@ -55,13 +57,16 @@ class PlayState extends MState
 
 	public function directionControls()
 	{
-		if (Controls.instance.justReleased('left'))
+		if (Controls.instance.justPressed('left'))
 			player.changeDirection(LEFT);
-		if (Controls.instance.justReleased('down'))
+		if (Controls.instance.justPressed('down'))
 			player.changeDirection(DOWN);
-		if (Controls.instance.justReleased('up'))
+		if (Controls.instance.justPressed('up'))
 			player.changeDirection(UP);
-		if (Controls.instance.justReleased('right'))
+		if (Controls.instance.justPressed('right'))
 			player.changeDirection(RIGHT);
+
+		for (arrow in directionArrows.members)
+			arrow.alpha = (player.direction == arrow.ID) ? 0.6 : 1.0;
 	}
 }
