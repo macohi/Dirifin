@@ -1,13 +1,14 @@
 package dirifin;
 
 import dirifin.Player.PlayerDirection;
+import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import macohi.overrides.MState;
 
 class PlayState extends MState
 {
 	public var player:Player;
 
-	public var directionArrows:Array<DirectionArrow> = [];
+	public var directionArrows:FlxTypedSpriteGroup<DirectionArrow>;
 
 	override function create()
 	{
@@ -17,11 +18,14 @@ class PlayState extends MState
 		player.screenCenter();
 		add(player);
 
+		directionArrows = new FlxTypedSpriteGroup<DirectionArrow>();
+		add(directionArrows);
+		
 		for (i in 0...3)
 		{
 			var da = new DirectionArrow();
 			da.ID = i;
-			directionArrows.push(da);
+			directionArrows.add(da);
 
 			switch(i)
 			{
