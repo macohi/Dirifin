@@ -36,7 +36,7 @@ class PlayState extends MState
 
 		directionUpdate();
 
-		#if debug
+		#if ZOOM_OUT
 		FlxG.camera.zoom = .25;
 		#end
 	}
@@ -142,8 +142,20 @@ class PlayState extends MState
 			if (!destroyEnemy)
 			{
 				for (bullet in bullets)
+				{
 					if (!destroyEnemy)
+					{
 						destroyEnemy = bullet.overlaps(enemy);
+
+						if (destroyEnemy)
+						{
+							bullets.members.remove(bullet);
+							bullet.destroy();
+						}
+					}
+					else
+						continue;
+				}
 			}
 
 			if (destroyEnemy)
