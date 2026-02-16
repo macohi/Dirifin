@@ -247,6 +247,8 @@ class PlayState extends PauseMState
 			if (enemy.overlaps(player))
 			{
 				togglePaused();
+				remove(player);
+				add(player);
 
 				var deathSound = new FlxSound().loadEmbedded(AssetPaths.sound('death'));
 				deathSound.play();
