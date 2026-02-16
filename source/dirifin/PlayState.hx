@@ -2,6 +2,8 @@ package dirifin;
 
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import macohi.overrides.MState;
 
 class PlayState extends MState
@@ -133,6 +135,8 @@ class PlayState extends MState
 			var newEnemy:Enemy = new Enemy();
 			newEnemy.screenCenter();
 			newEnemy.changeDirection(FlxG.random.int(0, 3), player);
+			newEnemy.alpha = 0;
+			FlxTween.tween(newEnemy, {alpha: 1}, 0.3, {ease: FlxEase.quadInOut});
 			enemies.add(newEnemy);
 		}
 
