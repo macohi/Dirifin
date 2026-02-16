@@ -10,10 +10,10 @@ class Player extends DirectionSprite
 		super(0, x, y);
 
 		loadGraphic(AssetPaths.image('player'), true, 16, 16);
-		addAnimByFrames('left', [0]);
-		addAnimByFrames('down', [1]);
-		addAnimByFrames('up', [2]);
-		addAnimByFrames('right', [3]);
+		addAnimByFrames('LEFT', [0]);
+		addAnimByFrames('DOWN', [1]);
+		addAnimByFrames('UP', [2]);
+		addAnimByFrames('RIGHT', [3]);
 
 		applyPixelScale();
 
@@ -27,13 +27,13 @@ class Player extends DirectionSprite
 		switch (direction)
 		{
 			case LEFT:
-				playAnim('LEFT'.toLowerCase());
+				playAnim('LEFT');
 			case DOWN:
-				playAnim('DOWN'.toLowerCase());
+				playAnim('DOWN');
 			case UP:
-				playAnim('UP'.toLowerCase());
+				playAnim('UP');
 			case RIGHT:
-				playAnim('RIGHT'.toLowerCase());
+				playAnim('RIGHT');
 		}
 	}
 }
