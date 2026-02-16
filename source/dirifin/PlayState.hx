@@ -12,8 +12,11 @@ import macohi.overrides.MState;
 class PlayState extends MState
 {
 	public var player:Player;
+	
 	public var maxBullets:Int = 4;
 	public var bullets:FlxTypedSpriteGroup<Bullet>;
+
+	public var score:Int = 0;
 
 	public var directionArrows:FlxTypedSpriteGroup<DirectionArrow>;
 
@@ -54,7 +57,7 @@ class PlayState extends MState
 
 		directionUpdate();
 
-		leftWatermark.text = Application.current.meta.get('version');
+		leftWatermark.text = 'v';
 		leftWatermark.visible = true;
 
 		initCameras();
@@ -95,6 +98,10 @@ class PlayState extends MState
 		bulletUpdate();
 
 		enemyUpdate();
+
+		leftWatermark.text = '';
+		leftWatermark.text += 'Version: ' + Application.current.meta.get('version');
+		leftWatermark.text += '\nScore: $score';
 	}
 
 	public var inputQueue:Array<String> = [];
@@ -189,6 +196,7 @@ class PlayState extends MState
 
 						if (destroyEnemy)
 						{
+							score += 100;
 							bullets.members.remove(bullet);
 							bullet.destroy();
 						}
