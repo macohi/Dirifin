@@ -33,6 +33,5 @@ class Player extends MSprite
 			case UP: FlxColor.LIME;
 			case RIGHT: FlxColor.RED;
 		});
-		applyPixelScale();
 	}
 }
