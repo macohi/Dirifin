@@ -3,15 +3,17 @@ package dirifin;
 import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;
+import flixel.effects.FlxFlicker;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
+import flixel.sound.FlxSound;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxSort;
+import macohi.backend.PauseMState;
 import macohi.funkin.koya.backend.AssetPaths;
-import macohi.overrides.MState;
 import macohi.util.Direction;
 
-class PlayState extends MState
+class PlayState extends PauseMState
 {
 	public var player:Player;
 
@@ -40,8 +42,6 @@ class PlayState extends MState
 
 	override function create()
 	{
-		super.create();
-
 		player = new Player();
 		player.screenCenter();
 		add(player);
@@ -63,6 +63,8 @@ class PlayState extends MState
 		leftWatermark.visible = true;
 
 		initCameras();
+
+		super.create();
 	}
 
 	public function initCameras()
@@ -90,16 +92,19 @@ class PlayState extends MState
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.justPressed.ANY)
-			addToInputQueue();
-		processInputQueue();
+		if (!paused)
+		{
+			if (FlxG.keys.justPressed.ANY)
+				addToInputQueue();
+			processInputQueue();
+
+			directionUpdate();
+			bulletUpdate();
+
+			enemyUpdate();
+		}
 
 		FlxG.watch.addQuick('inputQueue', inputQueue);
-
-		directionUpdate();
-		bulletUpdate();
-
-		enemyUpdate();
 
 		if (score > DirifinSave.instance.highscore.get())
 			DirifinSave.instance.highscore.set(score);
@@ -240,5 +245,26 @@ class PlayState extends MState
 			if (enemy.overlaps(player))
 				switchState(() -> new GameoverState());
 		}
+	}
+
+	override function startOutro(onOutroComplete:() -> Void)
+	{
+		togglePaused();
+
+		var deathSound = new FlxSound().loadEmbedded(AssetPaths.sound('death'));
+		deathSound.play();
+
+		FlxFlicker.flicker(player, deathSound.length, 0.04, false, true, function(f)
+		{
+			onOutroComplete();
+		}, function(f)
+		{
+			f.completionCallback(f);
+		});
+	}
+
+	override function getPauseBoolean():Bool
+	{
+		return Controls.instance.justPressed('accept');
 	}
 }

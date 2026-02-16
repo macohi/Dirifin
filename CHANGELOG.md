@@ -9,6 +9,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
+- Little animation before true death
 - little anim kinda transition thingy with enemies when they spawn and now they do like a bouncy kinda thing when they spawn
 - HIGH SCORE!
 - SAVE FILE

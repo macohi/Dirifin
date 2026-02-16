@@ -1,8 +1,6 @@
 package dirifin;
 
-import flixel.FlxG;
 import flixel.util.FlxColor;
-import macohi.funkin.koya.backend.AssetPaths;
 import macohi.overrides.MState;
 import macohi.overrides.MText;
 
@@ -22,8 +20,6 @@ class GameoverState extends MState
 		add(gameoverText);
 		gameoverText.screenCenter();
 		gameoverText.color = FlxColor.RED;
-
-		FlxG.sound.play(AssetPaths.sound('death'));
 	}
 
 	override function update(elapsed:Float)
