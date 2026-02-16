@@ -14,7 +14,6 @@ class Player extends DirectionSprite
 		addAnimByFrames('DOWN', [1]);
 		addAnimByFrames('UP', [2]);
 		addAnimByFrames('RIGHT', [3]);
-
 		applyPixelScale();
 
 		changeDirection(this.direction);
@@ -35,5 +34,6 @@ class Player extends DirectionSprite
 			case RIGHT:
 				playAnim('RIGHT');
 		}
+		updateHitbox();
 	}
 }
