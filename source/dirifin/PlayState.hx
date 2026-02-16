@@ -6,7 +6,6 @@ import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
-import lime.app.Application;
 import macohi.overrides.MState;
 
 class PlayState extends MState
@@ -100,7 +99,7 @@ class PlayState extends MState
 		enemyUpdate();
 
 		leftWatermark.text = '';
-		leftWatermark.text += 'Version: ' + Application.current.meta.get('version');
+		leftWatermark.text += 'Version: ' + Version.VERSION;
 		leftWatermark.text += '\nScore: $score';
 	}
 
