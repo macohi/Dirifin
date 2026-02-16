@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project xmlns="http://lime.openfl.org/project/1.0.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://lime.openfl.org/project/1.0.4"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://lime.openfl.org/project/1.0.4 http://lime.openfl.org/xsd/project-1.0.4.xsd">
 
 	<!-- _________________________ Application Settings _________________________ -->
@@ -12,7 +13,8 @@
 
 	<!-- ____________________________ Window Settings ___________________________ -->
 
-	<window width="1280" height="47200" fps="60" background="#000000" hardware="true" vsync="false" />
+	<window width="1280" height="47200" fps="60" background="#000000" hardware="true"
+		vsync="false" />
 
 	<window if="html5" resizable="true" />
 
@@ -23,7 +25,7 @@
 	<!-- _____________________________ Path Settings ____________________________ -->
 
 	<set name="BUILD_DIR" value="export/release" />
-	<set name="BUILD_DIR" value="export/debug" if="debug"/>
+	<set name="BUILD_DIR" value="export/debug" if="debug" />
 
 	<source path="source" />
 	<assets path="assets" />
@@ -37,7 +39,11 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
-	<!--Place custom nodes like icons here-->
+	<define name="CRASH_HANDLER" if="desktop" />
+
+	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
+	<haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
+	<haxedef name="HXCPP_STACK_TRACE" if="CRASH_HANDLER" />
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
@@ -46,7 +52,6 @@
 	<haxedef name="FLX_NO_MOUSE" if="mobile" />
 	<haxedef name="FLX_NO_KEYBOARD" if="mobile" />
 	<haxedef name="FLX_NO_TOUCH" if="desktop" />
-	<!--<haxedef name="FLX_NO_GAMEPAD" />-->
 
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
 
