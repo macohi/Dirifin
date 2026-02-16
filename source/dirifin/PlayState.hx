@@ -30,16 +30,16 @@ class PlayState extends MState
 			switch(i)
 			{
 				case PlayerDirection.LEFT:
-					da.x = player.getGraphicMidpoint().x - player.width - da.width;
+					da.x = player.getGraphicMidpoint().x;
 				case PlayerDirection.RIGHT:
-					da.x = player.getGraphicMidpoint().x + player.width + da.width;
+					da.x = player.getGraphicMidpoint().x;
 					da.flipX = true;
 					
 				case PlayerDirection.UP:
-					da.y = player.getGraphicMidpoint().y - player.height - da.height;
+					da.y = player.getGraphicMidpoint().y;
 					da.angle = -90;
 				case PlayerDirection.DOWN:
-					da.y = player.getGraphicMidpoint().y + player.height + da.height;
+					da.y = player.getGraphicMidpoint().y;
 					da.angle = 90;
 			}
 		}
