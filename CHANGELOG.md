@@ -15,6 +15,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
+- Player Sprite
 - SOUND EFFECTS!
 - Bullet Sprite
 
