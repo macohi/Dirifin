@@ -7,6 +7,6 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [Unreleased]
 
-## [1.00] - 2/16/2026
+## [1.00 Pre-Release 1] - 2/16/2026
 
-Inital release, no changes in the changelog
+Technically the inital release, no changes in the changelog
