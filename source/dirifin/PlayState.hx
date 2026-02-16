@@ -250,6 +250,8 @@ class PlayState extends PauseMState
 			{
 				togglePaused();
 
+				directionArrows.clear();
+
 				remove(player);
 				insert(members.length, player);
 
