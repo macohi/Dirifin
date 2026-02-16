@@ -7,6 +7,8 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [Unreleased]
 
+## [1.00] - 2/16/2026
+
 ### Added
 
 - The ability to pause
