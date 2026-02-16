@@ -62,6 +62,8 @@ class PlayState extends MState
 			addToInputQueue();
 		processInputQueue();
 
+		FlxG.watch.addQuick('inputQueue', inputQueue);
+
 		directionUpdate();
 		bulletUpdate();
 	}
