@@ -1,6 +1,7 @@
 package dirifin;
 
 import macohi.debugging.CrashHandler;
+import macohi.funkin.koya.backend.AssetPaths;
 import macohi.overrides.MState;
 
 class InitState extends MState
@@ -12,6 +13,8 @@ class InitState extends MState
 		CrashHandler.initalize('', 'Dirifin_', '', 'Dirifin');
 
 		Controls.init();
+
+		AssetPaths.soundExt = 'wav';
 
 		switchState(() -> new PlayState());
 	}

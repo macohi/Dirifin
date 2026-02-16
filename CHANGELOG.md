@@ -14,6 +14,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
+- SOUND EFFECTS!
 - Bullet Sprite
 
 ## [1.00 Pre-Release 1] - 2/16/2026

@@ -6,6 +6,7 @@ import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import macohi.funkin.koya.backend.AssetPaths;
 import macohi.overrides.MState;
 
 class PlayState extends MState
@@ -119,7 +120,10 @@ class PlayState extends MState
 			if (input == 'fire')
 			{
 				if (bullets.members.length < maxBullets)
+				{
+					FlxG.sound.play(AssetPaths.sound('shoot'));
 					bullets.add(new Bullet().makeBullet(player));
+				}
 			}
 			else
 			{
