@@ -11,5 +11,6 @@ class DirectionArrow extends MSprite
 
 		loadGraphic(AssetPaths.image('directionarrow'));
 		applyPixelScale();
+		centerOffsets();
 	}
 }

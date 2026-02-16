@@ -21,26 +21,27 @@ class PlayState extends MState
 		directionArrows = new FlxTypedSpriteGroup<DirectionArrow>();
 		add(directionArrows);
 
-		for (i in 0...3)
+		for (i in 0...4)
 		{
 			var da = new DirectionArrow();
+			da.screenCenter();
 			da.ID = i;
 			directionArrows.add(da);
 
 			switch(i)
 			{
 				case PlayerDirection.LEFT:
-					da.x = player.getGraphicMidpoint().x;
+					da.x -= player.width;
 				case PlayerDirection.RIGHT:
-					da.x = player.getGraphicMidpoint().x;
+					da.x += player.width;
 					da.flipX = true;
 					
 				case PlayerDirection.UP:
-					da.y = player.getGraphicMidpoint().y;
-					da.angle = -90;
-				case PlayerDirection.DOWN:
-					da.y = player.getGraphicMidpoint().y;
+					da.y -= player.height;
 					da.angle = 90;
+				case PlayerDirection.DOWN:
+					da.y += player.height;
+					da.angle = -90;
 			}
 		}
 	}
