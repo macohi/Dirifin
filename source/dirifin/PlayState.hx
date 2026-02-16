@@ -1,10 +1,13 @@
 package dirifin;
 
+import dirifin.Player.PlayerDirection;
 import macohi.overrides.MState;
 
 class PlayState extends MState
 {
 	public var player:Player;
+
+	public var directionArrows:Array<DirectionArrow> = [];
 
 	override function create()
 	{
@@ -13,6 +16,29 @@ class PlayState extends MState
 		player = new Player();
 		player.screenCenter();
 		add(player);
+
+		for (i in 0...3)
+		{
+			var da = new DirectionArrow();
+			da.ID = i;
+			directionArrows.push(da);
+
+			switch(i)
+			{
+				case PlayerDirection.LEFT:
+					da.x = player.x - player.width - da.width;
+				case PlayerDirection.RIGHT:
+					da.x = player.x + player.width + da.width;
+					da.flipX = true;
+					
+				case PlayerDirection.UP:
+					da.y = player.y - player.height - da.height;
+					da.angle = -90;
+				case PlayerDirection.DOWN:
+					da.y = player.y + player.height + da.height;
+					da.angle = 90;
+			}
+		}
 	}
 
 	override function update(elapsed:Float)
