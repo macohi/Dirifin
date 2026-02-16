@@ -10,6 +10,8 @@ class InitState extends MState
 		super.create();
 
 		CrashHandler.initalize('', 'Dirifin_', '', 'Dirifin');
+
+		switchState(() -> new PlayState());
 	}
 
 	override public function update(elapsed:Float)
