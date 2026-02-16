@@ -50,38 +50,62 @@ class PlayState extends MState
 			}
 		}
 
-		directionControls();
+		directionUpdate();
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		directionControls();
+		addToInputQueue();
+		processInputQueue();
+		
+		directionUpdate();
 		bulletUpdate();
 	}
 
-	public function directionControls()
-	{
-		if (Controls.instance.justPressed('left'))
-			player.changeDirection(LEFT);
-		if (Controls.instance.justPressed('down'))
-			player.changeDirection(DOWN);
-		if (Controls.instance.justPressed('up'))
-			player.changeDirection(UP);
-		if (Controls.instance.justPressed('right'))
-			player.changeDirection(RIGHT);
+	public var inputQueue:Array<String> = [];
 
+	public function addToInputQueue()
+	{
+		for (control in ['left', 'down', 'up', 'right', 'fire'])
+			if (Controls.instance.justPressed(control))
+				inputQueue.push(control);
+	}
+
+	public function processInputQueue()
+	{
+		for (input in inputQueue)
+		{
+			if (input == 'fire')
+			{
+				if (bullets.members.length < maxBullets)
+					bullets.add(new Bullet().makeBullet(player));
+			}
+			else
+			{
+				if (Controls.instance.justPressed('left'))
+					player.changeDirection(LEFT);
+				if (Controls.instance.justPressed('down'))
+					player.changeDirection(DOWN);
+				if (Controls.instance.justPressed('up'))
+					player.changeDirection(UP);
+				if (Controls.instance.justPressed('right'))
+					player.changeDirection(RIGHT);
+			}
+
+			inputQueue.remove(input);
+		}
+	}
+
+	public function directionUpdate()
+	{
 		for (arrow in directionArrows.members)
 			arrow.alpha = (player.direction == arrow.ID) ? 0.6 : 1.0;
 	}
 
 	public function bulletUpdate()
 	{
-		if (Controls.instance.justPressed('fire'))
-			if (bullets.members.length < maxBullets)
-				bullets.add(new Bullet().makeBullet(player));
-
 		for (bullet in bullets.members)
 		{
 			bullet.move();
