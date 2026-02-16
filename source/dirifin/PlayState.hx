@@ -13,6 +13,8 @@ import macohi.backend.PauseMState;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.util.Direction;
 
+using macohi.util.TimeUtil;
+
 class PlayState extends PauseMState
 {
 	public var player:Player;
@@ -249,12 +251,13 @@ class PlayState extends PauseMState
 				var deathSound = new FlxSound().loadEmbedded(AssetPaths.sound('death'));
 				deathSound.play();
 
-				FlxFlicker.flicker(player, deathSound.length, 0.04, false, true, function(f)
+				FlxFlicker.flicker(player, deathSound.length.convert_ms_to_s(), 0.04, false, true, function(f)
 				{
 					switchState(() -> new GameoverState());
 				}, function(f)
 				{
-					f.completionCallback(f);
+					if (Controls.instance.justPressed('accept'))
+						f.completionCallback(f);
 				});
 			}
 		}
