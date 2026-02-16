@@ -34,20 +34,17 @@ class Enemy extends DirectionSprite
 		{
 			case LEFT:
 				this.x -= player.width * startMulti;
-				this.flipX = true;
-				playAnim('LEFT');
+				playAnim('RIGHT');
 			case RIGHT:
 				this.x += player.width * startMulti;
-				playAnim('RIGHT');
+				playAnim('LEFT');
 
 			case UP:
 				this.y -= player.height * startMulti;
-				this.angle = -90;
-				playAnim('UP');
+				playAnim('DOWN');
 			case DOWN:
 				this.y += player.height * startMulti;
-				this.angle = 90;
-				playAnim('DOWN');
+				playAnim('UP');
 		}
 
 		updateHitbox();
