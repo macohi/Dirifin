@@ -8,6 +8,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.overrides.MState;
+import macohi.util.Direction;
 
 class PlayState extends MState
 {
@@ -179,17 +180,24 @@ class PlayState extends MState
 		}
 	}
 
+	public var previousEnemyDir:Direction = -1;
+
 	public function enemyUpdate()
 	{
 		if (FlxG.random.bool(FlxG.random.float(0, 3)))
 		{
+			var newEnemyDir = FlxG.random.int(0, 3);
+
 			if (enemies.members.length >= maxEnemies)
+				return;
+
+			if (newEnemyDir == previousEnemyDir && !FlxG.random.bool(10))
 				return;
 
 			FlxG.sound.play(AssetPaths.sound('monster'));
 			var newEnemy:Enemy = new Enemy();
 			newEnemy.screenCenter();
-			newEnemy.changeDirection(FlxG.random.int(0, 3), player);
+			newEnemy.changeDirection(newEnemyDir, player);
 			newEnemy.alpha = 0;
 			FlxTween.tween(newEnemy, {alpha: 1}, 0.3, {ease: FlxEase.quadInOut});
 			enemies.add(newEnemy);

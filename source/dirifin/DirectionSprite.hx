@@ -1,8 +1,8 @@
 package dirifin;
 
-import dirifin.Player.PlayerDirection;
 import flixel.FlxG;
 import macohi.overrides.MSprite;
+import macohi.util.Direction;
 
 class DirectionSprite extends MSprite
 {
@@ -37,9 +37,9 @@ class DirectionSprite extends MSprite
 
 	public var outOfBounds:Bool = false;
 
-	public var direction:PlayerDirection = DOWN;
+	public var direction:Direction = DOWN;
 
-	public function changeDirection(direction:PlayerDirection, ?player:Player)
+	public function changeDirection(direction:Direction, ?player:Player)
 	{
 		this.direction = direction;
 

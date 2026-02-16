@@ -1,6 +1,5 @@
 package dirifin;
 
-import dirifin.Player.PlayerDirection;
 import macohi.funkin.koya.backend.AssetPaths;
 
 class Enemy extends DirectionSprite
@@ -17,7 +16,7 @@ class Enemy extends DirectionSprite
 
 	public var startMulti:Float = 9.0;
 
-	override function changeDirection(direction:PlayerDirection, ?player:Player)
+	override function changeDirection(direction:Direction, ?player:Player)
 	{
 		this.direction = direction;
 
