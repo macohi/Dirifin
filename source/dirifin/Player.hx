@@ -1,6 +1,6 @@
 package dirifin;
 
-import macohi.overrides.MSprite;
+
 
 enum abstract PlayerDirection(Int) from Int to Int
 {
@@ -14,14 +14,9 @@ class Player extends DirectionSprite
 {
 	override public function new(?x:Float, ?y:Float)
 	{
-		super(x, y);
+		super(0, x, y);
 
 		makeGraphic(64, 64);
 		changeDirection(this.direction);
-	}
-
-	override function changeDirection(direction:PlayerDirection, ?player:Player)
-	{
-		super.changeDirection(direction, null);
 	}
 }

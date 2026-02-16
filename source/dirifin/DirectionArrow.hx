@@ -6,7 +6,7 @@ class DirectionArrow extends DirectionSprite
 {
 	override public function new(?x:Float, ?y:Float)
 	{
-		super(x, y);
+		super(0.5, x, y);
 
 		loadGraphic(AssetPaths.image('directionarrow'));
 		applyPixelScale();

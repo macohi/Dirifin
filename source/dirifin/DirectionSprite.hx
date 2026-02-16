@@ -1,17 +1,50 @@
 package dirifin;
 
 import dirifin.Player.PlayerDirection;
+import flixel.FlxG;
 import macohi.overrides.MSprite;
 
 class DirectionSprite extends MSprite
 {
+	override public function new(?speedDamp:Null<Float>, ?x:Float, ?y:Float)
+	{
+		super(x, y);
+
+		if (speedDamp != null)
+			this.speedDamp = speedDamp;
+	}
+
+	public var speedDamp:Float = 0.5;
+	public var boundsPadding:Float = 0;
+
+	public function move()
+	{
+		switch (direction)
+		{
+			case LEFT:
+				this.x -= this.width * speedDamp;
+			case RIGHT:
+				this.x += this.width * speedDamp;
+
+			case UP:
+				this.y -= this.width * speedDamp;
+			case DOWN:
+				this.y += this.width * speedDamp;
+		}
+
+		outOfBounds = (x < -boundsPadding) || (x > (FlxG.width + boundsPadding)) || (y < -boundsPadding) || (y > (FlxG.height + boundsPadding));
+	}
+
+	public var outOfBounds:Bool = false;
+
 	public var direction:PlayerDirection = DOWN;
 
 	public function changeDirection(direction:PlayerDirection, ?player:Player)
 	{
 		this.direction = direction;
 
-		if (player == null) return;
+		if (player == null)
+			return;
 
 		switch (this.direction)
 		{
