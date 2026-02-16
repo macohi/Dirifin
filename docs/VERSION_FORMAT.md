@@ -34,6 +34,6 @@ If something was missing like an asset or a sound, patch updates can add those.
 Think of Pre-Release versions like Minecraft Snapshots, they aren't weekly but they *are* preview versions of an upcoming update that will come a little before an update if it's almost done and has been taking a bit.
 
 > [!NOTE]  
-> These are saved in the github tags as "\_.\__b" and not with a "Pre Release #" suffix for sorting.
+> These are saved in the github tags as "\_.\__b#" and not with a "Pre Release #" suffix for sorting.
 > This is why versions are saved with an "a" at the end.
 
