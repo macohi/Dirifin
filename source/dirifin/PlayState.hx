@@ -76,7 +76,6 @@ class PlayState extends PauseMState
 		FlxG.cameras.add(camGame);
 		FlxG.cameras.add(camHUD);
 		camHUD.bgColor.alpha = 0;
-		// camGame.bgColor.alpha = 0;
 
 		#if ZOOM_OUT
 		camGame.zoom = .25;
