@@ -15,7 +15,7 @@ class GameoverState extends MState
 		super.create();
 
 		gameoverText = new MText().makeText('YOU DIED!\n\n'
-			+ ' You can press ${Controls.instance.keybinds.get('accept').stringArrayToKeysArray().youCanPressString()} to go back', 24);
+			+ 'You can press ${Controls.instance.keybinds.get('accept').stringArrayToKeysArray().youCanPressString()} to go back', 24);
 
 		add(gameoverText);
 		gameoverText.screenCenter();
