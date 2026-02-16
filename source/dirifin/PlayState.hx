@@ -63,9 +63,6 @@ class PlayState extends PauseMState
 
 		super.create();
 
-		remove(rightWatermark);
-		add(rightWatermark);
-
 		rightWatermark.text = 'PAUSED';
 		rightWatermark.size = 32;
 
