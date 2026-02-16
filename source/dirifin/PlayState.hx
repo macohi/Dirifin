@@ -89,7 +89,7 @@ class PlayState extends MState
 	public function directionUpdate()
 	{
 		for (arrow in directionArrows.members)
-			arrow.alpha = (player.direction == arrow.ID) ? 0.6 : 1.0;
+			arrow.alpha = (player.direction == arrow.direction) ? 0.6 : 1.0;
 	}
 
 	public function bulletUpdate()
@@ -111,7 +111,7 @@ class PlayState extends MState
 		{
 			var da = new DirectionArrow();
 			da.screenCenter();
-			da.changeDirection(i);
+			da.changeDirection(i, player);
 			directionArrows.add(da);
 		}
 	}
