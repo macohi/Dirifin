@@ -8,6 +8,7 @@ import macohi.overrides.MSprite;
 class Bullet extends MSprite
 {
 	public var speedDamp:Float = 0.5;
+	public var boundsPadding:Float = 0;
 
 	override public function new(?speedDamp:Null<Float>)
 	{
@@ -16,7 +17,8 @@ class Bullet extends MSprite
 		if (speedDamp != null)
 			this.speedDamp = speedDamp;
 
-		makeGraphic(8, 16, FlxColor.YELLOW);
+		makeGraphic(16, 8, FlxColor.YELLOW);
+		boundsPadding = this.width * 4;
 	}
 
 	public function move()
@@ -27,11 +29,10 @@ class Bullet extends MSprite
 			this.x += this.width * speedDamp;
 
 		if (ID == PlayerDirection.UP)
-			this.y -= this.height * speedDamp;
+			this.y -= this.width * speedDamp;
 		if (ID == PlayerDirection.DOWN)
-			this.y += this.height * speedDamp;
+			this.y += this.width * speedDamp;
 
-		var boundsPadding = this.width * 2;
 		outOfBounds = (x < -boundsPadding) || (x > (FlxG.width + boundsPadding)) || (y < -boundsPadding) || (y > (FlxG.height + boundsPadding));
 	}
 
