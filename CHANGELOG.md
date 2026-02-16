@@ -25,6 +25,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Fixed
 
+- The cursor is now invisible
 - Enemies spawned later are now behind enemies spawned earlier
 
 
