@@ -8,7 +8,8 @@ N / A
 
 ## Credits
 
-Maochi - Programming, Pixel Art
+[Maochi](https://sphis-sinco.carrd.co/) - Programming, Pixel Art
+[Requazar](https://www.youtube.com/channel/UCw44n7vHdSs6wQF651upvVw) - Composer
 
 ## Source Code
 
