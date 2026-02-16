@@ -18,5 +18,6 @@ class Controls
 		instance.keybinds.set('up', [UP, W].keysArrayToStringArray());
 		instance.keybinds.set('right', [RIGHT, D].keysArrayToStringArray());
 		instance.keybinds.set('fire', [SPACE].keysArrayToStringArray());
+		// instance.keybinds.set('accept', [ENTER].keysArrayToStringArray());
 	}
 }
