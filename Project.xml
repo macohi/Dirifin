@@ -13,7 +13,7 @@
 
 	<!-- ____________________________ Window Settings ___________________________ -->
 
-	<window width="1280" height="47200" fps="60" background="#000000" hardware="true"
+	<window width="640" height="480" fps="60" background="#000000" hardware="true"
 		vsync="false" />
 
 	<window if="html5" resizable="true" />
