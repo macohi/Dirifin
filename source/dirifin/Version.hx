@@ -12,7 +12,7 @@ class Version
 		var v = Application.current.meta.get('version');
 
 		if (Compiler.getDefine('PRE_RELEASE') != null)
-			v += ' Pre-Release ${Compiler.getDefine('PRE_RELEASE')}';
+			v += ' Pre-Release ${Compiler.getDefine('PRE_RELEASE').split('=')[0]}';
 
 		return v;
 	}
