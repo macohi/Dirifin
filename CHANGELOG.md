@@ -18,6 +18,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Changed
 
+- Enemy is now SLIGHTLY brighter
 - Enemies spawning in the same direction after spawning multiple around the same time is a rarer chance now (10% chance)
 - Bullets now fade in half the time
 - The bullet sprite is scaled up
