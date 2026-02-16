@@ -3,9 +3,10 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+This project adheres to [a custom version format](https://github.com/macohi/Dirifin/main/docs/VERSION_FORMAT.md)
 
 ## [Unreleased]
 
-## [1.0] - 2/16/2026
+## [1.00] - 2/16/2026
 
 Inital release, no changes in the changelog
