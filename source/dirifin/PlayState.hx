@@ -208,7 +208,7 @@ class PlayState extends MState
 			enemies.add(newEnemy);
 		}
 
-		enemies.members.sort((o1, o2) -> FlxSort.byY(FlxSort.ASCENDING, o1, o2));
+		enemies.members.sort((o1, o2) -> FlxSort.byY(FlxSort.DESCENDING, o1, o2));
 
 		for (enemy in enemies.members)
 		{
