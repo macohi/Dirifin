@@ -23,3 +23,7 @@ Patch versions are a +1 increment to the minor version number.
 They fix bugs. That's mostly it.
 
 If something was missing like an asset or a sound, patch updates can add those.
+
+## Pre-Release versions (\_.__ Pre-Release #)
+
+Think of Pre-Release versions like Minecraft Snapshots, they aren't weekly but they *are* preview versions of an upcoming update that will come a little before an update if it's almost done and has been taking a bit.
