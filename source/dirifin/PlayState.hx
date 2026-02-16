@@ -1,5 +1,6 @@
 package dirifin;
 
+import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
@@ -19,7 +20,18 @@ class PlayState extends MState
 	public var maxEnemies:Int = 8;
 	public var enemies:FlxTypedSpriteGroup<Enemy>;
 
-	public var hudCamera:FlxCamera;
+	public var camGame:FlxCamera;
+	public var camHUD:FlxCamera;
+
+	public var camGameObjects(get, never):Array<FlxBasic>;
+
+	function get_camGameObjects():Array<FlxBasic>
+		return [player, bullets, directionArrows, enemies,];
+
+	public var camHUDObjects(get, never):Array<FlxBasic>;
+
+	function get_camHUDObjects():Array<FlxBasic>
+		return [leftWatermark, rightWatermark,];
 
 	override function create()
 	{
@@ -43,20 +55,25 @@ class PlayState extends MState
 		directionUpdate();
 
 		#if ZOOM_OUT
-		FlxG.camera.zoom = .25;
+		camGame.zoom = .25;
 		#else
-		FlxG.camera.zoom = .5;
+		camGame.zoom = .5;
 		#end
-
-		hudCamera = new FlxCamera();
-		FlxG.cameras.add(hudCamera);
-		hudCamera.bgColor.alpha = 0; // Show the game scene behind the camera.
 
 		leftWatermark.text = Application.current.meta.get('version');
 		leftWatermark.visible = true;
-		leftWatermark.size = Math.round(8 * (FlxG.camera.zoom / 1));
+		
+		camHUD = new FlxCamera();
+		camGame = new FlxCamera();
+		FlxG.cameras.add(camGame);
+		FlxG.cameras.add(camHUD);
+		camHUD.bgColor.alpha = 0;
+		// camGame.bgColor.alpha = 0;
 
-		leftWatermark.cameras = [hudCamera];
+		for (camGameOBJ in camGameObjects)
+			camGameOBJ.cameras = [camGame];
+		for (camHUDOBJ in camHUDObjects)
+			camHUDOBJ.cameras = [camHUD];
 	}
 
 	override function update(elapsed:Float)
