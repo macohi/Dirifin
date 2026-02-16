@@ -88,13 +88,13 @@ class PlayState extends MState
 			}
 			else
 			{
-				if (Controls.instance.justPressed('left'))
+				if (input == 'left')
 					player.changeDirection(LEFT);
-				if (Controls.instance.justPressed('down'))
+				if (input == 'down')
 					player.changeDirection(DOWN);
-				if (Controls.instance.justPressed('up'))
+				if (input == 'up')
 					player.changeDirection(UP);
-				if (Controls.instance.justPressed('right'))
+				if (input == 'right')
 					player.changeDirection(RIGHT);
 			}
 
