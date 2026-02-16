@@ -243,24 +243,21 @@ class PlayState extends PauseMState
 			}
 
 			if (enemy.overlaps(player))
-				switchState(() -> new GameoverState());
+			{
+				togglePaused();
+
+				var deathSound = new FlxSound().loadEmbedded(AssetPaths.sound('death'));
+				deathSound.play();
+
+				FlxFlicker.flicker(player, deathSound.length, 0.04, false, true, function(f)
+				{
+					switchState(() -> new GameoverState());
+				}, function(f)
+				{
+					f.completionCallback(f);
+				});
+			}
 		}
-	}
-
-	override function startOutro(onOutroComplete:() -> Void)
-	{
-		togglePaused();
-
-		var deathSound = new FlxSound().loadEmbedded(AssetPaths.sound('death'));
-		deathSound.play();
-
-		FlxFlicker.flicker(player, deathSound.length, 0.04, false, true, function(f)
-		{
-			onOutroComplete();
-		}, function(f)
-		{
-			f.completionCallback(f);
-		});
 	}
 
 	override function getPauseBoolean():Bool
