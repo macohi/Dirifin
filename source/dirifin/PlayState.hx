@@ -35,7 +35,7 @@ class PlayState extends PauseMState
 	public var camGameObjects(get, never):Array<FlxBasic>;
 
 	function get_camGameObjects():Array<FlxBasic>
-		return [player, bullets, directionArrows, enemies,];
+		return [pauseBG, player, bullets, directionArrows, enemies,];
 
 	public var camHUDObjects(get, never):Array<FlxBasic>;
 
@@ -247,13 +247,14 @@ class PlayState extends PauseMState
 			if (enemy.overlaps(player))
 			{
 				togglePaused();
+				
 				remove(player);
-				add(player);
+				insert(members.length, player);
 
 				var deathSound = new FlxSound().loadEmbedded(AssetPaths.sound('death'));
 				deathSound.play();
 
-				FlxFlicker.flicker(player, deathSound.length.convert_ms_to_s(), 0.04, false, true, function(f)
+				FlxFlicker.flicker(player, deathSound.length.convert_ms_to_s() + 100.convert_ms_to_s(), 0.04, false, true, function(f)
 				{
 					switchState(() -> new GameoverState());
 				}, function(f)
