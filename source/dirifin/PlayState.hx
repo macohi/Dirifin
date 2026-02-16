@@ -35,15 +35,15 @@ class PlayState extends PauseMState
 	public var camGameObjects(get, never):Array<FlxBasic>;
 
 	function get_camGameObjects():Array<FlxBasic>
-		return [pauseBG, player, bullets, directionArrows, enemies,];
+		return [player, bullets, directionArrows, enemies,];
 
 	public var camHUDObjects(get, never):Array<FlxBasic>;
 
 	function get_camHUDObjects():Array<FlxBasic>
-		return [leftWatermark, rightWatermark,];
+		return [leftWatermark, rightWatermark,pauseBG];
 
 	override function create()
-	{
+	{		
 		player = new Player();
 		player.screenCenter();
 		add(player);
@@ -61,11 +61,11 @@ class PlayState extends PauseMState
 
 		directionUpdate();
 
+		super.create();
+		
 		leftWatermark.text = 'v';
 		leftWatermark.visible = true;
-
-		super.create();
-
+		
 		initCameras();
 	}
 
