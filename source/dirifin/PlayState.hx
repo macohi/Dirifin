@@ -186,6 +186,7 @@ class PlayState extends MState
 			if (enemies.members.length >= maxEnemies)
 				return;
 
+			FlxG.sound.play(AssetPaths.sound('monster'));
 			var newEnemy:Enemy = new Enemy();
 			newEnemy.screenCenter();
 			newEnemy.changeDirection(FlxG.random.int(0, 3), player);
@@ -209,7 +210,7 @@ class PlayState extends MState
 						{
 							score += 100;
 							FlxG.sound.play(AssetPaths.sound('explosion'));
-							
+
 							bullets.members.remove(bullet);
 							bullet.destroy();
 						}
