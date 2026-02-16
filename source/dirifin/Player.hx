@@ -10,10 +10,8 @@ enum abstract PlayerDirection(Int) from Int to Int
 	var RIGHT = 3;
 }
 
-class Player extends MSprite
+class Player extends DirectionSprite
 {
-	public var direction:PlayerDirection = DOWN;
-
 	override public function new(?x:Float, ?y:Float)
 	{
 		super(x, y);
@@ -22,8 +20,8 @@ class Player extends MSprite
 		changeDirection(this.direction);
 	}
 
-	public function changeDirection(direction:PlayerDirection)
+	override function changeDirection(direction:PlayerDirection, ?player:Player)
 	{
-		this.direction = direction;
+		super.changeDirection(direction, null);
 	}
 }

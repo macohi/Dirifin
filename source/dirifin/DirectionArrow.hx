@@ -1,9 +1,8 @@
 package dirifin;
 
 import macohi.funkin.koya.backend.AssetPaths;
-import macohi.overrides.MSprite;
 
-class DirectionArrow extends MSprite
+class DirectionArrow extends DirectionSprite
 {
 	override public function new(?x:Float, ?y:Float)
 	{

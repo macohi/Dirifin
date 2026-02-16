@@ -1,6 +1,5 @@
 package dirifin;
 
-import dirifin.Player.PlayerDirection;
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import macohi.overrides.MState;
@@ -12,6 +11,8 @@ class PlayState extends MState
 	public var bullets:FlxTypedSpriteGroup<Bullet>;
 
 	public var directionArrows:FlxTypedSpriteGroup<DirectionArrow>;
+
+	public var enemies:FlxTypedSpriteGroup<Enemy>;
 
 	override function create()
 	{
@@ -27,29 +28,10 @@ class PlayState extends MState
 		bullets = new FlxTypedSpriteGroup<Bullet>();
 		add(bullets);
 
-		for (i in 0...4)
-		{
-			var da = new DirectionArrow();
-			da.screenCenter();
-			da.ID = i;
-			directionArrows.add(da);
+		enemies = new FlxTypedSpriteGroup<Enemy>();
+		add(enemies);
 
-			switch (i)
-			{
-				case PlayerDirection.LEFT:
-					da.x -= player.width;
-				case PlayerDirection.RIGHT:
-					da.x += player.width;
-					da.flipX = true;
-
-				case PlayerDirection.UP:
-					da.y -= player.height;
-					da.angle = 90;
-				case PlayerDirection.DOWN:
-					da.y += player.height;
-					da.angle = -90;
-			}
-		}
+		generateDirectionArrows();
 
 		directionUpdate();
 	}
@@ -66,6 +48,8 @@ class PlayState extends MState
 
 		directionUpdate();
 		bulletUpdate();
+
+		enemyUpdate();
 	}
 
 	public var inputQueue:Array<String> = [];
@@ -74,9 +58,7 @@ class PlayState extends MState
 	{
 		for (control in ['fire', 'left', 'down', 'up', 'right'])
 			if (Controls.instance.justPressed(control))
-			{
 				inputQueue.push(control);
-			}
 	}
 
 	public function processInputQueue()
@@ -121,5 +103,27 @@ class PlayState extends MState
 				bullet.destroy();
 			}
 		}
+	}
+
+	public function generateDirectionArrows()
+	{
+		for (i in 0...4)
+		{
+			var da = new DirectionArrow();
+			da.screenCenter();
+			da.changeDirection(i);
+			directionArrows.add(da);
+		}
+	}
+
+	public function enemyUpdate()
+	{
+		if (FlxG.random.bool(FlxG.random.float(0, 10)))
+		{
+			var newEnemy:Enemy = new Enemy();
+			newEnemy.screenCenter();
+		}
+
+		for (enemy in enemies) {}
 	}
 }
