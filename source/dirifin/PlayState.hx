@@ -249,6 +249,8 @@ class PlayState extends PauseMState
 			{
 				togglePaused();
 
+				canPause = false;
+
 				directionArrows.clear();
 
 				remove(player);
