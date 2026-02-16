@@ -64,9 +64,9 @@ class PlayState extends PauseMState
 		leftWatermark.text = 'v';
 		leftWatermark.visible = true;
 
-		initCameras();
-
 		super.create();
+
+		initCameras();
 	}
 
 	public function initCameras()
@@ -85,9 +85,11 @@ class PlayState extends PauseMState
 		#end
 
 		for (camGameOBJ in camGameObjects)
-			camGameOBJ.cameras = [camGame];
+			if (camGameOBJ != null)
+				camGameOBJ.cameras = [camGame];
 		for (camHUDOBJ in camHUDObjects)
-			camHUDOBJ.cameras = [camHUD];
+			if (camHUDOBJ != null)
+				camHUDOBJ.cameras = [camHUD];
 	}
 
 	override function update(elapsed:Float)
@@ -247,7 +249,7 @@ class PlayState extends PauseMState
 			if (enemy.overlaps(player))
 			{
 				togglePaused();
-				
+
 				remove(player);
 				insert(members.length, player);
 
