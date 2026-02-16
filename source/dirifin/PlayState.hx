@@ -6,6 +6,7 @@ import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxSort;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.overrides.MState;
 import macohi.util.Direction;
@@ -202,6 +203,8 @@ class PlayState extends MState
 			FlxTween.tween(newEnemy, {alpha: 1}, 0.3, {ease: FlxEase.quadInOut});
 			enemies.add(newEnemy);
 		}
+
+		enemies.members.sort((o1, o2) -> FlxSort.byY(FlxSort.ASCENDING, o1, o2));
 
 		for (enemy in enemies.members)
 		{

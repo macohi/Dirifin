@@ -7,18 +7,23 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [Unreleased]
 
-### Changed
-
-- Enemies spawning in the same direction after spawning multiple around the same time is a rarer chance now (10% chance)
-- Bullets now fade in half the time
-- The bullet sprite is scaled up
-
 ### Added
 
 - Enemy Direction... animations? Do you wanna call it that?
 - Player Sprite
 - SOUND EFFECTS!
 - Bullet Sprite
+
+### Changed
+
+- Enemies spawning in the same direction after spawning multiple around the same time is a rarer chance now (10% chance)
+- Bullets now fade in half the time
+- The bullet sprite is scaled up
+
+### Fixed
+
+- Enemies spawned later are now behind enemies spawned earlier
+
 
 ## [1.00 Pre-Release 1] - 2/16/2026
 
