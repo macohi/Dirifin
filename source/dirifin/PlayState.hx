@@ -208,7 +208,8 @@ class PlayState extends MState
 						if (destroyEnemy)
 						{
 							score += 100;
-					FlxG.sound.play(AssetPaths.sound('explosion'));
+							FlxG.sound.play(AssetPaths.sound('explosion'));
+							
 							bullets.members.remove(bullet);
 							bullet.destroy();
 						}
