@@ -7,6 +7,8 @@ import macohi.overrides.MState;
 class PlayState extends MState
 {
 	public var player:Player;
+	public var maxBullets:Int = 4;
+	public var bullets:FlxTypedSpriteGroup<Bullet>;
 
 	public var directionArrows:FlxTypedSpriteGroup<DirectionArrow>;
 
@@ -20,6 +22,9 @@ class PlayState extends MState
 
 		directionArrows = new FlxTypedSpriteGroup<DirectionArrow>();
 		add(directionArrows);
+
+		bullets = new FlxTypedSpriteGroup<Bullet>();
+		add(bullets);
 
 		for (i in 0...4)
 		{
@@ -53,6 +58,7 @@ class PlayState extends MState
 		super.update(elapsed);
 
 		directionControls();
+		bulletUpdate();
 	}
 
 	public function directionControls()
@@ -68,5 +74,22 @@ class PlayState extends MState
 
 		for (arrow in directionArrows.members)
 			arrow.alpha = (player.direction == arrow.ID) ? 0.6 : 1.0;
+	}
+
+	public function bulletUpdate()
+	{
+		if (Controls.instance.justPressed('fire'))
+			if (bullets.members.length < maxBullets)
+				bullets.add(new Bullet().makeBullet(player));
+
+		for (bullet in bullets.members)
+		{
+			bullet.move();
+			if (bullet.outOfBounds)
+			{
+				bullets.members.remove(bullet);
+				bullet.destroy();
+			}
+		}
 	}
 }
