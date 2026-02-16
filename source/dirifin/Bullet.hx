@@ -1,6 +1,7 @@
 package dirifin;
 
 import flixel.util.FlxColor;
+import macohi.funkin.koya.backend.AssetPaths;
 
 class Bullet extends DirectionSprite
 {
@@ -10,7 +11,7 @@ class Bullet extends DirectionSprite
 	{
 		super(speedDamp, x, y);
 
-		makeGraphic(16, 8, FlxColor.YELLOW);
+		loadGraphic(AssetPaths.image('bullet'));
 		boundsPadding = this.width * 4;
 	}
 
