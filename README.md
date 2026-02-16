@@ -15,7 +15,6 @@ Maochi - Programming, Pixel Art
 ### Requirements
 
 - [Haxe 4.3.7+](https://haxe.org/download/)
-- [Haxeflixel 6.1.2+](https://haxeflixel.com/documentation/install-haxeflixel/)
 
 ### Step-by-step (kinda) to compiling
 
