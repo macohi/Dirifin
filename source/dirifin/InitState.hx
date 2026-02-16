@@ -13,6 +13,7 @@ class InitState extends MState
 		CrashHandler.initalize('', 'Dirifin_', '', 'Dirifin');
 
 		Controls.init();
+		DirifinSave.instance = new DirifinSave();
 
 		AssetPaths.soundExt = 'wav';
 

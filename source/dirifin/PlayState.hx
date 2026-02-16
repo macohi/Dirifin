@@ -101,9 +101,13 @@ class PlayState extends MState
 
 		enemyUpdate();
 
+		if (score > DirifinSave.instance.highscore.get())
+			DirifinSave.instance.highscore.set(score);
+
 		leftWatermark.text = '';
 		leftWatermark.text += 'Version: ' + Version.VERSION;
 		leftWatermark.text += '\nScore: $score';
+		leftWatermark.text += '\nHigh Score: ${DirifinSave.instance.highscore.get()}';
 	}
 
 	public var inputQueue:Array<String> = [];

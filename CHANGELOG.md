@@ -9,6 +9,8 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
+- HIGH SCORE!
+- SAVE FILE
 - Enemy Direction... animations? Do you wanna call it that?
 - Player Sprite
 - SOUND EFFECTS!
