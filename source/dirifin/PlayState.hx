@@ -74,7 +74,6 @@ class PlayState extends MState
 			if (Controls.instance.justPressed(control))
 			{
 				inputQueue.push(control);
-				trace('inputQueue+: $inputQueue');
 			}
 	}
 
@@ -100,7 +99,6 @@ class PlayState extends MState
 			}
 
 			inputQueue.remove(input);
-			trace('inputQueue-: $inputQueue');
 		}
 	}
 
