@@ -9,6 +9,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
+- little anim kinda transition thingy with enemies when they spawn and now they do like a bouncy kinda thing when they spawn
 - HIGH SCORE!
 - SAVE FILE
 - Enemy Direction... animations? Do you wanna call it that?

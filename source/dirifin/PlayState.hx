@@ -204,7 +204,7 @@ class PlayState extends MState
 			newEnemy.screenCenter();
 			newEnemy.changeDirection(newEnemyDir, player);
 			newEnemy.alpha = 0;
-			FlxTween.tween(newEnemy, {alpha: 1}, 0.3, {ease: FlxEase.quadInOut});
+			FlxTween.tween(newEnemy, {x: newEnemy.x, y: newEnemy.y, alpha: 1}, 0.3, {ease: FlxEase.quadInOut});
 			enemies.add(newEnemy);
 		}
 
