@@ -127,7 +127,7 @@ class PlayState extends MState
 	{
 		if (FlxG.random.bool(FlxG.random.float(0, 3)))
 		{
-			if (enemies.length >= maxEnemies)
+			if (enemies.members.length >= maxEnemies)
 				return;
 
 			var newEnemy:Enemy = new Enemy();
@@ -136,14 +136,14 @@ class PlayState extends MState
 			enemies.add(newEnemy);
 		}
 
-		for (enemy in enemies)
+		for (enemy in enemies.members)
 		{
 			enemy.move();
 			var destroyEnemy = enemy.outOfBounds;
 
 			if (!destroyEnemy)
 			{
-				for (bullet in bullets)
+				for (bullet in bullets.members)
 				{
 					if (!destroyEnemy)
 					{
