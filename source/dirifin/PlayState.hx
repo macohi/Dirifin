@@ -54,21 +54,26 @@ class PlayState extends MState
 
 		directionUpdate();
 
-		#if ZOOM_OUT
-		camGame.zoom = .25;
-		#else
-		camGame.zoom = .5;
-		#end
-
 		leftWatermark.text = Application.current.meta.get('version');
 		leftWatermark.visible = true;
-		
+
+		initCameras();
+	}
+
+	public function initCameras()
+	{
 		camHUD = new FlxCamera();
 		camGame = new FlxCamera();
 		FlxG.cameras.add(camGame);
 		FlxG.cameras.add(camHUD);
 		camHUD.bgColor.alpha = 0;
 		// camGame.bgColor.alpha = 0;
+
+		#if ZOOM_OUT
+		camGame.zoom = .25;
+		#else
+		camGame.zoom = .5;
+		#end
 
 		for (camGameOBJ in camGameObjects)
 			camGameOBJ.cameras = [camGame];
