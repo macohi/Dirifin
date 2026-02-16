@@ -40,10 +40,10 @@ class PlayState extends PauseMState
 	public var camHUDObjects(get, never):Array<FlxBasic>;
 
 	function get_camHUDObjects():Array<FlxBasic>
-		return [leftWatermark, rightWatermark,pauseBG];
+		return [leftWatermark, rightWatermark, pauseBG];
 
 	override function create()
-	{		
+	{
 		player = new Player();
 		player.screenCenter();
 		add(player);
@@ -62,10 +62,16 @@ class PlayState extends PauseMState
 		directionUpdate();
 
 		super.create();
-		
+
+		remove(rightWatermark);
+		add(rightWatermark);
+
+		rightWatermark.text = 'PAUSED';
+		rightWatermark.size = 32;
+
 		leftWatermark.text = 'v';
 		leftWatermark.visible = true;
-		
+
 		initCameras();
 	}
 
@@ -249,6 +255,7 @@ class PlayState extends PauseMState
 			{
 				togglePaused();
 
+				rightWatermark.visible = false;
 				canPause = false;
 
 				directionArrows.clear();
@@ -274,5 +281,12 @@ class PlayState extends PauseMState
 	override function getPauseBoolean():Bool
 	{
 		return Controls.instance.justPressed('accept');
+	}
+
+	override function togglePaused()
+	{
+		super.togglePaused();
+
+		rightWatermark.visible = paused;
 	}
 }
