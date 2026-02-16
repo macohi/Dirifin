@@ -1,6 +1,5 @@
 package dirifin;
 
-import flixel.util.FlxColor;
 import macohi.funkin.koya.backend.AssetPaths;
 
 class Bullet extends DirectionSprite
