@@ -2,6 +2,7 @@ package dirifin.ui;
 
 import dirifin.input.Controls;
 import dirifin.play.PlayState;
+import flixel.FlxG;
 import flixel.util.FlxColor;
 import macohi.overrides.MState;
 import macohi.overrides.MText;
@@ -16,10 +17,11 @@ class GameoverState extends MState
 	{
 		super.create();
 
-		gameoverText = new MText().makeText('YOU DIED!\n\n'
-			+ 'You can press ${Controls.instance.keybinds.get('accept').stringArrayToKeysArray().youCanPressString()} to go back to gameplay'
-			+ '\n\nYou can press ${Controls.instance.keybinds.get('back').stringArrayToKeysArray().youCanPressString()} to go to the main menu',
-			24);
+		gameoverText = new MText(0, 0,
+			FlxG.width).makeText('YOU DIED!\n\n'
+				+ 'You can press ${Controls.instance.keybinds.get('accept').stringArrayToKeysArray().youCanPressString()} to go back to gameplay'
+				+ '\n\nYou can press ${Controls.instance.keybinds.get('back').stringArrayToKeysArray().youCanPressString()} to go to the main menu',
+				24);
 
 		add(gameoverText);
 		gameoverText.screenCenter();
