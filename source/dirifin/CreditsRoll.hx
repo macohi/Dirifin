@@ -34,14 +34,18 @@ class CreditsRoll extends MState
 			lineText.y = FlxG.height * 1.5;
 			lineText.y += i * 48;
 
-			var time = ((credits.length * (lineText.size)) / 2) + i / 3;
+			var time = (i + 4) + credits.length / 5;
 			trace('$line : $time');
-			FlxTween.tween(lineText, {y: -lineText.y}, time, {
-				ease: FlxEase.quadInOut,
+			FlxTween.tween(lineText, {y: (-lineText.y + (i * 32))}, time, {
+				ease: FlxEase.circIn,
 				onComplete: function(t)
 				{
 					lines.members.remove(lineText);
 					lineText.destroy();
+
+					trace(lines.members.length);
+					if (lines.members.length == 0)
+						switchState(() -> new MainMenuState());
 				}
 			});
 
