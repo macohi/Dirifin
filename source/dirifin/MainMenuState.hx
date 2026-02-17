@@ -26,7 +26,6 @@ class MainMenuState extends MenuState
 
 		leftWatermark.fieldWidth = FlxG.width - Math.abs(leftWatermark.x);
 		leftWatermark.setBorderStyle(OUTLINE, FlxColor.BLACK, 3);
-		leftWatermark.visible = false;
 
 		leftWatermark.text = 'Version: ' + Version.VERSION;
 		
