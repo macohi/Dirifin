@@ -1,4 +1,4 @@
-package dirifin;
+package dirifin.save;
 
 import macohi.save.Save;
 import macohi.save.SaveField;
