@@ -7,8 +7,12 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [Unreleased]
 
+## [1.00] - 2/16/2026
+
 ### Added
 
+- BACKGROUND TRACK : "dungeon drif"
+	- BG tracks play every once and awhile
 - The ability to pause
 - Little animation before true death
 - little anim kinda transition thingy with enemies when they spawn and now they do like a bouncy kinda thing when they spawn
