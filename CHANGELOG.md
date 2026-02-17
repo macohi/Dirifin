@@ -13,6 +13,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Changed
 
+- Moved Version Text to Main menu
 - Direction arrow sprite has been updated
 
 ### Fixed

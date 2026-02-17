@@ -116,7 +116,6 @@ class PlayState extends PauseMState
 			DirifinSave.instance.highscore.set(score);
 
 		leftWatermark.text = '';
-		leftWatermark.text += 'Version: ' + Version.VERSION;
 		leftWatermark.text += '\nScore: $score';
 		leftWatermark.text += '\nHigh Score: ${DirifinSave.instance.highscore.get()}';
 	}
