@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 This project adheres to [a custom version format](https://github.com/macohi/Dirifin/blob/main/docs/VERSION_FORMAT.md)
 
-## [Unreleased]
+## [1.21] - 2/17/2026
 
 ### Fixed
 
@@ -13,6 +13,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
+- Added Application Icon
 - Added BG to Level 1
 
 ### Changed

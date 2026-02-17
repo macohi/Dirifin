@@ -40,6 +40,8 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
+	<icon path="art/icon.png" />
+
 	<haxeflag name="--dce full" unless="debug" />
 
 	<define name="CRASH_HANDLER" if="desktop" />
