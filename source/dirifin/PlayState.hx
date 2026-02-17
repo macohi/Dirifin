@@ -114,8 +114,10 @@ class PlayState extends PauseMState
 		{
 			if (Controls.instance.justPressed('back'))
 			{
-				FlxG.sound.play(MegaVars.SOUND_MENU_BACK);
-				switchState(() -> new MainMenuState());
+				FlxG.sound.play(MegaVars.SOUND_MENU_BACK, 1.0, false, null, true, function()
+				{
+					switchState(() -> new MainMenuState());
+				});
 			}
 		}
 
