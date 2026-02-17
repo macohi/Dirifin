@@ -26,7 +26,7 @@ class InitState extends MState
 
 		AssetPaths.soundExt = 'wav';
 
-		switchState(() -> new PlayState());
+		switchState(() -> new MainMenuState());
 	}
 
 	override public function update(elapsed:Float)
