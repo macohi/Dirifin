@@ -4,7 +4,8 @@ This is the github repo for "Dirifin", a game made out of boredom.
 
 ## Links
 
-N / A
+- [Itch.io](https://macohi.itch.io/dirifin)
+- [Newgrounds](https://www.newgrounds.com/portal/view/1019745)
 
 ## Credits
 
