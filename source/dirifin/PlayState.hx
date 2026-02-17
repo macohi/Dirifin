@@ -109,6 +109,11 @@ class PlayState extends PauseMState
 
 			enemyUpdate();
 		}
+		else
+		{
+			if (Controls.instance.justPressed('back'))
+				switchState(() -> new MainMenuState());
+		}
 
 		FlxG.watch.addQuick('inputQueue', inputQueue);
 
