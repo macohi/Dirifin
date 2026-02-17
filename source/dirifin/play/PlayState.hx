@@ -22,6 +22,8 @@ using macohi.util.TimeUtil;
 
 class PlayState extends PauseMState
 {
+	public var levelBG:LevelBG;
+
 	public var player:Player;
 
 	public var maxBullets:Int = 4;
@@ -40,7 +42,7 @@ class PlayState extends PauseMState
 	public var camGameObjects(get, never):Array<FlxBasic>;
 
 	function get_camGameObjects():Array<FlxBasic>
-		return [player, bullets, directionArrows, enemies,];
+		return [levelBG, player, bullets, directionArrows, enemies,];
 
 	public var camHUDObjects(get, never):Array<FlxBasic>;
 
@@ -49,6 +51,11 @@ class PlayState extends PauseMState
 
 	override function create()
 	{
+		levelBG = new LevelBG('level1');
+		levelBG.screenCenter();
+		levelBG.scale.set(4, 4);
+		add(levelBG);
+
 		player = new Player();
 		player.screenCenter();
 		add(player);
