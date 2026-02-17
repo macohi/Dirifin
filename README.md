@@ -13,16 +13,4 @@ N / A
 
 ## Source Code
 
-### Requirements
-
-- [Haxe 4.3.7+](https://haxe.org/download/)
-
-### Step-by-step (kinda) to compiling
-
-If there are any issues with this or you run into a problem do let me know
-
-1. Clone this Repository
-2. Open the repository in your code editor
-3. Run `git submodule update --init --recursive`
-4. Run `.\source/macohi/install.bat` / Run the install batch file in "macohi" : This gives you the libraries without hmm or hxpkg n shit...
-5. Run `lime test html5`, `lime test windows`, whatever.
+If you wish to compile the game from source, please follow the instructions in the [compiling documentation](docs/COMPILING.md).
