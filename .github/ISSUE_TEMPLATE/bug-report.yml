@@ -1,8 +1,8 @@
 name: "bug-report"
-description: "Report a bug with the product"
+description: "Report a bug with the product
 title: "[BUG] "
 labels: "bug"
-  assignees: "macohi"
+  assignees: "macohi""
 body:
 - type: dropdown
   id: plaform
