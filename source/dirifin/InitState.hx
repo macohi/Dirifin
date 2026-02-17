@@ -23,7 +23,6 @@ class InitState extends MState
 
 		FlxG.plugins.addPlugin(new MusicManager());
 		MusicManager.tracks = ['dungeon drif'];
-		MusicManager.MUSIC_FREQUENCY = 48;
 
 		AssetPaths.soundExt = 'wav';
 
