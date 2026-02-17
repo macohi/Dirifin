@@ -241,6 +241,8 @@ class PlayState extends PauseMState
 			if (newEnemyDir == previousEnemyDir && !FlxG.random.bool(10))
 				return;
 
+			previousEnemyDir = newEnemyDir;
+
 			FlxG.sound.play(AssetPaths.sound('monster'));
 			var newEnemy:Enemy = new Enemy();
 			newEnemy.screenCenter();

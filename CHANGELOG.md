@@ -7,6 +7,10 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed Enemies spawning in the same direction not being a 10% chance
+
 ### Added
 
 - Added BG to Level 1
