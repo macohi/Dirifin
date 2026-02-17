@@ -1,5 +1,6 @@
 package dirifin;
 
+import flixel.FlxG;
 import macohi.funkin.koya.frontend.ui.menustate.MenuState;
 
 class MainMenuState extends MenuState
@@ -22,5 +23,12 @@ class MainMenuState extends MenuState
 			select(-1);
 		if (Controls.instance.justPressed('down'))
 			select(1);
+	}
+
+	override function accept(item:String) {
+		super.accept(item);
+
+		if (item.toLowerCase() == 'play')
+			FlxG.switchState(() -> new PlayState());
 	}
 }
