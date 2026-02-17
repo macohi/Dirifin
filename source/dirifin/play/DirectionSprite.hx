@@ -1,4 +1,4 @@
-package dirifin;
+package dirifin.play;
 
 import flixel.FlxG;
 import macohi.overrides.MSprite;

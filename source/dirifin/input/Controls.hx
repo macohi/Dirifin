@@ -1,4 +1,4 @@
-package dirifin;
+package dirifin.input;
 
 import flixel.input.keyboard.FlxKey;
 import macohi.util.ControlClass;

@@ -1,5 +1,7 @@
-package dirifin;
+package dirifin.ui;
 
+import dirifin.input.Controls;
+import dirifin.play.PlayState;
 import flixel.util.FlxColor;
 import macohi.overrides.MState;
 import macohi.overrides.MText;

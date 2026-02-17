@@ -1,5 +1,7 @@
-package dirifin;
+package dirifin.ui;
 
+import dirifin.input.Controls;
+import dirifin.play.PlayState;
 import flixel.FlxG;
 import flixel.system.FlxAssets;
 import flixel.util.FlxColor;
@@ -70,9 +72,12 @@ class MainMenuState extends MenuState
 	{
 		super.accept(item);
 
-		if (item.toLowerCase() == 'play')
-			FlxG.switchState(() -> new PlayState());
-		if (item.toLowerCase() == 'credits')
-			FlxG.switchState(() -> new CreditsRoll());
+		switch (item.toLowerCase())
+		{
+			case 'play':
+				FlxG.switchState(() -> new PlayState());
+			case 'credits':
+				FlxG.switchState(() -> new CreditsRoll());
+		}
 	}
 }
