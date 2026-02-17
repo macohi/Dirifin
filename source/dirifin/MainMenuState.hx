@@ -26,7 +26,7 @@ class MainMenuState extends MenuState
 	{
 		super.create();
 
-		var leftWatermark:MText = new MText(10, 10, FlxG.width, 'left watermark', 8);
+		var leftWatermark:MText = new MText(10, 10, FlxG.width, 'left watermark', 16);
 		leftWatermark.alignment = LEFT;
 
 		leftWatermark.fieldWidth = FlxG.width - Math.abs(leftWatermark.x);
