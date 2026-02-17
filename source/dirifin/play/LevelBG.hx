@@ -10,5 +10,7 @@ class LevelBG extends MSprite
 		super(x, y);
 
 		loadGraphic(AssetPaths.image('levelsBGs/$levelID'));
+
+		applyPixelScale();
 	}
 }

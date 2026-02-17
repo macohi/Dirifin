@@ -62,7 +62,6 @@ class PlayState extends PauseMState
 	{
 		levelBG = new LevelBG(levelID);
 		levelBG.screenCenter();
-		levelBG.scale.set(4, 4);
 		add(levelBG);
 
 		player = new Player();
