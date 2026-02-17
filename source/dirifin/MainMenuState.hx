@@ -25,6 +25,13 @@ class MainMenuState extends MenuState
 			select(1);
 	}
 
+	override function controlsOther() {
+		super.controlsOther();
+
+		if (Controls.instance.justPressed('accepted'))
+			acceptFunction();
+	}
+
 	override function accept(item:String) {
 		super.accept(item);
 
