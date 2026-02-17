@@ -7,6 +7,14 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [Unreleased]
 
+### Removed
+
+- Disabled / Removed Lost Focus Screen ([#3](https://github.com/macohi/Dirifin/pull/3))
+
+### Added
+
+- Github Contributors to credits
+
 ### Changed
 
 - Credits format has changed slightly
