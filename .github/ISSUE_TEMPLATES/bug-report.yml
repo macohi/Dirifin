@@ -1,0 +1,35 @@
+name: "bug-report"
+description: "Report a bug with the product
+title: "[BUG] "
+labels: "bug"
+  assignees: "macohi"
+body:
+- type: dropdown
+  id: plaform
+  attributes:
+    label: "Platform"
+    description: "What platform are you playing the game on?"
+    multiple: false
+    options: 
+      - Newgrounds (Web/HTML5)
+      - Itch.io (Web/HTML5)
+      - Windows
+  validations:
+    required: true
+- type: input
+  id: browser
+  attributes:
+    label: "Browser (Web Only)"
+    description: "For users on web, what browser are you on?"
+    placeholder: "The sponsor of todays video Opera GX"
+  validations:
+    required: false
+- type: textarea
+  id: description
+  attributes:
+    label: "Description"
+    description: "Describe the bug"
+    value: |
+      N / A
+  validations:
+    required: true
