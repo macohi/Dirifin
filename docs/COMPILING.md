@@ -9,7 +9,7 @@ This guide will cover all the steps needed to download and compile the source co
 
 ## Instructions
 
-1. Run `cd where\you\want\the\source to change` your directory to where you wish to download the source.
+1. Run `cd where\you\want\the\source` to change your directory to where you wish to download the source.
 2. Run `git clone https://github.com/macohi/Dirifin.git` to clone the repository.
 3. Run `cd Dirifin` to enter the source code directory.
 4. Run `git submodule update --init --recursive`.
