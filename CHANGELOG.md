@@ -13,6 +13,8 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Changed
 
+- Direction arrow sprite has been updated
+
 ### Fixed
 
 - Fixed Off Centered Arrows ([#1](https://github.com/macohi/Dirifin/issues/1))
