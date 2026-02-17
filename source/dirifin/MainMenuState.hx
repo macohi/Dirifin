@@ -13,4 +13,14 @@ class MainMenuState extends MenuState
 		this.itemList = ['Play', 'Credits', 'Option'];
 		this.itemIncOffset = 80;
 	}
+
+	override function controlsMoveVertical()
+	{
+		super.controlsMoveVertical();
+
+		if (Controls.instance.justPressed('up'))
+			select(-1);
+		if (Controls.instance.justPressed('down'))
+			select(1);
+	}
 }
