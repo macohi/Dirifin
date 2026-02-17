@@ -10,6 +10,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxSort;
 import macohi.backend.PauseMState;
+import macohi.funkin.MegaVars;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.util.Direction;
 
@@ -112,7 +113,10 @@ class PlayState extends PauseMState
 		else
 		{
 			if (Controls.instance.justPressed('back'))
+			{
+				FlxG.sound.play(MegaVars.SOUND_MENU_BACK);
 				switchState(() -> new MainMenuState());
+			}
 		}
 
 		FlxG.watch.addQuick('inputQueue', inputQueue);
