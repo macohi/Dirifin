@@ -1,6 +1,7 @@
 package dirifin;
 
 import flixel.FlxG;
+import flixel.system.FlxAssets;
 import flixel.util.FlxColor;
 import macohi.funkin.koya.frontend.ui.menustate.MenuState;
 import macohi.overrides.MText;
@@ -30,6 +31,16 @@ class MainMenuState extends MenuState
 		leftWatermark.text = 'Version: ' + Version.VERSION;
 		
 		add(leftWatermark);
+
+		select();
+	}
+
+	override function reloadMenuItems() {
+		super.reloadMenuItems();
+
+		if (!atlasText && text)
+			for (text in itemsFlxTextGroup.members)
+				text.font = FlxAssets.FONT_DEFAULT;
 	}
 
 	override function controlsMoveVertical()
