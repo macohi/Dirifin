@@ -1,5 +1,9 @@
-package dirifin;
+package dirifin.play;
 
+import dirifin.input.Controls;
+import dirifin.save.DirifinSave;
+import dirifin.ui.GameoverState;
+import dirifin.ui.MainMenuState;
 import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;

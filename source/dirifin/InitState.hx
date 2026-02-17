@@ -1,5 +1,8 @@
 package dirifin;
 
+import dirifin.input.Controls;
+import dirifin.save.DirifinSave;
+import dirifin.ui.MainMenuState;
 import flixel.FlxG;
 import macohi.debugging.CrashHandler;
 import macohi.funkin.MegaVars;

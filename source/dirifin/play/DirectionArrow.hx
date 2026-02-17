@@ -1,4 +1,4 @@
-package dirifin;
+package dirifin.play;
 
 import macohi.funkin.koya.backend.AssetPaths;
 

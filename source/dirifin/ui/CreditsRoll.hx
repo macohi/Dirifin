@@ -1,4 +1,4 @@
-package dirifin;
+package dirifin.ui;
 
 import flixel.FlxG;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -22,8 +22,7 @@ class CreditsRoll extends MState
 		lines = new FlxTypedGroup<MText>();
 		add(lines);
 
-		var i = 0;
-		for (line in credits)
+		for (i => line in credits)
 		{
 			var lineText = new MText().makeText(line, 16);
 			lines.add(lineText);
@@ -48,8 +47,6 @@ class CreditsRoll extends MState
 						switchState(() -> new MainMenuState());
 				}
 			});
-
-			i++;
 		}
 	}
 }
