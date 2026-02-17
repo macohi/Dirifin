@@ -24,6 +24,8 @@ class PlayState extends PauseMState
 {
 	public var levelBG:LevelBG;
 
+	public var levelID:String = 'level1';
+
 	public var player:Player;
 
 	public var maxBullets:Int = 4;
@@ -51,7 +53,7 @@ class PlayState extends PauseMState
 
 	override function create()
 	{
-		levelBG = new LevelBG('level1');
+		levelBG = new LevelBG(levelID);
 		levelBG.screenCenter();
 		levelBG.scale.set(4, 4);
 		add(levelBG);
