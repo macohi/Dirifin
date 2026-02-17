@@ -7,6 +7,14 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [Unreleased]
 
+### Added
+
+- Added BG to Level 1
+
+### Changed
+
+- Changed "Play" to "Level 1" in the Main Menu
+
 ## [1.11] - 2/17/2026
 
 ### Removed
