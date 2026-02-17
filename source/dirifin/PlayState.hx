@@ -192,6 +192,8 @@ class PlayState extends PauseMState
 			var da = new DirectionArrow();
 			da.screenCenter();
 			da.changeDirection(i, player);
+			if (da.direction == UP || da.direction == DOWN)
+				da.screenCenter(X);
 			directionArrows.add(da);
 		}
 	}
