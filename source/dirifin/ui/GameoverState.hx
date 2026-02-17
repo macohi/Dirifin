@@ -17,7 +17,9 @@ class GameoverState extends MState
 		super.create();
 
 		gameoverText = new MText().makeText('YOU DIED!\n\n'
-			+ 'You can press ${Controls.instance.keybinds.get('accept').stringArrayToKeysArray().youCanPressString()} to go back', 24);
+			+ 'You can press ${Controls.instance.keybinds.get('accept').stringArrayToKeysArray().youCanPressString()} to go back to gameplay'
+			+ '\n\nYou can press ${Controls.instance.keybinds.get('back').stringArrayToKeysArray().youCanPressString()} to go to the main menu',
+			24);
 
 		add(gameoverText);
 		gameoverText.screenCenter();
@@ -30,5 +32,7 @@ class GameoverState extends MState
 
 		if (Controls.instance.justReleased('accept'))
 			switchState(() -> new PlayState());
+		if (Controls.instance.justReleased('back'))
+			switchState(() -> new MainMenuState());
 	}
 }

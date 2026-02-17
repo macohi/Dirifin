@@ -13,6 +13,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
+- You can press the back keys to leave to the main menu in the game over
 - Github Contributors to credits
 
 ### Changed
