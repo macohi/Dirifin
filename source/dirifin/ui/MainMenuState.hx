@@ -17,7 +17,7 @@ class MainMenuState extends MenuState
 		this.text = true;
 		this.atlasText = false;
 		this.itemList = [
-			'Play',
+			'Level 1',
 			'Credits',
 			// 'Options'
 		];
@@ -74,8 +74,8 @@ class MainMenuState extends MenuState
 
 		switch (item.toLowerCase())
 		{
-			case 'play':
-				FlxG.switchState(() -> new PlayState());
+			case 'level 1':
+				FlxG.switchState(() -> new PlayState('level1'));
 			case 'credits':
 				FlxG.switchState(() -> new CreditsRoll());
 		}
