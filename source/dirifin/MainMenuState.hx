@@ -14,7 +14,11 @@ class MainMenuState extends MenuState
 
 		this.text = true;
 		this.atlasText = false;
-		this.itemList = ['Play', 'Credits', 'Options'];
+		this.itemList = [
+			'Play',
+			'Credits',
+			// 'Options'
+		];
 		this.itemIncOffset = 80;
 	}
 
@@ -29,13 +33,14 @@ class MainMenuState extends MenuState
 		leftWatermark.setBorderStyle(OUTLINE, FlxColor.BLACK, 3);
 
 		leftWatermark.text = 'Version: ' + Version.VERSION;
-		
+
 		add(leftWatermark);
 
 		select();
 	}
 
-	override function reloadMenuItems() {
+	override function reloadMenuItems()
+	{
 		super.reloadMenuItems();
 
 		if (!atlasText && text)
@@ -67,5 +72,7 @@ class MainMenuState extends MenuState
 
 		if (item.toLowerCase() == 'play')
 			FlxG.switchState(() -> new PlayState());
+		if (item.toLowerCase() == 'credits')
+			FlxG.switchState(() -> new CreditsRoll());
 	}
 }

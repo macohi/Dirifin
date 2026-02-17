@@ -9,6 +9,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
+- **CREDITS... MENU?**
 - **MAIN MENU**
 - You can leave to the main menu from gameplay in the pause menu via the back key
 - "back" control
