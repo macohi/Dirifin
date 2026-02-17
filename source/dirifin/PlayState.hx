@@ -219,7 +219,15 @@ class PlayState extends PauseMState
 			enemies.add(newEnemy);
 		}
 
-		enemies.members.sort((o1, o2) -> FlxSort.byY(FlxSort.DESCENDING, o1, o2));
+		enemies.members.sort(function(o1, o2)
+		{
+			var sortVal = FlxSort.DESCENDING;
+
+			if (o1.direction == UP || o2.direction == UP)
+				sortVal = FlxSort.ASCENDING;
+
+			return FlxSort.byY(sortVal, o1, o2);
+		});
 
 		for (enemy in enemies.members)
 		{
