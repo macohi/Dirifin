@@ -1,2 +1,6 @@
-Maochi - Programming, Pixel Art
-Requazar - Composer
+Main Team
+- Maochi - Programming, Pixel Art
+- Requazar - Composer
+
+Github Contributors
+- VirtuGuy - Code cleanup and removal of focus loss screen
