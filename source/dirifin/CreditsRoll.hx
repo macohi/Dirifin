@@ -32,9 +32,9 @@ class CreditsRoll extends MState
 			lineText.x = 10;
 
 			lineText.y = FlxG.height * 1.5;
-			lineText.y -= i * 48;
+			lineText.y += i * 48;
 
-			var time = credits.length * (lineText.size * (i + 1));
+			var time = ((credits.length * (lineText.size)) / 2) + i / 3;
 			trace('$line : $time');
 			FlxTween.tween(lineText, {y: -lineText.y}, time, {
 				ease: FlxEase.quadInOut,
