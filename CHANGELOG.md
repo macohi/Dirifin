@@ -7,6 +7,8 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [Unreleased]
 
+## [1.11] - 2/17/2026
+
 ### Removed
 
 - Disabled / Removed Lost Focus Screen ([#3](https://github.com/macohi/Dirifin/pull/3))
