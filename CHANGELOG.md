@@ -17,7 +17,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Fixed
 
-- Fixed Off Centered Arrows ([#1](https://github.com/macohi/Dirifin/issues/1))
+- Fixed Off-Centered Arrows ([#1](https://github.com/macohi/Dirifin/issues/1))
 
 ## [1.00] - 2/16/2026
 
