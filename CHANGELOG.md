@@ -7,6 +7,8 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [Unreleased]
 
+## [1.10] - 2/16/2026
+
 ### Added
 
 - **CREDITS... MENU?**
