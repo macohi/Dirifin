@@ -10,7 +10,7 @@ class MainMenuState extends MenuState
 
 		this.text = true;
 		this.atlasText = false;
-		this.itemList = ['Play', 'Credits', 'Option'];
+		this.itemList = ['Play', 'Credits', 'Options'];
 		this.itemIncOffset = 80;
 	}
 
