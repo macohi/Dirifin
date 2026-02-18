@@ -16,7 +16,7 @@ import macohi.util.MusicManager;
 
 class InitState extends MState
 {
-	public static var musicTextList:AssetTextList = new AssetTextList(AssetPaths.txt('data/songs'));
+	public static var musicTextList:AssetTextList;
 
 	override public function create()
 	{
@@ -31,6 +31,8 @@ class InitState extends MState
 		Cursor.cursorVisible = false;
 
 		FlxG.plugins.addPlugin(new MusicManager());
+		
+		musicTextList = new AssetTextList(AssetPaths.txt('data/songs'));
 		MusicManager.tracks = musicTextList.textList;
 
 		AssetPaths.soundExt = 'wav';

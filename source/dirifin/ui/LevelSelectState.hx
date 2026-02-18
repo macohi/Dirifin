@@ -10,7 +10,7 @@ import macohi.funkin.koya.frontend.ui.menustate.MenuState;
 
 class LevelSelectState extends MenuState
 {
-	public static var levelsTextList:AssetTextList = new AssetTextList(AssetPaths.txt('data/levels'));
+	public var levelsTextList:AssetTextList = new AssetTextList(AssetPaths.txt('data/levels'));
 
 	override public function new()
 	{
