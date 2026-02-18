@@ -93,7 +93,7 @@ class MainMenuState extends MenuState
 			case 'credits':
 				FlxG.switchState(() -> new CreditsRoll());
 			case 'mods':
-				if (!(ModCore.instance.allMods.length > 0))
+				if (ModCore.instance.allMods.length > 0)
 					FlxG.switchState(() -> new ModsMenuState());
 		}
 	}
