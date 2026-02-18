@@ -24,6 +24,8 @@ class CreditsRoll extends MState
 
 		for (i => line in credits)
 		{
+			if (StringUtil.isBlankStr(line)) continue;
+
 			var lineText = new MText().makeText(line, 16);
 			lines.add(lineText);
 			lineText.ID = i;
