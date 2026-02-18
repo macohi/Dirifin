@@ -5,6 +5,13 @@ import macohi.funkin.koya.backend.modding.ModCore;
 
 class DirifinModCore extends ModCore
 {
+	override public function new()
+	{
+		super();
+
+		MOD_MIN_API_VERSION = 2.0;
+	}
+
 	override function get_enabledMods():Array<String>
 	{
 		return DirifinSave.instance.enabledMods.get() ?? [];

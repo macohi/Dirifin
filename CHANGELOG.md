@@ -10,6 +10,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 ### Added
 
 - **ADDED MOD SUPPORT**
+	- `api_version` should be 2.0+ for the mod to not be labelled as outdated
 	- **WITH A MOD MENU!!!!!!!**
 	- Just asset replacement and addition stuff right now, no scripts, sry
 - **ADDED LEVEL 2!!**
