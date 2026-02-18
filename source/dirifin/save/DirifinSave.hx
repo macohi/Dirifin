@@ -27,8 +27,9 @@ class DirifinSave extends Save
 		{
 			case 1:
 				highscores.get().set('level1', highscore.get());
-				Reflect.deleteField(FlxG.save.data, highscore.field);
 		}
+
+		Reflect.deleteField(FlxG.save.data, highscore.field);
 
 		super.upgradeVersion(onComplete);
 	}
@@ -37,6 +38,7 @@ class DirifinSave extends Save
 	{
 		super.initFields();
 
+		highscore = new SaveField<Int>('highscore', 0, 'Highscore');
 		highscores = new SaveField<Map<String, Int>>('highscores', [], 'Highscores');
 	}
 }
