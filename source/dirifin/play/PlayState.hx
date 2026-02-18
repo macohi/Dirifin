@@ -1,6 +1,8 @@
 package dirifin.play;
 
 import dirifin.input.Controls;
+import dirifin.play.LevelJSON.LevelJSONClass;
+import dirifin.play.LevelJSON.LevelJSONData;
 import dirifin.ui.GameoverState;
 import dirifin.ui.MainMenuState;
 import flixel.FlxBasic;
@@ -22,8 +24,8 @@ using macohi.util.TimeUtil;
 class PlayState extends PauseMState
 {
 	public var levelBG:LevelBG;
-
 	public var levelID:String = 'level1';
+	public var levelJSON:LevelJSONData;
 
 	public var player:Player;
 
@@ -55,6 +57,7 @@ class PlayState extends PauseMState
 		super();
 
 		this.levelID = levelID ?? 'level1';
+		levelJSON = LevelJSONClass.loadLevelJSON(levelID);
 	}
 
 	override function create()
