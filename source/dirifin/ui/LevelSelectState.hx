@@ -11,7 +11,7 @@ class LevelSelectState extends MenuState
 	{
 		super('levelIcons/', Horizontal);
 
-		itemIncOffset = 80;
+		itemIncOffset = 160;
 		itemList = ['level1', 'level2',];
 	}
 
