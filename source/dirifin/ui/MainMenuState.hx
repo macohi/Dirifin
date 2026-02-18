@@ -5,6 +5,7 @@ import dirifin.ui.ModMenuState.ModsMenuState;
 import flixel.FlxG;
 import flixel.system.FlxAssets;
 import flixel.util.FlxColor;
+import macohi.funkin.koya.backend.modding.ModCore;
 import macohi.funkin.koya.frontend.ui.menustate.MenuState;
 import macohi.overrides.MText;
 
@@ -69,6 +70,18 @@ class MainMenuState extends MenuState
 			acceptFunction();
 	}
 
+	override function select(change:Int = 0)
+	{
+		super.select(change);
+
+		if (text && !atlasText)
+			for (menuItem in itemsFlxTextGroup)
+			{
+				if (!(ModCore.instance.allMods.length > 0) && menuItem.text.toLowerCase() == 'mods')
+					menuItem.alpha -= 0.4;
+			}
+	}
+
 	override function accept(item:String)
 	{
 		super.accept(item);
@@ -80,7 +93,8 @@ class MainMenuState extends MenuState
 			case 'credits':
 				FlxG.switchState(() -> new CreditsRoll());
 			case 'mods':
-				FlxG.switchState(() -> new ModsMenuState());
+				if (!(ModCore.instance.allMods.length > 0))
+					FlxG.switchState(() -> new ModsMenuState());
 		}
 	}
 }
