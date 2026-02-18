@@ -6,13 +6,14 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import macohi.funkin.koya.backend.AssetPaths;
+import macohi.funkin.koya.backend.AssetTextList;
 import macohi.overrides.MState;
 import macohi.overrides.MText;
 import macohi.util.StringUtil;
 
 class CreditsRoll extends MState
 {
-	public var credits:Array<String> = StringUtil.splitTextAssetByNewlines(AssetPaths.txt('data/credits'));
+	public var credits:AssetTextList = new AssetTextList(AssetPaths.txt('data/credits'));
 
 	public var lines:FlxTypedGroup<MText>;
 
@@ -23,7 +24,7 @@ class CreditsRoll extends MState
 		lines = new FlxTypedGroup<MText>();
 		add(lines);
 
-		for (i => line in credits)
+		for (i => line in credits.textList)
 		{
 			if (StringUtil.isBlankStr(line))
 				continue;
@@ -37,7 +38,7 @@ class CreditsRoll extends MState
 			lineText.y = FlxG.height * 1.5;
 			lineText.y += i * 48;
 
-			var time = (i + 4) + credits.length / 5;
+			var time = (i + 4) + credits.textList.length / 5;
 			trace('$line : $time');
 			FlxTween.tween(lineText, {y: (-lineText.y + (i * 32))}, time, {
 				ease: FlxEase.circIn,
