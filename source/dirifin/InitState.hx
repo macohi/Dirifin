@@ -5,7 +5,6 @@ import dirifin.modding.DirifinModCore;
 import dirifin.save.DirifinSave;
 import dirifin.ui.MainMenuState;
 import flixel.FlxG;
-import haxe.Timer;
 import macohi.debugging.CrashHandler;
 import macohi.debugging.CustomTrace;
 import macohi.funkin.MegaVars;
@@ -24,40 +23,37 @@ class InitState extends MState
 	{
 		super.create();
 
-		Timer.measure(function()
+		CustomTrace.ALLOW_ANSI = false;
+		haxe.Log.trace = CustomTrace.newTrace;
+
+		CrashHandler.initalize('', 'Dirifin_', '', 'Dirifin');
+
+		initalizeInstances();
+
+		addPlugins();
+
+		initalizeMacohiStuff();
+
+		FlxG.signals.postUpdate.add(function()
 		{
-			CustomTrace.ALLOW_ANSI = false;
-			haxe.Log.trace = CustomTrace.newTrace;
-
-			CrashHandler.initalize('', 'Dirifin_', '', 'Dirifin');
-
-			initalizeInstances();
-
-			addPlugins();
-
-			initalizeMacohiStuff();
-
-			FlxG.signals.postUpdate.add(function()
+			if (musicTextList != null && !compareMusicTracks())
 			{
-				if (musicTextList != null && !compareMusicTracks())
-				{
-					trace('UPDATING TRACK LIST');
-					MusicManager.tracks = musicTextList.textList;
+				trace('UPDATING TRACK LIST');
+				MusicManager.tracks = musicTextList.textList;
 
-					trace('Track list:');
-					for (track in MusicManager.tracks)
-						trace(' * $track');
-				}
+				trace('Track list:');
+				for (track in MusicManager.tracks)
+					trace(' * $track');
+			}
 
-				if (FlxG.keys.justReleased.R)
-					FlxG.openURL(CrashHandler.REPORT_PAGE);
+			if (FlxG.keys.justReleased.R)
+				FlxG.openURL(CrashHandler.REPORT_PAGE);
 
-				if (FlxG.keys.pressed.F3 && FlxG.keys.justPressed.C)
-					throw 'F3 + C';
-			});
-
-			trace('Completed initalization');
+			if (FlxG.keys.pressed.F3 && FlxG.keys.justPressed.C)
+				throw 'F3 + C';
 		});
+
+		trace('Completed initalization');
 
 		switchState(() -> new MainMenuState());
 	}
