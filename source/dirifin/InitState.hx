@@ -24,9 +24,29 @@ class InitState extends MState
 
 		CrashHandler.initalize('', 'Dirifin_', '', 'Dirifin');
 
+		initalizeInstances();
+
+		addPlugins();
+
+		initalizeMacohiStuff();
+
+		FlxG.signals.postUpdate.add(function()
+		{
+			if (FlxG.keys.justReleased.R)
+				FlxG.openURL(CrashHandler.REPORT_PAGE);
+		});
+
+		switchState(() -> new MainMenuState());
+	}
+
+	public function initalizeInstances()
+	{
 		Controls.init();
 		DirifinSave.instance = new DirifinSave();
+	}
 
+	public function addPlugins()
+	{
 		FlxG.plugins.addPlugin(new Cursor());
 		Cursor.cursorVisible = false;
 
@@ -34,7 +54,10 @@ class InitState extends MState
 
 		musicTextList = new AssetTextList(AssetPaths.txt('data/songs'));
 		MusicManager.tracks = musicTextList.textList;
+	}
 
+	public function initalizeMacohiStuff()
+	{
 		AssetPaths.soundExt = 'wav';
 
 		MegaVars.KOYA_MENUBG_DESAT = function(lib) return null;
@@ -48,18 +71,5 @@ class InitState extends MState
 
 		ModCore.instance = new DirifinModCore();
 		ModCore.instance.init();
-
-		FlxG.signals.postUpdate.add(function()
-		{
-			if (FlxG.keys.justReleased.R)
-				FlxG.openURL(CrashHandler.REPORT_PAGE);
-		});
-
-		switchState(() -> new MainMenuState());
-	}
-
-	override public function update(elapsed:Float)
-	{
-		super.update(elapsed);
 	}
 }
