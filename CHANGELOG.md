@@ -9,6 +9,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
+- ADDED LEVEL SELECT!
 - You can leave the credits menu now via the back key (ESCAPE)
 - Added level to the score text
 - Added Panning and Pitching depending on what direction an enemy spawns in
