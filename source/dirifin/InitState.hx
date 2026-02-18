@@ -7,6 +7,7 @@ import dirifin.ui.MainMenuState;
 import flixel.FlxG;
 import haxe.Timer;
 import macohi.debugging.CrashHandler;
+import macohi.debugging.CustomTrace;
 import macohi.funkin.MegaVars;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.koya.backend.AssetTextList;
@@ -25,6 +26,9 @@ class InitState extends MState
 
 		Timer.measure(function()
 		{
+			CustomTrace.ALLOW_ANSI = false;
+			haxe.Log.trace = CustomTrace.newTrace;
+			
 			CrashHandler.initalize('', 'Dirifin_', '', 'Dirifin');
 
 			initalizeInstances();
