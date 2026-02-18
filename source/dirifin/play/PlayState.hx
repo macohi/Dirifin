@@ -250,6 +250,7 @@ class PlayState extends PauseMState
 			FlxTween.tween(newEnemy, {x: newEnemy.x, y: newEnemy.y, alpha: 1}, 0.3, {ease: FlxEase.quadInOut});
 			enemies.add(newEnemy);
 
+			#if iwasnotdumb
 			var monsterSpawnLeft = new FlxSound().loadStream(AssetPaths.sound('fake-stereo/monster-left'));
 			var monsterSpawnRight = new FlxSound().loadStream(AssetPaths.sound('fake-stereo/monster-right'));
 
@@ -268,6 +269,26 @@ class PlayState extends PauseMState
 			}
 			monsterSpawnLeft.play();
 			monsterSpawnRight.play();
+			#else
+			var monsterSpawn = new FlxSound().loadEmbedded(AssetPaths.sound('monster'));
+
+			switch (newEnemy.direction)
+			{
+				case LEFT:
+					monsterSpawn.pan = -10;
+				case RIGHT:
+					monsterSpawn.pan = 10;
+
+				#if FLX_PITCH
+				case DOWN:
+					monsterSpawn.pitch = -10;
+				case UP:
+					monsterSpawn.pitch = 10;
+				#end
+			}
+
+			monsterSpawn.play();
+			#end
 		}
 
 		enemies.members.sort(function(o1, o2)
