@@ -1,7 +1,7 @@
 package dirifin.ui;
 
 import dirifin.input.Controls;
-import dirifin.play.PlayState;
+import dirifin.ui.ModMenuState.ModsMenuState;
 import flixel.FlxG;
 import flixel.system.FlxAssets;
 import flixel.util.FlxColor;
@@ -19,7 +19,8 @@ class MainMenuState extends MenuState
 		this.itemList = [
 			'Level Select',
 			'Credits',
-			// 'Options'
+			'Mods',
+			// 'Options',
 		];
 		this.itemIncOffset = 80;
 	}
@@ -78,6 +79,8 @@ class MainMenuState extends MenuState
 				FlxG.switchState(() -> new LevelSelectState());
 			case 'credits':
 				FlxG.switchState(() -> new CreditsRoll());
+			case 'mods':
+				FlxG.switchState(() -> new ModsMenuState());
 		}
 	}
 }
