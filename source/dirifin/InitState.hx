@@ -31,7 +31,7 @@ class InitState extends MState
 		Cursor.cursorVisible = false;
 
 		FlxG.plugins.addPlugin(new MusicManager());
-		
+
 		musicTextList = new AssetTextList(AssetPaths.txt('data/songs'));
 		MusicManager.tracks = musicTextList.textList;
 
@@ -48,6 +48,12 @@ class InitState extends MState
 
 		ModCore.instance = new DirifinModCore();
 		ModCore.instance.init();
+
+		FlxG.signals.postUpdate.add(function()
+		{
+			if (FlxG.keys.justReleased.R)
+				FlxG.openURL(CrashHandler.REPORT_PAGE);
+		});
 
 		switchState(() -> new MainMenuState());
 	}
