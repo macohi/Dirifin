@@ -85,8 +85,8 @@ class InitState extends MState
 		trace('Hidden cursor');
 
 		FlxG.plugins.addPlugin(new MusicManager());
-
 		musicTextList = new AssetTextList(AssetPaths.txt('data/songs'));
+		MusicManager.tracks = musicTextList.textList;
 
 		trace('Added plugins');
 	}
