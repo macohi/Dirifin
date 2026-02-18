@@ -7,10 +7,6 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [Unreleased] - 1/18/2026
 
-### Fixed
-
-- Fixed pacing of the credits menu entries (first one approches faster now)
-
 ### Changed
 
 - The song list updates when the song list text file updates now (including when mods update it)
