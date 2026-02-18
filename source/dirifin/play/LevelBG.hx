@@ -11,6 +11,12 @@ class LevelBG extends MSprite
 
 		loadGraphic(AssetPaths.image('levelsBGs/$levelID'));
 
+		if (this.graphic == null)
+		{
+			visible = false;
+			return;
+		}
+
 		applyPixelScale();
 	}
 }
