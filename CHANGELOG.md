@@ -9,10 +9,12 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Changed
 
+- The crash handler now includes the log file path
 - The song list updates when the song list text file updates now (including when mods update it)
 
 ### Added
 
+- Added "F3 + C" keybind : Crashes the game :D
 - Log files are generated when running the game now
 - You can press "R" on any state to go to the github issues page
 
