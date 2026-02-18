@@ -9,7 +9,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
-- You can press "R" on any state to go to the github
+- You can press "R" on any state to go to the github issues page
 
 ## [2.00 Pre-Release 1] - 2/17/2026
 
