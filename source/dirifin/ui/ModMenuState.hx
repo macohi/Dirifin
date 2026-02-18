@@ -71,5 +71,8 @@ class ModsMenuState extends OptionsMenuState
 
 		if (Controls.instance.justPressed('accept'))
 			acceptFunction();
+
+		if (Controls.instance.justReleased('back'))
+			FlxG.switchState(() -> new MainMenuState());
 	}
 }
