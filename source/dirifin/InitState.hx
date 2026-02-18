@@ -5,6 +5,7 @@ import dirifin.modding.DirifinModCore;
 import dirifin.save.DirifinSave;
 import dirifin.ui.MainMenuState;
 import flixel.FlxG;
+import haxe.Timer;
 import macohi.debugging.CrashHandler;
 import macohi.funkin.MegaVars;
 import macohi.funkin.koya.backend.AssetPaths;
@@ -22,18 +23,33 @@ class InitState extends MState
 	{
 		super.create();
 
-		CrashHandler.initalize('', 'Dirifin_', '', 'Dirifin');
-
-		initalizeInstances();
-
-		addPlugins();
-
-		initalizeMacohiStuff();
-
-		FlxG.signals.postUpdate.add(function()
+		Timer.measure(function()
 		{
-			if (FlxG.keys.justReleased.R)
-				FlxG.openURL(CrashHandler.REPORT_PAGE);
+			CrashHandler.initalize('', 'Dirifin_', '', 'Dirifin');
+
+			initalizeInstances();
+
+			addPlugins();
+
+			initalizeMacohiStuff();
+
+			FlxG.signals.postUpdate.add(function()
+			{
+				if (musicTextList != null && MusicManager.tracks != musicTextList.textList)
+				{
+					trace('UPDATING TRACK LIST');
+					MusicManager.tracks = musicTextList.textList;
+
+					trace('Track list:');
+					for (track in MusicManager.tracks)
+						trace(' * $track');
+				}
+
+				if (FlxG.keys.justReleased.R)
+					FlxG.openURL(CrashHandler.REPORT_PAGE);
+			});
+			
+			trace('Completed initalization');
 		});
 
 		switchState(() -> new MainMenuState());
@@ -47,18 +63,25 @@ class InitState extends MState
 
 	public function addPlugins()
 	{
+		trace('Adding plugins');
+
 		FlxG.plugins.addPlugin(new Cursor());
 		Cursor.cursorVisible = false;
+
+		trace('Hidden cursor');
 
 		FlxG.plugins.addPlugin(new MusicManager());
 
 		musicTextList = new AssetTextList(AssetPaths.txt('data/songs'));
-		MusicManager.tracks = musicTextList.textList;
+
+		trace('Added plugins');
 	}
 
 	public function initalizeMacohiStuff()
 	{
 		AssetPaths.soundExt = 'wav';
+
+		trace('Initalized AssetPaths stuff');
 
 		MegaVars.KOYA_MENUBG_DESAT = function(lib) return null;
 		MegaVars.KOYA_MENUBG_PINK = function(lib) return null;
@@ -69,7 +92,11 @@ class InitState extends MState
 
 		MegaVars.KOYA_MENUITEM_LIBRARY = null;
 
+		trace('Initalized MegaVars stuff');
+
 		ModCore.instance = new DirifinModCore();
 		ModCore.instance.init();
+
+		trace('Initalized MOD CORE!');
 	}
 }

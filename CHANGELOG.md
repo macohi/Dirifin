@@ -7,6 +7,10 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [Unreleased] - 1/18/2026
 
+### Changed
+
+- The song list updates when the song list text file updates now (including when mods update it)
+
 ### Added
 
 - You can press "R" on any state to go to the github issues page
