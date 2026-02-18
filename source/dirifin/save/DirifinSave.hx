@@ -8,7 +8,7 @@ class DirifinSave extends Save
 {
 	public static var instance:DirifinSave;
 
-	@:depricated('Outdated as of 2.00')
+	@:deprecated('"highscore" save field outdated as of 2.00')
 	public var highscore:SaveField<Int>;
 
 	public var highscores:SaveField<Map<String, Int>>;

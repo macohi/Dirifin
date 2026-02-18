@@ -17,6 +17,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Changed
 
+- The `highscore` save field has been removed and replaced with `highscores` (your highscore for level1 will persist however)
 - Sized up score and highscore text in gameplay
 
 ## [1.21] - 2/17/2026

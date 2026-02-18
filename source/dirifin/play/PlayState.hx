@@ -1,7 +1,6 @@
 package dirifin.play;
 
 import dirifin.input.Controls;
-import dirifin.save.DirifinSave;
 import dirifin.ui.GameoverState;
 import dirifin.ui.MainMenuState;
 import flixel.FlxBasic;
@@ -145,12 +144,12 @@ class PlayState extends PauseMState
 
 		FlxG.watch.addQuick('inputQueue', inputQueue);
 
-		if (score > DirifinSave.instance.highscore.get())
-			DirifinSave.instance.highscore.set(score);
+		if (score > Highscores.getHighscore(levelID))
+			Highscores.setHighscore(levelID, score);
 
-		leftWatermark.text = '';
-		leftWatermark.text += '\nScore: $score';
-		leftWatermark.text += '\nHigh Score: ${DirifinSave.instance.highscore.get()}';
+		leftWatermark.text = 'Level: ${levelID.toUpperCase()}\n';
+		leftWatermark.text += 'Score: ${score}\n';
+		leftWatermark.text += 'High Score: ${Highscores.getHighscore(levelID)}';
 	}
 
 	public var inputQueue:Array<String> = [];
