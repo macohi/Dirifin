@@ -35,7 +35,7 @@ class InitState extends MState
 
 			FlxG.signals.postUpdate.add(function()
 			{
-				if (musicTextList != null && MusicManager.tracks != musicTextList.textList)
+				if (musicTextList != null && !compareMusicTracks())
 				{
 					trace('UPDATING TRACK LIST');
 					MusicManager.tracks = musicTextList.textList;
@@ -48,11 +48,25 @@ class InitState extends MState
 				if (FlxG.keys.justReleased.R)
 					FlxG.openURL(CrashHandler.REPORT_PAGE);
 			});
-			
+
 			trace('Completed initalization');
 		});
 
 		switchState(() -> new MainMenuState());
+	}
+
+	public function compareMusicTracks():Bool
+	{
+		var mmt:Int = 0;
+		var mtltl:Int = 0;
+
+		for (track in MusicManager.tracks)
+			mmt += track.length;
+
+		for (track in musicTextList.textList)
+			mtltl += track.length;
+
+		return mmt == mtltl;
 	}
 
 	public function initalizeInstances()
