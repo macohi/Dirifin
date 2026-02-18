@@ -1,7 +1,5 @@
 package dirifin.play;
 
-import macohi.funkin.koya.backend.AssetPaths;
-
 class Bullet extends DirectionSprite
 {
 	public var dying:Bool = false;
@@ -10,8 +8,8 @@ class Bullet extends DirectionSprite
 	{
 		super(speedDamp, x, y);
 
-		loadGraphic(AssetPaths.image('bullet'));
-		
+		makeGraphic(16, 8);
+
 		scale.set(2, 2);
 		updateHitbox();
 

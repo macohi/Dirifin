@@ -11,6 +11,10 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 - Added Panning and Pitching depending on what direction an enemy spawns in
 
+### Removed
+
+- Removed bullet sprite
+
 ### Changed
 
 - Sized up score and highscore text in gameplay
