@@ -11,6 +11,7 @@ class Controls
 
 	public static function init()
 	{
+		trace('Initalizing Controls instance');
 		instance = new ControlClass();
 
 		instance.keybinds.set('left', [LEFT, A].keysArrayToStringArray());
@@ -22,5 +23,11 @@ class Controls
 		instance.keybinds.set('accept', [ENTER].keysArrayToStringArray());
 		
 		instance.keybinds.set('back', [ESCAPE].keysArrayToStringArray());
+
+		trace('Initalized Controls instance');
+
+		trace('Keybinds : ');
+		for (keybind => keys in instance.keybinds)
+			trace(' * $keybind : $keys');
 	}
 }
