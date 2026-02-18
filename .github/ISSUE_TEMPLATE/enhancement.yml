@@ -1,0 +1,23 @@
+name: "enhancement"
+description: "Suggest a feature"
+title: "[ENHANCEMENT] "
+labels: "enhancement"
+body:
+        - type: textarea
+          id: "suggestion"
+          attributes:
+                  label: "What's your suggestion?"
+                  description: "Tell us what your suggestion IS."
+                  placeholder: |
+                          ur mom
+          validations:
+                  required: true
+        - type: textarea
+          id: "why"
+          attributes:
+                  label: "Why should your suggestion be implemented?"
+                  description: "If you have a good reason for it's existance, please specify"
+                  placeholder: |
+                          cause its your mom
+          validations:
+                  required: false
