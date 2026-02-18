@@ -90,6 +90,7 @@ class PlayState extends PauseMState
 
 		leftWatermark.text = 'v';
 		leftWatermark.visible = true;
+		leftWatermark.size = 16;
 
 		initCameras();
 	}
