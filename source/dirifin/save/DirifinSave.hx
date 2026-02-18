@@ -12,6 +12,7 @@ class DirifinSave extends Save
 	public var highscore:SaveField<Int>;
 
 	public var highscores:SaveField<Map<String, Int>>;
+	public var enabledMods:SaveField<Array<String>>;
 
 	override public function new()
 	{
@@ -40,5 +41,6 @@ class DirifinSave extends Save
 
 		highscore = new SaveField<Int>('highscore', 0, 'Highscore');
 		highscores = new SaveField<Map<String, Int>>('highscores', [], 'Highscores');
+		enabledMods = new SaveField<Array<String>>('enabledMods', [], 'Enabled Mods');
 	}
 }

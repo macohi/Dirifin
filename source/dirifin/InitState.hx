@@ -1,6 +1,7 @@
 package dirifin;
 
 import dirifin.input.Controls;
+import dirifin.modding.DirifinModCore;
 import dirifin.save.DirifinSave;
 import dirifin.ui.MainMenuState;
 import flixel.FlxG;
@@ -43,7 +44,7 @@ class InitState extends MState
 
 		MegaVars.KOYA_MENUITEM_LIBRARY = null;
 
-		ModCore.instance = new ModCore();
+		ModCore.instance = new DirifinModCore();
 
 		switchState(() -> new MainMenuState());
 	}
