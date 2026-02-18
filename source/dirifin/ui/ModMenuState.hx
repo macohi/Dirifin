@@ -34,6 +34,14 @@ class ModsMenuState extends OptionsMenuState
 		}
 	}
 
+	override function create()
+	{
+		super.create();
+
+		valueText.font = FlxAssets.FONT_DEFAULT;
+		valueText.size = 16;
+	}
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -43,7 +51,6 @@ class ModsMenuState extends OptionsMenuState
 		valueText.text = 'Mod: ${ModCore.instance.getModName(mod)}${(ModCore.instance.modMetadatas.get(mod)?.name != null) ? ' (${mod})' : ''}\n'
 			+ 'Description: ${ModCore.instance.modMetadatas.get(mod)?.description}\n'
 			+ 'Enabled: ${this.itemListValues.get(mod)}';
-		valueText.font = FlxAssets.FONT_DEFAULT;
 	}
 
 	override function controlsMoveVertical()
