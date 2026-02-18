@@ -7,6 +7,7 @@ import flixel.FlxG;
 import macohi.debugging.CrashHandler;
 import macohi.funkin.MegaVars;
 import macohi.funkin.koya.backend.AssetPaths;
+import macohi.funkin.koya.backend.modding.ModCore;
 import macohi.funkin.koya.backend.plugins.Cursor;
 import macohi.overrides.MState;
 import macohi.util.MusicManager;
@@ -38,6 +39,8 @@ class InitState extends MState
 		MegaVars.SOUND_MENU_CONFIRM = AssetPaths.sound('menu_confirm');
 
 		MegaVars.KOYA_MENUITEM_LIBRARY = null;
+
+		ModCore.instance = new ModCore();
 
 		switchState(() -> new MainMenuState());
 	}
