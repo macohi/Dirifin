@@ -37,6 +37,8 @@ class InitState extends MState
 		MegaVars.SOUND_MENU_SCROLL = AssetPaths.sound('menu_scroll');
 		MegaVars.SOUND_MENU_CONFIRM = AssetPaths.sound('menu_confirm');
 
+		MegaVars.KOYA_MENUITEM_LIBRARY = null;
+
 		switchState(() -> new MainMenuState());
 	}
 
