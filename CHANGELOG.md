@@ -7,7 +7,9 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [2.00] - 2/17/2026
 
+### Added
 
+- Added Panning and Pitching depending on what direction an enemy spawns in
 
 ## [1.21] - 2/17/2026
 
