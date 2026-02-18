@@ -6,6 +6,7 @@ import flixel.FlxG;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.koya.frontend.ui.menustate.MenuItem;
 import macohi.funkin.koya.frontend.ui.menustate.MenuState;
+import macohi.util.StringUtil;
 
 class LevelSelectState extends MenuState
 {
@@ -14,7 +15,7 @@ class LevelSelectState extends MenuState
 		super('levelIcons/', Horizontal);
 
 		itemIncOffset = 160;
-		itemList = ['level1', 'level2',];
+		itemList = StringUtil.splitTextAssetByNewlines(AssetPaths.txt('data/levels'));
 	}
 
 	override function makeSprite(item:String, i:Int)
