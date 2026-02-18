@@ -1,0 +1,3 @@
+# sounds
+
+You can replace or add sounds here, but until scripting gets added, adding custom sounds kinda has no point...
