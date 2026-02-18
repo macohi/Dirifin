@@ -258,7 +258,7 @@ class PlayState extends PauseMState
 				case LEFT: monsterSpawnSound.pan = -1;
 				
 				#if FLX_PITCH
-				case DOWN: monsterSpawnSound.pitch = -1;
+				case DOWN: monsterSpawnSound.pitch = -2;
 				case UP: monsterSpawnSound.pitch = 2;
 				#end
 
