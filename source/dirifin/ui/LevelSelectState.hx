@@ -1,6 +1,8 @@
 package dirifin.ui;
 
 import dirifin.input.Controls;
+import dirifin.play.PlayState;
+import flixel.FlxG;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.koya.frontend.ui.menustate.MenuItem;
 import macohi.funkin.koya.frontend.ui.menustate.MenuState;
@@ -50,5 +52,12 @@ class LevelSelectState extends MenuState
 
 		if (Controls.instance.justPressed('accept'))
 			acceptFunction();
+	}
+
+	override function accepted(item:String)
+	{
+		super.accepted(item);
+
+		FlxG.switchState(() -> new PlayState(item));
 	}
 }
