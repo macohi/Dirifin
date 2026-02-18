@@ -1,5 +1,6 @@
 package dirifin.ui;
 
+import dirifin.input.Controls;
 import flixel.FlxG;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
@@ -24,7 +25,8 @@ class CreditsRoll extends MState
 
 		for (i => line in credits)
 		{
-			if (StringUtil.isBlankStr(line)) continue;
+			if (StringUtil.isBlankStr(line))
+				continue;
 
 			var lineText = new MText().makeText(line, 16);
 			lines.add(lineText);
@@ -50,5 +52,13 @@ class CreditsRoll extends MState
 				}
 			});
 		}
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		if (Controls.instance.justReleased('back'))
+			switchState(() -> new MainMenuState());
 	}
 }

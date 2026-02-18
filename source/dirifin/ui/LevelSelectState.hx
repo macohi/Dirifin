@@ -1,5 +1,6 @@
 package dirifin.ui;
 
+import dirifin.input.Controls;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.koya.frontend.ui.menustate.MenuItem;
 import macohi.funkin.koya.frontend.ui.menustate.MenuState;
@@ -22,7 +23,7 @@ class LevelSelectState extends MenuState
 		menuItem.applyPixelScale();
 
 		menuItem.addAnimByFrames('idle', [0], 24);
-		menuItem.addAnimByFrames('confirm', [1], 24);
+		menuItem.addAnimByFrames('selected', [1], 24);
 
 		if (menuType == Horizontal)
 			menuItem.screenCenter(Y);
@@ -31,5 +32,23 @@ class LevelSelectState extends MenuState
 
 		menuItem.ID = i;
 		itemsSpriteGroup.add(menuItem);
+	}
+
+	override function controlsMoveHorizontal()
+	{
+		super.controlsMoveHorizontal();
+
+		if (Controls.instance.justPressed('left'))
+			select(-1);
+		if (Controls.instance.justPressed('right'))
+			select(1);
+	}
+
+	override function controlsOther()
+	{
+		super.controlsOther();
+
+		if (Controls.instance.justPressed('accept'))
+			acceptFunction();
 	}
 }
