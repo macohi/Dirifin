@@ -20,7 +20,7 @@ class MainMenuState extends MenuState
 		this.itemList = [
 			'Level Select',
 			'Credits',
-			'Mods${#if html5 ' (Desktop Only)' #else '' #end}',
+			'Mods${#if !MODS_SUPPORTED ' (Mods Disabled / Non-Desktop Platform)' #else '' #end}',
 			// 'Options',
 		];
 		this.itemIncOffset = 80;
