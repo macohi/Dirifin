@@ -4,18 +4,20 @@ import dirifin.input.Controls;
 import dirifin.play.PlayState;
 import flixel.FlxG;
 import macohi.funkin.koya.backend.AssetPaths;
+import macohi.funkin.koya.backend.AssetTextList;
 import macohi.funkin.koya.frontend.ui.menustate.MenuItem;
 import macohi.funkin.koya.frontend.ui.menustate.MenuState;
-import macohi.util.StringUtil;
 
 class LevelSelectState extends MenuState
 {
+	public static var levelsTextList:AssetTextList = new AssetTextList(AssetPaths.txt('data/levels'));
+
 	override public function new()
 	{
 		super('levelIcons/', Horizontal);
 
 		itemIncOffset = 160;
-		itemList = StringUtil.splitTextAssetByNewlines(AssetPaths.txt('data/levels'));
+		itemList = levelsTextList.textList;
 	}
 
 	override function makeSprite(item:String, i:Int)

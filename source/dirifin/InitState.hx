@@ -7,6 +7,7 @@ import flixel.FlxG;
 import macohi.debugging.CrashHandler;
 import macohi.funkin.MegaVars;
 import macohi.funkin.koya.backend.AssetPaths;
+import macohi.funkin.koya.backend.AssetTextList;
 import macohi.funkin.koya.backend.modding.ModCore;
 import macohi.funkin.koya.backend.plugins.Cursor;
 import macohi.overrides.MState;
@@ -14,6 +15,8 @@ import macohi.util.MusicManager;
 
 class InitState extends MState
 {
+	public static var musicTextList:AssetTextList = new AssetTextList(AssetPaths.txt('data/songs'));
+
 	override public function create()
 	{
 		super.create();
@@ -27,7 +30,7 @@ class InitState extends MState
 		Cursor.cursorVisible = false;
 
 		FlxG.plugins.addPlugin(new MusicManager());
-		MusicManager.tracks = ['dungeon drif'];
+		MusicManager.tracks = musicTextList.textList;
 
 		AssetPaths.soundExt = 'wav';
 
