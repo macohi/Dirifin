@@ -48,9 +48,6 @@ class InitState extends MState
 
 			if (FlxG.keys.justReleased.R)
 				FlxG.openURL(CrashHandler.REPORT_PAGE);
-
-			if (FlxG.keys.pressed.F3 && FlxG.keys.justPressed.C)
-				throw 'F3 + C';
 		});
 
 		trace('Completed initalization');
