@@ -10,6 +10,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 ### Added
 
 - **ADDED MOD SUPPORT**
+	- **WITH A MOD MENU!!!!!!!**
 	- Just asset replacement and addition stuff right now, no scripts, sry
 - **ADDED LEVEL 2!!**
 - **ADDED LEVEL SELECT!**
