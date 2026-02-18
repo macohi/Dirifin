@@ -2,11 +2,21 @@ package dirifin.ui;
 
 import dirifin.input.Controls;
 import flixel.FlxG;
+import flixel.system.FlxAssets;
 import macohi.funkin.koya.backend.modding.ModCore;
 import macohi.funkin.koya.frontend.scenes.menustates.OptionsMenuState;
 
 class ModsMenuState extends OptionsMenuState
 {
+	override function reloadMenuItems()
+	{
+		super.reloadMenuItems();
+
+		if (!atlasText && text)
+			for (text in itemsFlxTextGroup.members)
+				text.font = FlxAssets.FONT_DEFAULT;
+	}
+
 	override function addItems()
 	{
 		for (mod in ModCore.instance.allMods)
