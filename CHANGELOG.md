@@ -20,6 +20,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Removed
 
+- Removed `_-goes-here.txt` files
 - Removed bullet sprite
 
 ### Changed
