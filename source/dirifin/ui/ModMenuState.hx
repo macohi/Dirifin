@@ -40,6 +40,8 @@ class ModsMenuState extends OptionsMenuState
 
 		valueText.font = FlxAssets.FONT_DEFAULT;
 		valueText.size = 16;
+
+		select();
 	}
 
 	override function update(elapsed:Float)
