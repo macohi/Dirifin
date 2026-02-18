@@ -47,6 +47,7 @@ class InitState extends MState
 		MegaVars.KOYA_MENUITEM_LIBRARY = null;
 
 		ModCore.instance = new DirifinModCore();
+		ModCore.instance.init();
 
 		switchState(() -> new MainMenuState());
 	}
