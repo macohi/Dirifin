@@ -1,5 +1,7 @@
 package dirifin.ui;
 
+import macohi.funkin.koya.backend.AssetPaths;
+import macohi.funkin.koya.frontend.ui.menustate.MenuItem;
 import macohi.funkin.koya.frontend.ui.menustate.MenuState;
 
 class LevelSelectState extends MenuState
@@ -10,5 +12,24 @@ class LevelSelectState extends MenuState
 
 		itemIncOffset = 80;
 		itemList = ['level1', 'level2',];
+	}
+
+	override function makeSprite(item:String, i:Int)
+	{
+		var menuItem = new MenuItem(item, menuItemPathPrefix, (menuType == Horizontal) ? -640 : 0, (menuType == Vertical) ? -640 : 0);
+
+		menuItem.loadGraphic(AssetPaths.image('$menuItemPathPrefix$item'), true, 16, 16);
+		menuItem.applyPixelScale();
+
+		menuItem.addAnimByFrames('idle', [0], 24);
+		menuItem.addAnimByFrames('confirm', [1], 24);
+
+		if (menuType == Horizontal)
+			menuItem.screenCenter(Y);
+		if (menuType == Vertical)
+			menuItem.screenCenter(X);
+
+		menuItem.ID = i;
+		itemsSpriteGroup.add(menuItem);
 	}
 }
