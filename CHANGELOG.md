@@ -9,7 +9,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
-- Added Panning and Pitching depending on what direction an enemy spawns in
+- Added a pan effect to the monster spawning sound
 
 ## [1.21] - 2/17/2026
 
