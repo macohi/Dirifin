@@ -44,6 +44,8 @@
 
 	<haxeflag name="--dce full" unless="debug" />
 
+	<define name="MOD_SUPPORT" if="desktop" />
+	
 	<define name="CRASH_HANDLER" if="desktop" />
 
 	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
