@@ -9,7 +9,9 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
-- **ADDED MOD SUPPORT** (just asset replacement and addition stuff right now, no scripts, sry)
+- **ADDED MOD SUPPORT**
+	- No mod menu either, all mods added are enabled by default, sorry once again
+	- Just asset replacement and addition stuff right now, no scripts, sry
 - **ADDED LEVEL 2!!**
 - **ADDED LEVEL SELECT!**
 - Added support for level JSONS (`assets/data/levels/_.json`) to change gameplay values
