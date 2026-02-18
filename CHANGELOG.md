@@ -30,6 +30,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Changed
 
+- Updated Level 1 BG
 - It's possible to append credits to the credits list via a mod now
 - BG Tracks are now softcoded and moddable via `assets/data/songs.txt`
 - The `highscore` save field has been removed and replaced with `highscores` (your highscore for level1 will persist however)
