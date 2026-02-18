@@ -5,12 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 This project adheres to [a custom version format](https://github.com/macohi/Dirifin/blob/main/docs/VERSION_FORMAT.md)
 
-## [2.00] - 2/17/2026
+## [2.00 Pre-Release 1] - 2/17/2026
 
 ### Added
 
 - **ADDED MOD SUPPORT**
-	- `api_version` should be 2.0+ for the mod to not be labelled as outdated
+	- `api_version` should be 1.0+ for the mod to not be labelled as outdated
 	- **WITH A MOD MENU!!!!!!!**
 	- Just asset replacement and addition stuff right now, no scripts, sry
 - **ADDED LEVEL 2!!**
