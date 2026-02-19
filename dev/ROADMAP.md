@@ -14,6 +14,7 @@
 - ...
 
 - [ ] 3.00 : Options Menu + SCRIPTING SUPPORT!
+	- Bonus: MEDALS!
 
 - ...
 
