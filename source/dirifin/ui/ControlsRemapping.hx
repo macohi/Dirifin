@@ -1,6 +1,7 @@
 package dirifin.ui;
 
 import dirifin.input.MenuStateControls;
+import flixel.FlxG;
 import flixel.system.FlxAssets;
 import macohi.backend.api.DiscordClient;
 import macohi.funkin.koya.frontend.scenes.menustates.options.ControlRemap;
@@ -49,4 +50,9 @@ class ControlsRemapping extends ControlRemap
 
 	override function controlsOther()
 		MenuStateControls.controlsOther(acceptFunction, () -> new MainMenuState());
+
+	override function back()
+	{
+		FlxG.switchState(() -> new OptionsState());
+	}
 }
