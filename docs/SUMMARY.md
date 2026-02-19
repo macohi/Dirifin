@@ -8,9 +8,12 @@
      - [Compiling](./02-source-code/COMPILING.md)
 
 - [Modding (Softcode)](./03-modding-softcode/category.md)
+     - [Creating your mod](./03-modding-softcode/CREATING_MOD.md)
+     
      - [Adding a Level](./03-modding-softcode/ADDING_LEVEL.md)
      - [Adding a Song](./03-modding-softcode/ADDING_SONG.md)
      - [Adding Credits](./03-modding-softcode/ADDING_CREDITS.md)
+
      - [Scripting]()
 	     - [Adding an Enemy Variation]()
 
