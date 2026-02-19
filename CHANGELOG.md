@@ -7,15 +7,17 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [2.00] - 2/18/2026
 
+### Added
+
+- **ADDED LEVEL 3!!**
+- **ADDED NEW BG SONG: "MASTERY"**
+- **ADDED NEW BG SONG: "INVASION"**
+- Log files are generated when running the game now
+- You can press "R" on any state to go to the github issues page
+
 ### Changed
 
 - The song list updates when the song list text file updates now (including when mods update it)
-
-### Added
-
-- NEW BG SONG: "INVASION"
-- Log files are generated when running the game now
-- You can press "R" on any state to go to the github issues page
 
 ## [2.00 Pre-Release 1] - 2/17/2026
 
