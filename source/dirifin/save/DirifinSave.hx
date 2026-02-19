@@ -1,15 +1,11 @@
 package dirifin.save;
 
-import flixel.FlxG;
 import macohi.save.Save;
 import macohi.save.SaveField;
 
 class DirifinSave extends Save
 {
 	public static var instance:DirifinSave;
-
-	@:deprecated('"highscore" save field outdated as of 2.00')
-	public var highscore:SaveField<Int>;
 
 	public var highscores:SaveField<Map<String, Int>>;
 	public var enabledMods:SaveField<Array<String>>;
@@ -18,7 +14,7 @@ class DirifinSave extends Save
 	{
 		super();
 
-		SAVE_VERSION = 2;
+		SAVE_VERSION = 3;
 		init('Dirifin');
 	}
 
@@ -27,10 +23,8 @@ class DirifinSave extends Save
 		switch (version.get())
 		{
 			case 1:
-				highscores.get().set('level1', highscore.get());
+				trace('Support for v1 saves has ended as of 3.00');
 		}
-
-		Reflect.deleteField(FlxG.save.data, highscore.field);
 
 		super.upgradeVersion(onComplete);
 	}
@@ -39,7 +33,6 @@ class DirifinSave extends Save
 	{
 		super.initFields();
 
-		highscore = new SaveField<Int>('highscore', 0, 'Highscore');
 		highscores = new SaveField<Map<String, Int>>('highscores', [], 'Highscores');
 		enabledMods = new SaveField<Array<String>>('enabledMods', [], 'Enabled Mods');
 	}
