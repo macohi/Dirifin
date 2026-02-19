@@ -1,6 +1,7 @@
 package dirifin.save;
 
 import dirifin.input.Controls;
+import macohi.funkin.koya.frontend.scenes.menustates.options.KeybindPrompt;
 import macohi.save.Save;
 import macohi.save.SaveField;
 
@@ -45,6 +46,16 @@ class DirifinSave extends Save
 			keySave.get();
 
 			keybinds.push(keySave);
+		}
+
+		KeybindPrompt.keybinds = function()
+		{
+			var keys:Array<SaveField<Array<String>>> = [];
+
+			for (key in DirifinSave.instance.keybinds)
+				keys.push(key);
+
+			return keys;
 		}
 	}
 }
