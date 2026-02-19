@@ -9,11 +9,11 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Fixed
 
-- `api_version` should be 2.0+ for mods to not be labelled as outdated (this is a fix cause the change was intended for 2.00)
+- [DESKTOP] `api_version` should be 2.0+ for mods to not be labelled as outdated (this is a fix cause the change was intended for 2.00)
 
 ### Added
 
-- Discord RPC Support
+- [DESKTOP] Discord RPC Support
 
 
 ## [2.00] - 2/18/2026
@@ -38,7 +38,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
-- **ADDED MOD SUPPORT**
+- [DESKTOP] **ADDED MOD SUPPORT**
 	- `api_version` should be 1.0+ for the mod to not be labelled as outdated
 	- **WITH A MOD MENU!!!!!!!**
 	- Just asset replacement and addition stuff right now, no scripts, sry
