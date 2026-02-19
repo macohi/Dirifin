@@ -5,6 +5,7 @@ import dirifin.modding.DirifinModCore;
 import dirifin.save.DirifinSave;
 import dirifin.ui.MainMenuState;
 import flixel.FlxG;
+import macohi.backend.api.DiscordClient;
 import macohi.debugging.CrashHandler;
 import macohi.debugging.CustomTrace;
 import macohi.funkin.MegaVars;
@@ -112,5 +113,15 @@ class InitState extends MState
 		ModCore.instance.init();
 
 		trace('Initalized MOD CORE!');
+
+		DiscordClient.CLIENT_ID = '1473856507652083984';
+		DiscordClient.LARGE_IMAGE_TEXT = 'Dirifin (${Version.VERSION})';
+		DiscordClient.init();
+
+		#if ENABLE_DISCORDRPC
+		trace('Initalized Discord RPC!');
+		#else
+		trace('Discord RPC not enabled');
+		#end
 	}
 }
