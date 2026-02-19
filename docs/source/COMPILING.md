@@ -1,6 +1,6 @@
 # Compiling
 
-This guide will cover all the steps needed to download and compile the source code for Dirifin on your device.
+This section will cover all the steps needed to download and compile the source code for Dirifin on your device.
 
 ## Requirements
 
