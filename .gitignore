@@ -1,5 +1,11 @@
+# haxe
+
 export/
 dump/
 .haxelib/
 
 .DS_Store
+
+# mdbook
+
+book
