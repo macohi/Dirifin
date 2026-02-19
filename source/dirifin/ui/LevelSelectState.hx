@@ -56,6 +56,9 @@ class LevelSelectState extends MenuState
 
 		if (Controls.instance.justPressed('accept'))
 			acceptFunction();
+
+		if (Controls.instance.justPressed('back'))
+			FlxG.switchState(() -> new MainMenuState());
 	}
 
 	override function accepted(item:String)
