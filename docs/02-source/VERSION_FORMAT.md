@@ -1,39 +1,54 @@
 # Version Format
 
-Using a custom version format cause why not.
-
-Half inspired by Geometry dash's version system.
+The game is using a custom version format cause why not, half inspired by Geometry dash's version system.
 
 > [!NOTE]  
-> Non Pre-Release versions are saved as "\_.\__a" for sorting reasons
+> Non Pre-Release version tags are saved as `_.__a`
+>
+> while Pre-Release version tags are saved as `_.__b#`
+>
+> for sorting reasons.
 
-## Major versions (x.\__)
+## Major versions
 
-Major versions reset the minor version number and +1 to the major version number to 0.
+Major versions are big content updates, adding new levels or adding a new system.
 
-They are big content updates such as a new level, or just a bunch of changes.
+Major versions reset the second version number to 00 and increment the first version number by 1.
 
-## Minor versions (\_.y_)
+### Example (existing) Versions
 
-Minor versions are a +10 increment to the minor version number
+- `1.00`
+- `2.00`
 
-They are smaller content updates such as a new menu, new enemy type maybe.
+## Minor versions
 
-Or maybe a new ability? Hmm...
+Minor versions are small content updates, adding a QOL feature, or just some bonus content not initally planned.
 
-## Patch versions (\_._z)
+Minor versions increment the second version number by 10.
 
-Patch versions are a +1 increment to the minor version number.
+### Example (existing) Versions
 
-They fix bugs. That's mostly it.
+- `1.10`
+- `1.21`
+- `2.10`
 
-If something was missing like an asset or a sound, patch updates can add those.
+## Patch versions
 
-## Pre-Release versions (\_.__ Pre-Release #)
+Patch versions are simple bug fix updates that add a missing feature, fix a broken feature or unintended side-effect.
 
-Think of Pre-Release versions like Minecraft Snapshots, they aren't weekly but they *are* preview versions of an upcoming update that will come a little before an update if it's almost done and has been taking a bit.
+Patch versions increment the second version number by 1.
 
-> [!NOTE]  
-> These are saved in the github tags as "\_.\__b#" and not with a "Pre Release #" suffix for sorting.
-> This is why versions are saved with an "a" at the end.
+### Example (existing) Versions
 
+- `1.11`
+
+## Pre-Release versions
+
+Pre-Release versions are versions that are released before a major (or maybe a big minor) update, intended to test the update before a release.
+
+Pre-Release versions add "Pre-Release #" to the end of the version number.
+
+### Example (existing) Versions
+
+- `1.00 Pre-Release 1`
+- `2.00 Pre-Release 1`
