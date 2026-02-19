@@ -5,4 +5,4 @@
 
 - [Source](./source/category.md)
      - [COMPILING](./source/COMPILING.md)
-     - [VERSION_FORMAT](./source/VERSION_FORMAT.md)
+     - [VERSION FORMAT](./source/VERSION_FORMAT.md)
