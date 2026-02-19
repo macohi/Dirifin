@@ -336,7 +336,7 @@ class PlayState extends PauseMState
 					switchState(() -> new GameoverState());
 				}, function(f)
 				{
-					if (Controls.instance.justPressed('accept'))
+					if (Controls.instance.justPressed('ui_accept'))
 						f.completionCallback(f);
 				});
 			}

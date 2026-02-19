@@ -22,7 +22,7 @@ class MainMenuState extends MenuState
 			'Level Select',
 			'Credits',
 			'Mods',
-			// 'Options',
+			'Options',
 		];
 		this.itemIncOffset = 80;
 	}
@@ -59,9 +59,9 @@ class MainMenuState extends MenuState
 	{
 		super.controlsMoveVertical();
 
-		if (Controls.instance.justPressed('up'))
+		if (Controls.instance.justPressed('ui_up'))
 			select(-1);
-		if (Controls.instance.justPressed('down'))
+		if (Controls.instance.justPressed('ui_down'))
 			select(1);
 	}
 
@@ -69,7 +69,7 @@ class MainMenuState extends MenuState
 	{
 		super.controlsOther();
 
-		if (Controls.instance.justPressed('accept'))
+		if (Controls.instance.justPressed('ui_accept'))
 			acceptFunction();
 	}
 
@@ -98,6 +98,8 @@ class MainMenuState extends MenuState
 			case 'mods':
 				if (ModCore.instance.allMods.length > 0)
 					FlxG.switchState(() -> new ModsMenuState());
+			case 'options':
+				FlxG.switchState(() -> new OptionsState());
 		}
 	}
 }

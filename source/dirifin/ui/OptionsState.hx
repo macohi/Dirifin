@@ -19,7 +19,7 @@ class OptionsState extends OptionsMenuState
 
 	override function addItems() {
 
-		addItem('Control Remap', null, function() {
+		addItem('Control Remap', 'Select to go remap your controls', function() {
 			FlxG.switchState(() -> new ControlsRemapping());
 		});
 	}
@@ -45,9 +45,9 @@ class OptionsState extends OptionsMenuState
 	{
 		super.controlsMoveVertical();
 
-		if (Controls.instance.justPressed('up'))
+		if (Controls.instance.justPressed('ui_up'))
 			select(-1);
-		if (Controls.instance.justPressed('down'))
+		if (Controls.instance.justPressed('ui_down'))
 			select(1);
 	}
 
@@ -55,7 +55,7 @@ class OptionsState extends OptionsMenuState
 	{
 		super.controlsOther();
 
-		if (Controls.instance.justPressed('accept'))
+		if (Controls.instance.justPressed('ui_accept'))
 			acceptFunction();
 
 		if (Controls.instance.justReleased('back'))
