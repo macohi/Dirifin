@@ -53,7 +53,7 @@
 	<haxelib name="flixel-ui" />
 	<haxelib name="flixel-animate" />
 
-	<haxelib name="hxdiscord_rpc" if="ENABLE_DISCORDRPC" />
+	<haxelib name="discord_rpc" if="ENABLE_DISCORDRPC" />
 	
 	<!-- ______________________________ Haxedefines _____________________________ -->
 

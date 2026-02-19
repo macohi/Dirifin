@@ -116,7 +116,7 @@ class InitState extends MState
 
 		DiscordClient.CLIENT_ID = '1473856507652083984';
 		DiscordClient.LARGE_IMAGE_TEXT = 'Dirifin (${Version.VERSION})';
-		DiscordClient.init();
+		DiscordClient.initialize();
 
 		#if ENABLE_DISCORDRPC
 		trace('Initalized Discord RPC!');
