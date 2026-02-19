@@ -9,7 +9,7 @@
 - [x] 2.00 : Level 2 + MODDING SUPPORT!
 	- Bonus: LEVEL 3!
 
-- [ ] 2.10 : Discord RPC Support
+- [x] 2.10 : Discord RPC Support
 
 - ...
 
