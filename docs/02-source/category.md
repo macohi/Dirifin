@@ -1,3 +1,3 @@
 # Source
 
-This is about source code stuff
+This category is in relation to source code
