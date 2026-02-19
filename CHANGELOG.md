@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 This project adheres to [a custom version format](https://github.com/macohi/Dirifin/blob/main/docs/VERSION_FORMAT.md)
 
+## [2.10] - 2/18/2026
+
+### Added
+
+- Discord RPC Support
+
+
 ## [2.00] - 2/18/2026
 
 ### Added
