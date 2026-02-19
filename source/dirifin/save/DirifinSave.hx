@@ -2,7 +2,6 @@ package dirifin.save;
 
 import dirifin.input.Controls;
 import macohi.funkin.koya.frontend.scenes.menustates.options.KeybindPrompt;
-import macohi.funkin.vslice.util.SortUtil;
 import macohi.save.Save;
 import macohi.save.SaveField;
 
