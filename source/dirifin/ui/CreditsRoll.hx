@@ -1,6 +1,6 @@
 package dirifin.ui;
 
-import dirifin.input.Controls;
+import dirifin.input.MenuStateControls;
 import flixel.FlxG;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
@@ -26,7 +26,7 @@ class CreditsRoll extends MState
 		add(lines);
 
 		DiscordClient.changePresence('Lookin\' at all the cool people that helped make the game', 'Credits Roll');
-		
+
 		for (i => line in credits.textList)
 		{
 			if (StringUtil.isBlankStr(line))
@@ -62,7 +62,6 @@ class CreditsRoll extends MState
 	{
 		super.update(elapsed);
 
-		if (Controls.instance.justReleased('back'))
-			switchState(() -> new MainMenuState());
+		MenuStateControls.controlsOther(null, () -> new MainMenuState());
 	}
 }

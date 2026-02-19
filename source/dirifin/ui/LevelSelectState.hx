@@ -1,6 +1,6 @@
 package dirifin.ui;
 
-import dirifin.input.Controls;
+import dirifin.input.MenuStateControls;
 import dirifin.play.PlayState;
 import flixel.FlxG;
 import macohi.backend.api.DiscordClient;
@@ -41,25 +41,10 @@ class LevelSelectState extends MenuState
 	}
 
 	override function controlsMoveHorizontal()
-	{
-		super.controlsMoveHorizontal();
-
-		if (Controls.instance.justPressed('ui_left'))
-			select(-1);
-		if (Controls.instance.justPressed('ui_right'))
-			select(1);
-	}
+		MenuStateControls.controlsMoveHorizontal(select);
 
 	override function controlsOther()
-	{
-		super.controlsOther();
-
-		if (Controls.instance.justPressed('ui_accept'))
-			acceptFunction();
-
-		if (Controls.instance.justPressed('ui_back'))
-			FlxG.switchState(() -> new MainMenuState());
-	}
+		MenuStateControls.controlsOther(acceptFunction, () -> new MainMenuState());
 
 	override function accepted(item:String)
 	{

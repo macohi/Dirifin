@@ -42,6 +42,7 @@ class DirifinSave extends Save
 		for (keybind => keybibnd_keybinds in Controls.instance.keybinds)
 		{
 			var keySave = new SaveField<Array<String>>(keybind, keybibnd_keybinds, keybind);
+			keySave.get();
 
 			keybinds.push(keySave);
 		}

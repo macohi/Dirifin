@@ -1,6 +1,6 @@
 package dirifin.ui;
 
-import dirifin.input.Controls;
+import dirifin.input.MenuStateControls;
 import dirifin.ui.ModMenuState.ModsMenuState;
 import flixel.FlxG;
 import flixel.system.FlxAssets;
@@ -18,19 +18,14 @@ class MainMenuState extends MenuState
 
 		this.text = true;
 		this.atlasText = false;
-		this.itemList = [
-			'Level Select',
-			'Credits',
-			'Mods',
-			'Options',
-		];
+		this.itemList = ['Level Select', 'Credits', 'Mods', 'Options',];
 		this.itemIncOffset = 80;
 	}
 
 	override function create()
 	{
 		super.create();
-		
+
 		DiscordClient.changePresence('Scrolling through the options', 'Main Menu');
 
 		var leftWatermark:MText = new MText(10, 10, FlxG.width, 'left watermark', 16);
@@ -56,22 +51,10 @@ class MainMenuState extends MenuState
 	}
 
 	override function controlsMoveVertical()
-	{
-		super.controlsMoveVertical();
-
-		if (Controls.instance.justPressed('ui_up'))
-			select(-1);
-		if (Controls.instance.justPressed('ui_down'))
-			select(1);
-	}
+		MenuStateControls.controlsMoveVertical(select);
 
 	override function controlsOther()
-	{
-		super.controlsOther();
-
-		if (Controls.instance.justPressed('ui_accept'))
-			acceptFunction();
-	}
+		MenuStateControls.controlsOther(acceptFunction, null);
 
 	override function select(change:Int = 0)
 	{

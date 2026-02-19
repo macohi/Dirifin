@@ -1,6 +1,7 @@
 package dirifin.ui;
 
 import dirifin.input.Controls;
+import dirifin.input.MenuStateControls;
 import dirifin.play.PlayState;
 import flixel.FlxG;
 import flixel.util.FlxColor;
@@ -20,8 +21,8 @@ class GameoverState extends MState
 
 		gameoverText = new MText(0, 0,
 			FlxG.width).makeText('YOU DIED!\n\n'
-				+ 'You can press ${Controls.instance.keybinds.get('accept').stringArrayToKeysArray().youCanPressString()} to go back to gameplay'
-				+ '\n\nYou can press ${Controls.instance.keybinds.get('back').stringArrayToKeysArray().youCanPressString()} to go to the main menu',
+				+ 'You can press ${Controls.instance.keybinds.get('ui_accept').stringArrayToKeysArray().youCanPressString()} to go back to gameplay'
+				+ '\n\nYou can press ${Controls.instance.keybinds.get('ui_back').stringArrayToKeysArray().youCanPressString()} to go to the main menu',
 				24);
 
 		add(gameoverText);
@@ -35,9 +36,6 @@ class GameoverState extends MState
 	{
 		super.update(elapsed);
 
-		if (Controls.instance.justReleased('accept'))
-			switchState(() -> new PlayState(PlayState.LAST_PLAYED_LEVEL));
-		if (Controls.instance.justReleased('back'))
-			switchState(() -> new MainMenuState());
+		MenuStateControls.controlsOther(() -> switchState(() -> new PlayState(PlayState.LAST_PLAYED_LEVEL)), () -> new MainMenuState());
 	}
 }

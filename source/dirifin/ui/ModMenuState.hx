@@ -1,6 +1,6 @@
 package dirifin.ui;
 
-import dirifin.input.Controls;
+import dirifin.input.MenuStateControls;
 import flixel.FlxG;
 import flixel.system.FlxAssets;
 import macohi.backend.api.DiscordClient;
@@ -59,23 +59,8 @@ class ModsMenuState extends OptionsMenuState
 	}
 
 	override function controlsMoveVertical()
-	{
-		super.controlsMoveVertical();
-
-		if (Controls.instance.justPressed('ui_up'))
-			select(-1);
-		if (Controls.instance.justPressed('ui_down'))
-			select(1);
-	}
+		MenuStateControls.controlsMoveVertical(select);
 
 	override function controlsOther()
-	{
-		super.controlsOther();
-
-		if (Controls.instance.justPressed('ui_accept'))
-			acceptFunction();
-
-		if (Controls.instance.justReleased('back'))
-			FlxG.switchState(() -> new MainMenuState());
-	}
+		MenuStateControls.controlsOther(acceptFunction, () -> new MainMenuState());
 }
