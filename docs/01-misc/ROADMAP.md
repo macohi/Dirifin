@@ -2,7 +2,6 @@
 
 Future plans for the game.
 
-
 If a feature is prefixes with "Bonus"
 
 that means it COULD come in the major update,
