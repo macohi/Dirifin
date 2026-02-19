@@ -4,6 +4,8 @@ This is the github repo for "Dirifin", a game made out of boredom.
 
 ## Links
 
+- [Markdown Book](https://macohi.github.io/Dirifin) : Just some coolio pages that can help ya with things
+
 - [Itch.io](https://macohi.itch.io/dirifin)
 - [Newgrounds](https://www.newgrounds.com/portal/view/1019745)
 
