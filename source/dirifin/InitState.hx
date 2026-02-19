@@ -119,6 +119,7 @@ class InitState extends MState
 		DiscordClient.initialize();
 
 		#if ENABLE_DISCORDRPC
+		DiscordClient.changePresence('Initalizing stuff', 'InitState');
 		trace('Initalized Discord RPC!');
 		#else
 		trace('Discord RPC not enabled');
