@@ -41,7 +41,7 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
-	<icon path="art/icon.png" />
+	<icon path="dev/icon.png" />
 
 	<haxeflag name="--dce full" unless="debug" />
 
