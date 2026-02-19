@@ -3,6 +3,7 @@ package dirifin.ui;
 import dirifin.input.Controls;
 import dirifin.play.PlayState;
 import flixel.FlxG;
+import macohi.backend.api.DiscordClient;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.koya.backend.AssetTextList;
 import macohi.funkin.koya.frontend.ui.menustate.MenuItem;
@@ -62,5 +63,12 @@ class LevelSelectState extends MenuState
 		super.accepted(item);
 
 		FlxG.switchState(() -> new PlayState(item));
+	}
+
+	override function create()
+	{
+		super.create();
+
+		DiscordClient.changePresence('What to play...', 'Level Select');
 	}
 }

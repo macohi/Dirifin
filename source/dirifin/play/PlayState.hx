@@ -15,6 +15,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxSort;
 import macohi.backend.PauseMState;
+import macohi.backend.api.DiscordClient;
 import macohi.funkin.MegaVars;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.util.Direction;
@@ -61,6 +62,8 @@ class PlayState extends PauseMState
 		this.levelID = levelID ?? 'level1';
 		LAST_PLAYED_LEVEL = this.levelID;
 		levelJSON = LevelJSONClass.loadLevelJSON(levelID);
+
+		DiscordClient.changePresence('LevelID: ${this.levelID}', 'In level');
 	}
 
 	override function create()

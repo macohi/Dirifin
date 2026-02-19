@@ -5,6 +5,7 @@ import dirifin.ui.ModMenuState.ModsMenuState;
 import flixel.FlxG;
 import flixel.system.FlxAssets;
 import flixel.util.FlxColor;
+import macohi.backend.api.DiscordClient;
 import macohi.funkin.koya.backend.modding.ModCore;
 import macohi.funkin.koya.frontend.ui.menustate.MenuState;
 import macohi.overrides.MText;
@@ -29,6 +30,8 @@ class MainMenuState extends MenuState
 	override function create()
 	{
 		super.create();
+		
+		DiscordClient.changePresence('Scrolling through the options', 'Main Menu');
 
 		var leftWatermark:MText = new MText(10, 10, FlxG.width, 'left watermark', 16);
 		leftWatermark.alignment = LEFT;

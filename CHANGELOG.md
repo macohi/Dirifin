@@ -7,6 +7,10 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [2.10] - 2/18/2026
 
+### Fixed
+
+- `api_version` should be 2.0+ for mods to not be labelled as outdated (this is a fix cause the change was intended for 2.00)
+
 ### Added
 
 - Discord RPC Support

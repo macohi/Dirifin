@@ -5,6 +5,7 @@ import flixel.FlxG;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import macohi.backend.api.DiscordClient;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.koya.backend.AssetTextList;
 import macohi.overrides.MState;
@@ -24,6 +25,8 @@ class CreditsRoll extends MState
 		lines = new FlxTypedGroup<MText>();
 		add(lines);
 
+		DiscordClient.changePresence('Lookin\' at all the cool people that helped make the game', 'Credits Roll');
+		
 		for (i => line in credits.textList)
 		{
 			if (StringUtil.isBlankStr(line))

@@ -4,6 +4,7 @@ import dirifin.input.Controls;
 import dirifin.play.PlayState;
 import flixel.FlxG;
 import flixel.util.FlxColor;
+import macohi.backend.api.DiscordClient;
 import macohi.overrides.MState;
 import macohi.overrides.MText;
 
@@ -26,6 +27,8 @@ class GameoverState extends MState
 		add(gameoverText);
 		gameoverText.screenCenter();
 		gameoverText.color = FlxColor.RED;
+
+		DiscordClient.changePresence('DIED!', 'GAME OVER');
 	}
 
 	override function update(elapsed:Float)
