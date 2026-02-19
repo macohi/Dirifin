@@ -2,13 +2,11 @@
 title = "Dirifin"
 authors = ["Macohi"]
 language = "en"
+src = "docs"
 
 [output.html]
 smart-punctuation = true
 mathjax-support = true
-site-url = "/Dirifin/"
-git-repository-url = "https://github.com/macohi/Dirifin/tree/main"
-edit-url-template = "https://github.com/macohi/Dirifin/edit/main/{path}"
 hash-files = true
 
 [output.html.playground]
