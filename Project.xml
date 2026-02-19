@@ -40,7 +40,7 @@
 
 	<define name="MOD_SUPPORT" if="desktop" />
 	<define name="CRASH_HANDLER" if="desktop" />
-	<define name="ENABLE_DISCORDRPC" if="desktop" />
+	<define name="ENABLE_DISCORDRPC" if="desktop" unless="hl" />
 
 	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
 	<haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
