@@ -7,6 +7,15 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [3.00] - 2/20/2026
 
+### Fixed
+
+- Fixed the back keybind not allowing you to leave the level select
+
+### Removed
+
+- All support for the "highscore" save field has been cut off and if your save is from 1.00 to 1.21 you will lose your level 1 high score
+
+
 ## [2.10] - 2/18/2026
 
 ### Fixed
