@@ -17,7 +17,7 @@ class ControlsRemapping extends ControlRemap
 
 		KeybindPrompt.keybinds = function()
 		{
-			var keys:Array<SaveField<String>> = [];
+			var keys:Array<SaveField<Array<String>>> = [];
 
 			return keys;
 		}
@@ -25,19 +25,6 @@ class ControlsRemapping extends ControlRemap
 
 	override function altControls():Bool
 	{
-		var ci = Controls.instance;
-		var keys:Array<FlxKey> = [];
-
-		for (alt_keys in [ci.keybinds.get('ui_left'), ci.keybinds.get('ui_right')])
-		{
-			var thekeysinthekeybind = alt_keys.stringArrayToKeysArray();
-
-			for (thekeys in thekeysinthekeybind)
-				keys.push(thekeys.keyToString());
-		}
-
-		valueText.text += '\n\n( Toggle alts via ${keys.youCanPressString()} )';
-
 		return super.altControls();
 	}
 }
