@@ -15,6 +15,10 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 - Log files are generated when running the game now
 - You can press "R" on any state to go to the github issues page
 
+### Fixed
+
+- Gameover sending you back to level 1
+
 ### Changed
 
 - The song list updates when the song list text file updates now (including when mods update it)

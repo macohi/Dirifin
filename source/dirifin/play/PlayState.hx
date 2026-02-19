@@ -52,11 +52,14 @@ class PlayState extends PauseMState
 	function get_camHUDObjects():Array<FlxBasic>
 		return [leftWatermark, rightWatermark, pauseBG];
 
+	public static var LAST_PLAYED_LEVEL:String = null;
+
 	override public function new(levelID:String = null)
 	{
 		super();
 
 		this.levelID = levelID ?? 'level1';
+		LAST_PLAYED_LEVEL = this.levelID;
 		levelJSON = LevelJSONClass.loadLevelJSON(levelID);
 	}
 

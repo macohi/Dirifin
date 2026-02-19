@@ -33,7 +33,7 @@ class GameoverState extends MState
 		super.update(elapsed);
 
 		if (Controls.instance.justReleased('accept'))
-			switchState(() -> new PlayState());
+			switchState(() -> new PlayState(PlayState.LAST_PLAYED_LEVEL));
 		if (Controls.instance.justReleased('back'))
 			switchState(() -> new MainMenuState());
 	}
