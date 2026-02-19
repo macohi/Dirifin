@@ -14,15 +14,18 @@ class Controls
 		trace('Initalizing Controls instance');
 		instance = new ControlClass();
 
-		instance.keybinds.set('left', [LEFT, A].keysArrayToStringArray());
-		instance.keybinds.set('down', [DOWN, S].keysArrayToStringArray());
-		instance.keybinds.set('up', [UP, W].keysArrayToStringArray());
-		instance.keybinds.set('right', [RIGHT, D].keysArrayToStringArray());
+		instance.keybinds.set('ui_left', [LEFT, A].keysArrayToStringArray());
+		instance.keybinds.set('ui_down', [DOWN, S].keysArrayToStringArray());
+		instance.keybinds.set('ui_up', [UP, W].keysArrayToStringArray());
+		instance.keybinds.set('ui_right', [RIGHT, D].keysArrayToStringArray());
+		instance.keybinds.set('ui_accept', [ENTER].keysArrayToStringArray());
+		instance.keybinds.set('ui_back', [ESCAPE].keysArrayToStringArray());
 
-		instance.keybinds.set('fire', [SPACE].keysArrayToStringArray());
-		instance.keybinds.set('accept', [ENTER].keysArrayToStringArray());
-		
-		instance.keybinds.set('back', [ESCAPE].keysArrayToStringArray());
+		instance.keybinds.set('gameplay_left', [LEFT, A].keysArrayToStringArray());
+		instance.keybinds.set('gameplay_down', [DOWN, S].keysArrayToStringArray());
+		instance.keybinds.set('gameplay_up', [UP, W].keysArrayToStringArray());
+		instance.keybinds.set('gameplay_right', [RIGHT, D].keysArrayToStringArray());
+		instance.keybinds.set('gameplay_fire', [SPACE].keysArrayToStringArray());
 
 		trace('Initalized Controls instance');
 

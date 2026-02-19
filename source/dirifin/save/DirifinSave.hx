@@ -1,5 +1,6 @@
 package dirifin.save;
 
+import dirifin.input.Controls;
 import macohi.save.Save;
 import macohi.save.SaveField;
 
@@ -10,11 +11,13 @@ class DirifinSave extends Save
 	public var highscores:SaveField<Map<String, Int>>;
 	public var enabledMods:SaveField<Array<String>>;
 
+	public var keybinds:Array<SaveField<Array<String>>> = [];
+
 	override public function new()
 	{
 		super();
 
-		SAVE_VERSION = 3;
+		SAVE_VERSION = 4;
 		init('Dirifin');
 	}
 
@@ -35,5 +38,12 @@ class DirifinSave extends Save
 
 		highscores = new SaveField<Map<String, Int>>('highscores', [], 'Highscores');
 		enabledMods = new SaveField<Array<String>>('enabledMods', [], 'Enabled Mods');
+
+		for (keybind => keybibnd_keybinds in Controls.instance.keybinds)
+		{
+			var keySave = new SaveField<Array<String>>(keybind, keybibnd_keybinds, keybind);
+
+			keybinds.push(keySave);
+		}
 	}
 }

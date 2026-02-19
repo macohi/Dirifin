@@ -142,7 +142,7 @@ class PlayState extends PauseMState
 		}
 		else
 		{
-			if (Controls.instance.justPressed('back'))
+			if (Controls.instance.justPressed('ui_back'))
 			{
 				FlxG.sound.play(MegaVars.SOUND_MENU_BACK, 1.0, false, null, true, function()
 				{
@@ -165,7 +165,7 @@ class PlayState extends PauseMState
 
 	public function addToInputQueue()
 	{
-		for (control in ['fire', 'left', 'down', 'up', 'right'])
+		for (control in ['gameplay_fire', 'gameplay_left', 'gameplay_down', 'gameplay_up', 'gameplay_right'])
 			if (Controls.instance.justPressed(control))
 				inputQueue.push(control);
 	}
@@ -184,13 +184,13 @@ class PlayState extends PauseMState
 			}
 			else
 			{
-				if (input == 'left')
+				if (input == 'gameplay_left')
 					player.changeDirection(LEFT);
-				if (input == 'down')
+				if (input == 'gameplay_down')
 					player.changeDirection(DOWN);
-				if (input == 'up')
+				if (input == 'gameplay_up')
 					player.changeDirection(UP);
-				if (input == 'right')
+				if (input == 'gameplay_right')
 					player.changeDirection(RIGHT);
 			}
 
@@ -345,7 +345,7 @@ class PlayState extends PauseMState
 
 	override function getPauseBoolean():Bool
 	{
-		return Controls.instance.justPressed('accept');
+		return Controls.instance.justPressed('ui_accept');
 	}
 
 	override function togglePaused()
