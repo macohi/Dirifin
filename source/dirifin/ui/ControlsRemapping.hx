@@ -9,12 +9,11 @@ import macohi.funkin.vslice.util.SortUtil;
 using macohi.util.ArrayUtil;
 using macohi.util.FlxKeyUtil;
 
-
 class ControlsRemapping extends ControlRemap
 {
 	override function reloadMenuItems()
 	{
-		itemList.sort(SortUtil.alphabetically);
+		itemList.sort((s1, s2) -> SortUtil.defaultsThenAlphabetically(['Leave'], s1, s2));
 
 		super.reloadMenuItems();
 
