@@ -13,6 +13,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
+- NEW BG SONG: "INVASION"
 - Log files are generated when running the game now
 - You can press "R" on any state to go to the github issues page
 
