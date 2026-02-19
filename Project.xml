@@ -31,6 +31,20 @@
 	<assets path="assets" />
 	<assets path="mods" />
 	<assets path="CHANGELOG.md" />
+	
+	<!-- _________________________________ Custom _______________________________ -->
+
+	<icon path="dev/icon.png" />
+
+	<haxeflag name="--dce full" unless="debug" />
+
+	<define name="MOD_SUPPORT" if="desktop" />
+	<define name="CRASH_HANDLER" if="desktop" />
+	<define name="ENABLE_DISCORDRPC" if="desktop" />
+
+	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
+	<haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
+	<haxedef name="HXCPP_STACK_TRACE" if="CRASH_HANDLER" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
@@ -39,20 +53,8 @@
 	<haxelib name="flixel-ui" />
 	<haxelib name="flixel-animate" />
 
-	<!-- _________________________________ Custom _______________________________ -->
-
-	<icon path="dev/icon.png" />
-
-	<haxeflag name="--dce full" unless="debug" />
-
-	<define name="MOD_SUPPORT" if="desktop" />
+	<haxelib name="hxdiscord_rpc" if="ENABLE_DISCORDRPC" />
 	
-	<define name="CRASH_HANDLER" if="desktop" />
-
-	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
-	<haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
-	<haxedef name="HXCPP_STACK_TRACE" if="CRASH_HANDLER" />
-
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
 	<haxedef name="FLX_NO_HEALTH" />
