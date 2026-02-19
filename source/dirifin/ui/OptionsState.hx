@@ -17,7 +17,12 @@ class OptionsState extends OptionsMenuState
 				text.font = FlxAssets.FONT_DEFAULT;
 	}
 
-	override function addItems() {}
+	override function addItems() {
+
+		addItem('Control Remap', null, function() {
+			FlxG.switchState(() -> new ControlsRemapping());
+		});
+	}
 
 	override function create()
 	{
