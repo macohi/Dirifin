@@ -17,4 +17,4 @@ This is the github repo for "Dirifin", a game made out of boredom.
 
 ## Source Code
 
-If you wish to compile the game from source, please follow the instructions in the [compiling documentation](./docs/sCOMPILING.md).
+If you wish to compile the game from source, please follow the instructions in the [compiling documentation](https://macohi.github.io/Dirifin/source/COMPILING.html).
