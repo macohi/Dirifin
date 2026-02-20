@@ -67,6 +67,6 @@ class DirifinSave extends Save
 		}
 
 		shootWithDirectionals = new SaveField<Bool>('shootWithDirectionals', false, 'Shoot with Directionals');
-		shootWithDirectionals.description = 'Toggles if you shoot by changing direction\nShoot with Directionals:';
+		shootWithDirectionals.description = 'Toggles if you shoot by changing direction\nEnabled: ';
 	}
 }
