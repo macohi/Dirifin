@@ -15,11 +15,13 @@ class DirifinSave extends Save
 
 	public var keybinds:Array<SaveField<Array<String>>> = [];
 
+	public var shootWithDirectionals:SaveField<Bool>;
+
 	override public function new()
 	{
 		super();
 
-		SAVE_VERSION = 4;
+		SAVE_VERSION = 5;
 		init('Dirifin');
 	}
 
@@ -63,5 +65,8 @@ class DirifinSave extends Save
 
 			return keys;
 		}
+
+		shootWithDirectionals = new SaveField<Bool>('shootWithDirectionals', false, 'Shoot with Directionals');
+		shootWithDirectionals.description = 'Toggles if you shoot by changing direction\nShoot with Directionals:';
 	}
 }

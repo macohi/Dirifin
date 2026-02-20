@@ -1,6 +1,7 @@
 package dirifin.ui;
 
 import dirifin.input.MenuStateControls;
+import dirifin.save.DirifinSave;
 import flixel.FlxG;
 import flixel.system.FlxAssets;
 import macohi.backend.api.DiscordClient;
@@ -22,6 +23,11 @@ class OptionsState extends OptionsMenuState
 		addItem('Control Remap', 'Select to go remap your controls', function()
 		{
 			FlxG.switchState(() -> new ControlsRemapping());
+		});
+		
+		addItemBasedOnSaveField(DirifinSave.instance.shootWithDirectionals, function()
+		{
+			DirifinSave.instance.shootWithDirectionals.set(!DirifinSave.instance.shootWithDirectionals.get());
 		});
 	}
 
