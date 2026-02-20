@@ -19,10 +19,11 @@ class OptionsState extends OptionsMenuState
 
 	override function addItems()
 	{
-		addItem('Control Remap', 'Select to go remap your controls', function()
-		{
-			FlxG.switchState(() -> new ControlsRemapping());
-		});
+		// delayed
+		// addItem('Control Remap', 'Select to go remap your controls', function()
+		// {
+		// 	FlxG.switchState(() -> new ControlsRemapping());
+		// });
 	}
 
 	override function create()
