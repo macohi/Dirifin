@@ -17,6 +17,8 @@ import macohi.funkin.koya.frontend.scenes.menustates.options.KeybindPrompt;
 import macohi.overrides.MState;
 import macohi.util.MusicManager;
 
+using macohi.util.FlxKeyUtil;
+
 class InitState extends MState
 {
 	public static var musicTextList:AssetTextList;
@@ -136,5 +138,37 @@ class InitState extends MState
 			return null;
 		}
 		KeybindPrompt.getBack = function() return Controls.instance.justReleased('ui_back');
+
+		KeybindPrompt.extraControls = function():String
+		{
+			return '\n\n'
+				+ 'BACKSPACE to remove bind\n'
+				+ 'SHIFT + BACKSPACE to add a bind\n'
+				+ '${Controls.instance.keybinds.get('ui_back').stringArrayToKeysArray().youCanPressString()}\n';
+		}
+
+		KeybindPrompt.extraControlFunctions = function(prompt:KeybindPrompt):Bool
+		{
+			if (FlxG.keys.justPressed.BACKSPACE)
+			{
+				if (!FlxG.keys.pressed.SHIFT)
+				{
+					prompt.promptText.text = 'Removed OG Bind #${prompt.keyNum + 1}';
+					prompt.keybindField.get().remove(prompt.keybindField.get()[prompt.keyNum]);
+				}
+				else
+				{
+					prompt.promptText.text = 'Added extra bind';
+					prompt.keybindField.get().push(null);
+				}
+				prompt.pauseTick = 100;
+
+				return false;
+			}
+
+			return true;
+		}
+
+		trace('Initalized KeybindPrompt shit!');
 	}
 }
