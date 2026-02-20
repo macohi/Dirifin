@@ -9,6 +9,8 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
+- **LOADING SCREEN**
+- Option to shoot with the directionals instead of `gameplay_fire`
 - **CONTROLS REMAPPING**
 - **OPTIONS MENU**
 

@@ -3,8 +3,10 @@ package dirifin;
 import dirifin.input.Controls;
 import dirifin.modding.DirifinModCore;
 import dirifin.save.DirifinSave;
+import dirifin.ui.LoadingScreen;
 import dirifin.ui.MainMenuState;
 import flixel.FlxG;
+import flixel.util.FlxTimer;
 import macohi.backend.api.DiscordClient;
 import macohi.debugging.CrashHandler;
 import macohi.debugging.CustomTrace;
@@ -23,6 +25,8 @@ class InitState extends MState
 {
 	public static var musicTextList:AssetTextList;
 
+	static var loadingScreen:LoadingScreen;
+
 	override public function create()
 	{
 		super.create();
@@ -32,31 +36,42 @@ class InitState extends MState
 
 		CrashHandler.initalize('', 'Dirifin_', '', 'Dirifin');
 
-		initalizeInstances();
+		loadingScreen = new LoadingScreen();
+		persistentUpdate = true;
+		openSubState(loadingScreen);
+		loadingScreen.loadingString = 'Starting...';
 
-		addPlugins();
-
-		initalizeMacohiStuff();
-
-		FlxG.signals.postUpdate.add(function()
+		FlxTimer.wait(1, function()
 		{
-			if (musicTextList != null && !compareMusicTracks())
+			initalizeInstances();
+
+			addPlugins();
+
+			initalizeMacohiStuff();
+
+			loadingScreen.loadingString = 'Adding FlxG postUpdate signal';
+			FlxG.signals.postUpdate.add(function()
 			{
-				trace('UPDATING TRACK LIST');
-				MusicManager.tracks = musicTextList.textList;
+				if (musicTextList != null && !compareMusicTracks())
+				{
+					trace('UPDATING TRACK LIST');
+					MusicManager.tracks = musicTextList.textList;
 
-				trace('Track list:');
-				for (track in MusicManager.tracks)
-					trace(' * $track');
-			}
+					trace('Track list:');
+					for (track in MusicManager.tracks)
+						trace(' * $track');
+				}
 
-			if (FlxG.keys.justReleased.R)
-				FlxG.openURL(CrashHandler.REPORT_PAGE);
+				if (FlxG.keys.justReleased.R)
+					FlxG.openURL(CrashHandler.REPORT_PAGE);
+			});
+
+			trace('Completed initalization');
+
+			loadingScreen.loadingString = 'DONE!';
+
+			switchState(() -> new MainMenuState());
 		});
-
-		trace('Completed initalization');
-
-		switchState(() -> new MainMenuState());
 	}
 
 	public function compareMusicTracks():Bool
@@ -75,6 +90,8 @@ class InitState extends MState
 
 	public function initalizeInstances()
 	{
+		loadingScreen.loadingString = 'Initalizing Instances';
+
 		Controls.init();
 		DirifinSave.instance = new DirifinSave();
 		Controls.loadKeybinds();
@@ -82,6 +99,7 @@ class InitState extends MState
 
 	public function addPlugins()
 	{
+		loadingScreen.loadingString = 'Adding Instances';
 		trace('Adding plugins');
 
 		FlxG.plugins.addPlugin(new Cursor());
@@ -98,6 +116,7 @@ class InitState extends MState
 
 	public function initalizeMacohiStuff()
 	{
+		loadingScreen.loadingString = 'Initalizing Macohi Stuff';
 		AssetPaths.soundExt = 'wav';
 
 		trace('Initalized AssetPaths stuff');
