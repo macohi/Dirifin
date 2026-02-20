@@ -3,6 +3,7 @@ package dirifin.play;
 import dirifin.input.Controls;
 import dirifin.play.LevelJSON.LevelJSONClass;
 import dirifin.play.LevelJSON.LevelJSONData;
+import dirifin.save.DirifinSave;
 import dirifin.ui.GameoverState;
 import dirifin.ui.MainMenuState;
 import flixel.FlxBasic;
@@ -165,22 +166,34 @@ class PlayState extends PauseMState
 
 	public function addToInputQueue()
 	{
-		for (control in ['gameplay_fire', 'gameplay_left', 'gameplay_down', 'gameplay_up', 'gameplay_right'])
+		for (control in [
+			'gameplay_fire',
+			'gameplay_left',
+			'gameplay_down',
+			'gameplay_up',
+			'gameplay_right'
+		])
 			if (Controls.instance.justPressed(control))
 				inputQueue.push(control);
+	}
+
+	public function playerFire()
+	{
+		if (bullets.members.length < maxBullets)
+		{
+			FlxG.sound.play(AssetPaths.sound('shoot'));
+			bullets.add(new Bullet().makeBullet(player));
+		}
 	}
 
 	public function processInputQueue()
 	{
 		for (input in inputQueue)
 		{
-			if (input == 'fire')
+			if (input == 'gameplay_fire')
 			{
-				if (bullets.members.length < maxBullets)
-				{
-					FlxG.sound.play(AssetPaths.sound('shoot'));
-					bullets.add(new Bullet().makeBullet(player));
-				}
+				if (!DirifinSave.instance.shootWithDirectionals.get())
+					playerFire();
 			}
 			else
 			{
@@ -192,6 +205,9 @@ class PlayState extends PauseMState
 					player.changeDirection(UP);
 				if (input == 'gameplay_right')
 					player.changeDirection(RIGHT);
+
+				if (DirifinSave.instance.shootWithDirectionals.get())
+					playerFire();
 			}
 
 			inputQueue.remove(input);
