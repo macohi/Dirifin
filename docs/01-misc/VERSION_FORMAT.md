@@ -11,7 +11,7 @@ The game is using a custom version format cause why not, half inspired by Geomet
 
 ## Major versions
 
-Major versions are big content updates, adding new levels or adding a new system.
+Major versions are big content updates, adding new levels or just a bunch of shit
 
 Major versions reset the second version number to 00 and increment the first version number by 1.
 
