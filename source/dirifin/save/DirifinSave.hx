@@ -2,6 +2,7 @@ package dirifin.save;
 
 import dirifin.input.Controls;
 import macohi.funkin.koya.frontend.scenes.menustates.options.KeybindPrompt;
+import macohi.funkin.vslice.util.SortUtil;
 import macohi.save.Save;
 import macohi.save.SaveField;
 
@@ -47,6 +48,11 @@ class DirifinSave extends Save
 
 			keybinds.push(keySave);
 		}
+
+		keybinds.sort((field1, field2) ->
+		{
+			return SortUtil.alphabetically(field1.field, field2.field);
+		});
 
 		KeybindPrompt.keybinds = function()
 		{

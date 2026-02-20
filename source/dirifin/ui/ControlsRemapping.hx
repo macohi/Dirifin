@@ -14,8 +14,6 @@ class ControlsRemapping extends ControlRemap
 {
 	override function reloadMenuItems()
 	{
-		itemList.sort((s1, s2) -> SortUtil.defaultsThenAlphabetically(['Leave'], s1, s2));
-
 		super.reloadMenuItems();
 
 		if (!atlasText && text)
