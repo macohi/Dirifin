@@ -5,7 +5,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Dirifin" file="Dirifin" main="Main" version="2.20" company="Macohi" />
+	<app title="Dirifin" file="Dirifin" main="Main" version="2.21" company="Macohi" />
 
 	<app preloader="flixel.system.FlxPreloader" />
 
