@@ -144,7 +144,7 @@ class InitState extends MState
 			return '\n\n'
 				+ 'BACKSPACE to remove bind\n'
 				+ 'SHIFT + BACKSPACE to add a bind\n'
-				+ '${Controls.instance.keybinds.get('ui_back').stringArrayToKeysArray().youCanPressString()}\n';
+				+ '${Controls.instance.keybinds.get('ui_back').stringArrayToKeysArray().youCanPressString()} to leave\n';
 		}
 
 		KeybindPrompt.extraControlFunctions = function(prompt:KeybindPrompt):Bool
