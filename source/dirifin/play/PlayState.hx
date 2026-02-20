@@ -240,14 +240,20 @@ class PlayState extends PauseMState
 			{
 				bullet.dying = true;
 
-				FlxTween.tween(bullet, {alpha: 0}, 0.15, {
-					ease: FlxEase.quadInOut,
-					onComplete: tween ->
-					{
-						bullets.members.remove(bullet);
-						bullet.destroy();
-					}
-				});
+				if (bullet != null)
+					FlxTween.tween(bullet, {alpha: 0}, 0.15, {
+						ease: FlxEase.quadInOut,
+						onComplete: tween ->
+						{
+							bullets.members.remove(bullet);
+							bullet.destroy();
+						},
+						onUpdate: tween ->
+						{
+							if (bullet == null)
+								tween.cancel();
+						},
+					});
 			}
 		}
 	}
@@ -283,7 +289,14 @@ class PlayState extends PauseMState
 			newEnemy.screenCenter();
 			newEnemy.changeDirection(newEnemyDir, player);
 			newEnemy.alpha = 0;
-			FlxTween.tween(newEnemy, {x: newEnemy.x, y: newEnemy.y, alpha: 1}, 0.3, {ease: FlxEase.quadInOut});
+			FlxTween.tween(newEnemy, {x: newEnemy.x, y: newEnemy.y, alpha: 1}, 0.3, {
+				ease: FlxEase.quadInOut,
+				onUpdate: tween ->
+				{
+					if (newEnemy == null)
+						tween.cancel();
+				}
+			});
 			enemies.add(newEnemy);
 
 			var monsterSpawn = new FlxSound().loadEmbedded(AssetPaths.sound('monster'));
