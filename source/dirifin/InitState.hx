@@ -13,6 +13,7 @@ import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.koya.backend.AssetTextList;
 import macohi.funkin.koya.backend.modding.ModCore;
 import macohi.funkin.koya.backend.plugins.Cursor;
+import macohi.funkin.koya.frontend.scenes.menustates.options.KeybindPrompt;
 import macohi.overrides.MState;
 import macohi.util.MusicManager;
 
@@ -124,5 +125,16 @@ class InitState extends MState
 		#else
 		trace('Discord RPC not enabled');
 		#end
+
+		KeybindPrompt.getSave = function() return null;
+		KeybindPrompt.getKeybind = (keybind, getSave) ->
+		{
+			for (bind in DirifinSave.instance.keybinds)
+				if (bind.field == keybind)
+					return bind;
+
+			return null;
+		}
+		KeybindPrompt.getBack = function() return Controls.instance.justReleased('ui_back');
 	}
 }
