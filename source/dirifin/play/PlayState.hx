@@ -154,12 +154,23 @@ class PlayState extends PauseMState
 
 		FlxG.watch.addQuick('inputQueue', inputQueue);
 
-		if (score > Highscores.getHighscore(levelID))
-			Highscores.setHighscore(levelID, score);
-
 		leftWatermark.text = 'Level: ${levelID.toUpperCase()}\n';
 		leftWatermark.text += 'Score: ${score}\n';
-		leftWatermark.text += 'High Score: ${Highscores.getHighscore(levelID)}';
+
+		if (!DirifinSave.instance.shootWithDirectionals.get())
+		{
+			if (score > Highscores.getHighscore(levelID))
+				Highscores.setHighscore(levelID, score);
+
+			leftWatermark.text += 'High Score: ${Highscores.getHighscore(levelID)}';
+		}
+		else
+		{
+			if (score > Highscores.getHighscore(levelID + '-swd'))
+				Highscores.setHighscore(levelID + '-swd', score);
+
+			leftWatermark.text += 'High Score (SWD): ${Highscores.getHighscore(levelID + '-swd')}';
+		}
 	}
 
 	public var inputQueue:Array<String> = [];

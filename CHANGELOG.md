@@ -9,7 +9,8 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
-- Option to shoot with the directionals instead of `gameplay_fire`
+- Added Option to shoot with the directionals instead of `gameplay_fire`
+	- Added SWD Highscores
 - **CONTROLS REMAPPING**
 - **OPTIONS MENU**
 
