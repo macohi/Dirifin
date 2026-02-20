@@ -15,7 +15,10 @@ class OptionsState extends OptionsMenuState
 
 		if (!atlasText && text)
 			for (text in itemsFlxTextGroup.members)
+			{
 				text.font = FlxAssets.FONT_DEFAULT;
+				text.size -= 16;
+			}
 	}
 
 	override function addItems()
@@ -24,7 +27,7 @@ class OptionsState extends OptionsMenuState
 		{
 			FlxG.switchState(() -> new ControlsRemapping());
 		});
-		
+
 		addItemBasedOnSaveField(DirifinSave.instance.shootWithDirectionals, function()
 		{
 			DirifinSave.instance.shootWithDirectionals.set(!DirifinSave.instance.shootWithDirectionals.get());
