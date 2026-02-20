@@ -77,6 +77,7 @@ class InitState extends MState
 	{
 		Controls.init();
 		DirifinSave.instance = new DirifinSave();
+		Controls.loadKeybinds();
 	}
 
 	public function addPlugins()

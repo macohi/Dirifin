@@ -1,5 +1,6 @@
 package dirifin.input;
 
+import dirifin.save.DirifinSave;
 import flixel.input.keyboard.FlxKey;
 import macohi.util.ControlClass;
 
@@ -14,6 +15,13 @@ class Controls
 		trace('Initalizing Controls instance');
 		instance = new ControlClass();
 
+		loadKeybinds();
+
+		trace('Initalized Controls instance');
+	}
+
+	public static function loadKeybinds()
+	{
 		instance.keybinds.set('ui_left', [LEFT, A].keysArrayToStringArray());
 		instance.keybinds.set('ui_down', [DOWN, S].keysArrayToStringArray());
 		instance.keybinds.set('ui_up', [UP, W].keysArrayToStringArray());
@@ -27,10 +35,21 @@ class Controls
 		instance.keybinds.set('gameplay_right', [RIGHT, D].keysArrayToStringArray());
 		instance.keybinds.set('gameplay_fire', [SPACE].keysArrayToStringArray());
 
-		trace('Initalized Controls instance');
+		if (DirifinSave.instance != null)
+		{
+			for (keybind in DirifinSave.instance.keybinds)
+				if (instance.keybinds.exists(keybind.field))
+					instance.keybinds.set(keybind.field, keybind.get());
+			trace('Loaded save keybinds');
+		}
+		else
+		{
+			trace('Initalized default keybinds:');
+		}
 
-		trace('Keybinds : ');
+		#if debug
 		for (keybind => keys in instance.keybinds)
 			trace(' * $keybind : $keys');
+		#end
 	}
 }

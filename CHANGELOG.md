@@ -9,6 +9,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
+- **CONTROLS REMAPPING**
 - **OPTIONS MENU**
 
 ### Fixed
