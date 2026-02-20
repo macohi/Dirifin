@@ -1,11 +1,11 @@
 package dirifin.ui;
 
+import dirifin.input.Controls;
 import dirifin.input.MenuStateControls;
 import flixel.FlxG;
 import flixel.system.FlxAssets;
 import macohi.backend.api.DiscordClient;
 import macohi.funkin.koya.frontend.scenes.menustates.options.ControlRemap;
-import macohi.funkin.vslice.util.SortUtil;
 
 using macohi.util.ArrayUtil;
 using macohi.util.FlxKeyUtil;
@@ -52,5 +52,12 @@ class ControlsRemapping extends ControlRemap
 	override function back()
 	{
 		FlxG.switchState(() -> new OptionsState());
+	}
+
+	override function extraKeybindPromptStuff()
+	{
+		super.extraKeybindPromptStuff();
+
+		Controls.loadKeybinds();
 	}
 }
