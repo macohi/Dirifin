@@ -11,11 +11,7 @@ This is the github repo for "Dirifin", a game made out of boredom.
 
 ## Credits
 
-[Maochi](https://sphis-sinco.carrd.co/) - Programming, Pixel Art
-
-[Requazar](https://www.youtube.com/channel/UCw44n7vHdSs6wQF651upvVw) - Composer
-
-[Github Contributors](https://github.com/macohi/Dirifin/graphs/contributors)
+[Credits here](./assets/data/credits.txt)
 
 ## Source Code
 

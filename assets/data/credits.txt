@@ -4,3 +4,6 @@ Main Team
 
 Github Contributors
 - VirtuGuy - Code cleanup and removal of focus loss screen
+
+Misc
+- ADA_Sunni - Shoot With Directionals Option Idea Originator
