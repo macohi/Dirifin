@@ -42,7 +42,7 @@ class SurvivalModeState extends SpinningPlayerState
 
 		function getLevelInfo(level:String)
 		{
-			var level:String = 'Level: ${level.toUpperCase()}';
+			var levelStr:String = 'Level: ${level.toUpperCase()}';
 
 			var suffix:String = '-survival';
 			var hss:String = ' (SURVIVAL';
@@ -57,7 +57,7 @@ class SurvivalModeState extends SpinningPlayerState
 
 			var highscore:String = 'Highscore$hss: ${Highscores.getHighscore(level + suffix)}';
 
-			return '${level}\n${highscore}';
+			return '${levelStr}\n${highscore}';
 		}
 
 		levelText = new MText().makeText(getLevelInfo(randomLevel), 16);
