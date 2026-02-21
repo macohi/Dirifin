@@ -17,6 +17,7 @@ import macohi.funkin.koya.frontend.scenes.menustates.options.KeybindPrompt;
 import macohi.overrides.MState;
 import macohi.util.MusicManager;
 
+using macohi.funkin.vslice.util.AnsiUtil;
 using macohi.util.FlxKeyUtil;
 
 class InitState extends MState

@@ -4,6 +4,7 @@ import dirifin.save.DirifinSave;
 import flixel.input.keyboard.FlxKey;
 import macohi.util.ControlClass;
 
+using macohi.funkin.vslice.util.AnsiUtil;
 using macohi.util.FlxKeyUtil;
 
 class Controls
@@ -12,12 +13,12 @@ class Controls
 
 	public static function init()
 	{
-		trace('Initalizing Controls instance');
+		trace(' CONTROLS '.bold().bg_bright_lilac() + ' Initalizing Controls instance');
 		instance = new ControlClass();
 
 		loadKeybinds();
 
-		trace('Initalized Controls instance');
+		trace(' CONTROLS '.bold().bg_bright_lilac() + ' Initalized Controls instance');
 	}
 
 	public static function loadKeybinds()
@@ -40,16 +41,16 @@ class Controls
 			for (keybind in DirifinSave.instance.keybinds)
 				if (instance.keybinds.exists(keybind.field))
 					instance.keybinds.set(keybind.field, keybind.get());
-			trace('Loaded save keybinds');
+			trace(' CONTROLS '.bold().bg_bright_lilac() + ' Loaded save keybinds');
 		}
 		else
 		{
-			trace('Initalized default keybinds:');
+			trace(' CONTROLS '.bold().bg_bright_lilac() + ' Initalized default keybinds:');
 		}
 
 		#if debug
 		for (keybind => keys in instance.keybinds)
-			trace(' * $keybind : $keys');
+			trace(' CONTROLS '.bold().bg_bright_lilac() + '  * $keybind : $keys');
 		#end
 	}
 }
