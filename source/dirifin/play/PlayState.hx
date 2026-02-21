@@ -54,12 +54,14 @@ class PlayState extends PauseMState
 	public static var LAST_PLAYED_LEVEL:String = null;
 
 	public var health:Int = 1;
+	public static var SURVIVAL_MODE:Bool = true;
 
 	override public function new(levelID:String = null)
 	{
 		super();
 
 		health = 1;
+		if (SURVIVAL_MODE) health = 3;
 
 		this.levelID = levelID ?? 'level1';
 		LAST_PLAYED_LEVEL = this.levelID;
