@@ -36,6 +36,15 @@ class SurvivalModeState extends SpinningPlayerState
 		playerTrail = DeltaruneKnight.createYTrailTargetY(player, ogPlayerY, spin_speed, .5, 4);
 		insert(members.indexOf(player) - 1, playerTrail);
 
+		levelText = new MText().makeText('', 16);
+		add(levelText);
+		levelText.alignment = CENTER;
+
+		randomLev();
+	}
+
+	public function randomLev()
+	{
 		randomLevel = LevelSelectState.levelsTextList.textList[FlxG.random.int(0, LevelSelectState.levelsTextList.textList.length - 1)];
 
 		var levelJSON:LevelJSONData = LevelJSONClass.loadLevelJSON(randomLevel, false);
@@ -60,9 +69,7 @@ class SurvivalModeState extends SpinningPlayerState
 			return '${levelStr}\n${highscore}';
 		}
 
-		levelText = new MText().makeText(getLevelInfo(randomLevel), 16);
-		add(levelText);
-		levelText.alignment = CENTER;
+		levelText.text = getLevelInfo(randomLevel);
 		levelText.screenCenter();
 		levelText.y = (FlxG.height * 0.9) - (levelText.height * 1);
 	}
@@ -89,5 +96,8 @@ class SurvivalModeState extends SpinningPlayerState
 			PlayState.SURVIVAL_MODE = true;
 			switchState(() -> new PlayState(randomLevel));
 		}, () -> new MainMenuState(), false);
+
+		if (FlxG.keys.justPressed.R)
+			randomLev();
 	}
 }
