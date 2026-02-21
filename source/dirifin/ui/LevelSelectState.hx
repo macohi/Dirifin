@@ -1,6 +1,7 @@
 package dirifin.ui;
 
 import dirifin.input.MenuStateControls;
+import dirifin.play.Highscores;
 import dirifin.play.LevelBG;
 import dirifin.play.LevelJSON.LevelJSONClass;
 import dirifin.play.LevelJSON.LevelJSONData;
@@ -45,15 +46,21 @@ class LevelSelectState extends OptionsMenuState
 		{
 			var levelJSON:LevelJSONData = LevelJSONClass.loadLevelJSON(level, false);
 
-			function getDifficulty(level:String)
+			function getLevelInfo(level:String)
 			{
-				if (DirifinSave.instance.shootWithDirectionals.get())
-					return 'Difficulty (SWD): ${levelJSON?.settings?.difficulty?.swd ?? 0}';
+				var diff:String = 'Difficulty: ${levelJSON?.settings?.difficulty?.regular ?? 0}';
+				var highscore:String = 'Highscore: ${Highscores.getHighscore(level)}';
 
-				return 'Difficulty: ${levelJSON?.settings?.difficulty?.regular ?? 0}';
+				if (DirifinSave.instance.shootWithDirectionals.get())
+				{
+					diff = 'Difficulty (SWD): ${levelJSON?.settings?.difficulty?.swd ?? 0}';
+					highscore = 'Highscore (SWD): ${Highscores.getHighscore(level + '-swd')}';
+				}
+
+				return '${diff}\n${highscore}';
 			}
 
-			addItem(level, getDifficulty(level), null);
+			addItem(level, getLevelInfo(level), null);
 		}
 	}
 
