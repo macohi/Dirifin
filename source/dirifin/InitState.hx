@@ -37,6 +37,7 @@ class InitState extends MState
 		CrashHandler.initalize('', 'Dirifin_', '', 'Dirifin');
 
 		Application.current.window.title = 'Dirifin ${Version.VERSION}';
+		trace(Application.current.window.title);
 
 		initalizeInstances();
 
