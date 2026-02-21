@@ -261,13 +261,13 @@ class PlayState extends PauseMState
 
 	public function generateDirectionArrows()
 	{
-		for (i in 0...4)
+		Direction.forEachDirectional((i) ->
 		{
 			var da = new DirectionArrow();
 			da.screenCenter();
 			da.changeDirection(i, player);
 			directionArrows.add(da);
-		}
+		});
 	}
 
 	public var previousEnemyDir:Direction = -1;
@@ -279,12 +279,7 @@ class PlayState extends PauseMState
 
 		var enemyVariation:EnemyVariationData = enemyVariationData[FlxG.random.int(0, enemyVariationData.length)] ?? null;
 
-		if (FlxG.random.bool(
-			FlxG.random.float(
-				enemySpawningData?.spawn_chance?.min ?? 0, 
-				enemySpawningData?.spawn_chance?.max ?? 3)
-			)
-		)
+		if (FlxG.random.bool(FlxG.random.float(enemySpawningData?.spawn_chance?.min ?? 0, enemySpawningData?.spawn_chance?.max ?? 3)))
 		{
 			var newEnemyDir = Direction.randomDirection();
 
@@ -309,7 +304,7 @@ class PlayState extends PauseMState
 						tween.cancel();
 				}
 			});
-			
+
 			enemies.add(newEnemy);
 
 			playMonsterSpawnSound(newEnemy.direction);
