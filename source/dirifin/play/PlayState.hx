@@ -289,7 +289,7 @@ class PlayState extends PauseMState
 
 			previousEnemyDir = newEnemyDir;
 
-			var newEnemy:Enemy = new Enemy(enemyVariation?.speed_multiplier ?? 1.0);
+			var newEnemy:Enemy = new Enemy(enemyVariation);
 			newEnemy.screenCenter();
 			newEnemy.changeDirection(newEnemyDir, player);
 			newEnemy.alpha = 0;
