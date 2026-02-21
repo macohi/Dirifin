@@ -21,10 +21,17 @@ typedef EnemyVariationData =
 	?graphic:String,
 }
 
+typedef LevelSettingsData =
+{
+	?camera_zoom:Float,
+	?bg_scale_modifier:Array<Null<Float>>
+}
+
 typedef LevelJSONData =
 {
-	enemySpawning:EnemySpawningData,
+	?enemySpawning:EnemySpawningData,
 	?enemyVariations:Array<EnemyVariationData>,
+	?settings:LevelSettingsData,
 }
 
 class LevelJSONClass
@@ -60,9 +67,7 @@ class LevelJSONClass
 						{
 							var mergeJson:LevelJSONData = Json.parse(KoyaAssets.getText(appendPath));
 
-							baseJson = Json.parse(JsonMergeAndAppend.append(
-								Json.stringify(baseJson),
-								Json.stringify(mergeJson),
+							baseJson = Json.parse(JsonMergeAndAppend.append(Json.stringify(baseJson), Json.stringify(mergeJson),
 								level // id does nothing with JSONS so yeah
 							));
 						}

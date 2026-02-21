@@ -72,6 +72,12 @@ class PlayState extends PauseMState
 		levelBG.screenCenter();
 		add(levelBG);
 
+		if (levelJSON?.settings?.bg_scale_modifier != null)
+		{
+			levelBG.scale.x += levelJSON?.settings?.bg_scale_modifier[0] ?? 0;
+			levelBG.scale.y += levelJSON?.settings?.bg_scale_modifier[1] ?? 0;
+		}
+
 		player = new Player();
 		player.screenCenter();
 		add(player);
@@ -109,10 +115,10 @@ class PlayState extends PauseMState
 		FlxG.cameras.add(camHUD);
 		camHUD.bgColor.alpha = 0;
 
+		camGame.zoom = levelJSON?.settings?.camera_zoom ?? .5;
+
 		#if ZOOM_OUT
-		camGame.zoom = .25;
-		#else
-		camGame.zoom = .5;
+		camGame.zoom *= 0.5;
 		#end
 
 		for (camGameOBJ in camGameObjects)
