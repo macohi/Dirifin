@@ -13,7 +13,8 @@
 		
 		- [Adding a Level](./03-modding/softcoding/ADDING_LEVEL.md)
 			- [Enemy Variations]()
-        	- [Adding a Song](./03-modding/softcoding/ADDING_SONG.md)
-        	- [Adding Credits](./03-modding/softcoding/ADDING_CREDITS.md)
+
+		- [Adding a Song](./03-modding/softcoding/ADDING_SONG.md)
+		- [Adding Credits](./03-modding/softcoding/ADDING_CREDITS.md)
 	- [Hardcoding]()
 		- [Adding a new Option]()
