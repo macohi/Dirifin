@@ -63,7 +63,7 @@ class InitState extends SpinningPlayerState
 				}
 			}
 
-			if (FlxG.keys.justReleased.R)
+			if (FlxG.keys.pressed.SHIFT && FlxG.keys.justReleased.R)
 				FlxG.openURL(CrashHandler.REPORT_PAGE);
 		});
 
