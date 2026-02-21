@@ -24,6 +24,15 @@ body:
   validations:
     required: false
 - type: textarea
+  id: version
+  attributes:
+    label: "Game version"
+    description: "The current game version, you can use the main menu to see what your version is"
+    value: |
+      N / A
+  validations:
+    required: true
+- type: textarea
   id: description
   attributes:
     label: "Description"
