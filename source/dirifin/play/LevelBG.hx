@@ -1,5 +1,6 @@
 package dirifin.play;
 
+import flixel.FlxG;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.overrides.MSprite;
 
@@ -18,5 +19,11 @@ class LevelBG extends MSprite
 		}
 
 		applyPixelScale();
+	}
+
+	override function applyPixelScale()
+	{
+		scale.set(Math.round(FlxG.width / width), Math.round(FlxG.height / height));
+		updateHitbox();
 	}
 }
