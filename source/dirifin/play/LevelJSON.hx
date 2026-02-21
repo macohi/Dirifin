@@ -59,7 +59,7 @@ class LevelJSONClass
 		}
 	}
 
-	public static function loadLevelJSON(level:String, ?parseEVP:Bool = false):LevelJSONData
+	public static function loadLevelJSON(level:String, ?parseEVP:Bool = true):LevelJSONData
 	{
 		var lvlJson:LevelJSONData = parseBaseJson(level) ?? DEFAULT_LEVEL_JSON;
 
