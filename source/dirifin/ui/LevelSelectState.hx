@@ -76,12 +76,13 @@ class LevelSelectState extends MenuState
 		for (i => level in itemList)
 		{
 			var levelBG = new LevelBG(level);
-			
+
 			levelBG.screenCenter();
 			levelBG.ID = i;
 			levelBG.alpha = 0;
 
-			levelBGs.add(levelBG);
+			if (levelBG.graphic != null)
+				levelBGs.add(levelBG);
 		}
 
 		select();
