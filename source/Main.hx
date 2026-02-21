@@ -7,6 +7,6 @@ class Main extends Sprite
 	{
 		super();
 
-		addChild(new FlxGame(0, 0, dirifin.InitState));
+		addChild(new FlxGame(0, 0, dirifin.InitState, 60, 60, true));
 	}
 }
