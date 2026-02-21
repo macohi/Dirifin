@@ -9,7 +9,7 @@ class Enemy extends DirectionSprite
 	{
 		super(-0.1 * speedMulti, x, y);
 
-		loadGraphic(AssetPaths.image('enemy'), true, 16, 16);
+		loadGraphic(AssetPaths.image('enemies/default'), true, 16, 16);
 		addAnimByFrames('LEFT', [0]);
 		addAnimByFrames('DOWN', [1]);
 		addAnimByFrames('UP', [2]);
