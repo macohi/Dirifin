@@ -282,7 +282,7 @@ class PlayState extends PauseMState
 		if (FlxG.random.bool(
 			FlxG.random.float(
 				enemySpawningData?.spawn_chance?.min ?? 0, 
-				enemySpawningData?.spawn_chance?.max ?? 0)
+				enemySpawningData?.spawn_chance?.max ?? 3)
 			)
 		)
 		{
