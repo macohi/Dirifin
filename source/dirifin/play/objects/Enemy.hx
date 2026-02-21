@@ -1,15 +1,16 @@
 package dirifin.play.objects;
 
+import dirifin.play.LevelJSON.EnemyVariationData;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.util.Direction;
 
 class Enemy extends DirectionSprite
 {
-	override public function new(speedMulti:Float = 1.0, ?x:Float, ?y:Float)
+	override public function new(variationData:EnemyVariationData = null, ?x:Float, ?y:Float)
 	{
-		super(-0.1 * speedMulti, x, y);
+		super(-0.1 * variationData?.speed_multiplier ?? 1.0, x, y);
 
-		loadGraphic(AssetPaths.image('enemies/default'), true, 16, 16);
+		loadGraphic(AssetPaths.image('enemies/${variationData?.graphic ?? 'default'}'), true, 16, 16);
 		addAnimByFrames('LEFT', [0]);
 		addAnimByFrames('DOWN', [1]);
 		addAnimByFrames('UP', [2]);

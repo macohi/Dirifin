@@ -9,12 +9,13 @@ import macohi.util.WindowUtil;
 typedef EnemySpawningData =
 {
 	dupe_direction_chance:Float,
-	spawn_chance:MinMaxTypedef
+	spawn_chance:MinMaxTypedef,
 }
 
 typedef EnemyVariationData =
 {
-	?speed_multiplier:Float
+	?speed_multiplier:Float,
+	?graphic:String,
 }
 
 typedef LevelJSONData =
