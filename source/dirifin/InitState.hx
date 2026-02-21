@@ -178,12 +178,12 @@ class InitState extends MState
 
 	public function defineManagement()
 	{
-		trace('Define Shit');
-		
+		trace('Define Shit'.bold());
+
 		#if debug
-		trace('* Build: Debug');
+		trace('* Build: Debug'.bold());
 		#else
-		trace('* Build: Release');
+		trace('* Build: Release'.bold());
 		#end
 	}
 }
