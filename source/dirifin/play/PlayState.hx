@@ -57,6 +57,8 @@ class PlayState extends PauseMState
 
 	public static var SURVIVAL_MODE:Bool = false;
 
+	public var startTime:Date;
+
 	override public function new(levelID:String = null)
 	{
 		super();
@@ -113,6 +115,8 @@ class PlayState extends PauseMState
 		leftWatermark.size = 16;
 
 		initCameras();
+
+		startTime = Date.now();
 	}
 
 	public function initCameras()
@@ -190,6 +194,8 @@ class PlayState extends PauseMState
 			hsta += 'swd';
 
 		addHighScoreText(hsta);
+		
+		leftWatermark.text += 'Time Survived: ${(Date.now().getTime() - startTime.getTime()).convert_ms_to_s()}s\n';
 	}
 
 	public function addHighScoreText(suffix:String = '')
