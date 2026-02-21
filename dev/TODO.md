@@ -2,6 +2,10 @@
 
 These are things I wanna do eventually.
 
+## Shader support with the jsons lol
+Use `FlxRuntimeShader`
+Main issue is types I'm pretty sure
+
 ## Survival mode
 
 you get health
