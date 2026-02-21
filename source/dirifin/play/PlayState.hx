@@ -275,7 +275,7 @@ class PlayState extends PauseMState
 		var enemySpawningData:EnemySpawningData = levelJSON?.enemySpawning ?? null;
 		var enemyVariationData:Array<EnemyVariationData> = levelJSON?.enemyVariations ?? [];
 
-		var enemyVariation:EnemyVariationData = enemyVariationData[FlxG.random.int(0, enemyVariationData.length)] ?? null;
+		var enemyVariation:EnemyVariationData = enemyVariationData[FlxG.random.int(0, enemyVariationData.length - 1)] ?? null;
 
 		if (FlxG.random.bool(FlxG.random.float(enemySpawningData?.spawn_chance?.min ?? 0, enemySpawningData?.spawn_chance?.max ?? 3)))
 		{
@@ -288,6 +288,8 @@ class PlayState extends PauseMState
 				return;
 
 			previousEnemyDir = newEnemyDir;
+
+			trace('Spawning enemy of variation: $enemyVariation');
 
 			var newEnemy:Enemy = new Enemy(enemyVariation);
 			newEnemy.screenCenter();
