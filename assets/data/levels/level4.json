@@ -5,5 +5,10 @@
 			"max": 15.0,
 			"min": 0.0
 		}
-	}
+	},
+	"enemyVariations": [
+		{
+			"speed": 1.2
+		}
+	]
 }
