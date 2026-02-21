@@ -1,6 +1,5 @@
 package dirifin.play;
 
-import flixel.FlxG;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.overrides.MSprite;
 
@@ -23,8 +22,8 @@ class LevelBG extends MSprite
 
 	override function applyPixelScale()
 	{
-		var calc_width = width / camera.width;
-		var calc_height = height / camera.height;
+		var calc_width = width / camera.width * camera.zoom;
+		var calc_height = height / camera.height * camera.zoom;
 
 		scale.set(
 			MSprite.PIXEL_SCALE + calc_width,

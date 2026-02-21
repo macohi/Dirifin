@@ -99,6 +99,7 @@ class PlayState extends PauseMState
 		initCameras();
 
 		levelBG.applyPixelScale();
+		levelBG.screenCenter();
 	}
 
 	public function initCameras()
