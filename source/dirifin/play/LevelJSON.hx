@@ -22,6 +22,8 @@ typedef EnemyVariationData =
 
 	?speed_multiplier:Float,
 	?graphic:String,
+
+	?present:String,
 }
 
 typedef LevelSettingsData =
@@ -51,47 +53,111 @@ class LevelJSONClass
 
 	public static function loadLevelJSON(level:String):LevelJSONData
 	{
-		var levelJSONPath:String = AssetPaths.json('data/levels/$level');
-		var levelJSONPathAppend:Array<String> = AssetPaths.getAllModPaths(levelJSONPath.replace('assets', '_append'));
+		var lvlJson:LevelJSONData = parseBaseJson(level) ?? DEFAULT_LEVEL_JSON;
 
-		if (KoyaAssets.exists(levelJSONPath))
+		loadEnemyVariationPresents(lvlJson);
+
+		return lvlJson;
+	}
+
+	public static function loadEnemyVariationPresents(baseJson:LevelJSONData)
+	{
+		for (variation in baseJson.enemyVariations)
 		{
+			if (variation == null || variation?.present == null)
+				continue;
+
+			var presentPath:String = AssetPaths.json('data/enemy_variation_presents/${variation.present}');
+			var presentPathsAppend:Array<String> = AssetPaths.getAllModPaths(presentPath.replace('assets', '_append'));
+
+			if (!KoyaAssets.exists(presentPath))
+				continue;
+
+			var presentJson:EnemyVariationData = null;
+
 			try
 			{
-				var baseJson:LevelJSONData = Json.parse(KoyaAssets.getText(levelJSONPath));
-
-				for (path in levelJSONPathAppend)
-				{
-					var appendPath:String = path;
-
-					if (KoyaAssets.exists(appendPath))
-					{
-						try
-						{
-							var mergeJson:LevelJSONData = Json.parse(KoyaAssets.getText(appendPath));
-
-							baseJson = Json.parse(JsonMergeAndAppend.append(Json.stringify(baseJson), Json.stringify(mergeJson),
-								level // id does nothing with JSONS so yeah
-							));
-						}
-						catch (e)
-						{
-							trace(e.message);
-							WindowUtil.alert('Couldnt parse $appendPath', 'Cant parse Merge JSON for level: $level\n\n${e.message}');
-						}
-					}
-				}
-
-				return baseJson;
+				presentJson = Json.parse(presentPath);
 			}
 			catch (e)
 			{
+				presentJson = null;
 				trace(e.message);
-				WindowUtil.alert('FAILED TO PARSE LEVEL JSON : $level', 'Cant parse JSON for level: $level\n\n${e.message}');
+				WindowUtil.alert('Couldnt parse Enemy Variation Present', 'Cant parse Enemy Variation Present: $presentPath\n\n${e.message}');
 			}
+
+			if (presentJson == null)
+				continue;
+
+			for (path in presentPathsAppend)
+			{
+				if (!KoyaAssets.exists(path))
+					continue;
+
+				try
+				{
+					var mergePresentJson:EnemyVariationData = Json.parse(KoyaAssets.getText(path));
+
+					presentJson = Json.parse(JsonMergeAndAppend.append(Json.stringify(presentJson), Json.stringify(mergePresentJson),
+						variation.present // id does nothing with JSONS so yeah
+					));
+				}
+				catch (e)
+				{
+					trace(e.message);
+					WindowUtil.alert('Couldnt append mod enemy variation present',
+						'Cant parse append JSON for enemy variation present: ${variation.present}\n\n${e.message}');
+				}
+			}
+
+			Reflect.deleteField(variation, 'present');
+			variation = Json.parse(JsonMergeAndAppend.append(Json.stringify(variation), Json.stringify(presentJson),
+				variation.present // id does nothing with JSONS so yeah
+			));
+		}
+	}
+
+	public static function parseBaseJson(level:String):LevelJSONData
+	{
+		var levelJSONPath:String = AssetPaths.json('data/levels/$level');
+
+		if (!KoyaAssets.exists(levelJSONPath))
+			return null;
+
+		var levelJSONPathsAppend:Array<String> = AssetPaths.getAllModPaths(levelJSONPath.replace('assets', '_append'));
+
+		try
+		{
+			var baseJson:LevelJSONData = Json.parse(KoyaAssets.getText(levelJSONPath));
+
+			for (path in levelJSONPathsAppend)
+			{
+				if (!KoyaAssets.exists(path))
+					continue;
+				try
+				{
+					var mergeJson:LevelJSONData = Json.parse(KoyaAssets.getText(path));
+
+					baseJson = Json.parse(JsonMergeAndAppend.append(Json.stringify(baseJson), Json.stringify(mergeJson),
+						level // id does nothing with JSONS so yeah
+					));
+				}
+				catch (e)
+				{
+					trace(e.message);
+					WindowUtil.alert('Couldnt append mod level JSON', 'Cant parse Merge JSON for level: $level\n\n${e.message}');
+				}
+			}
+
+			return baseJson;
+		}
+		catch (e)
+		{
+			trace(e.message);
+			WindowUtil.alert('FAILED TO PARSE LEVEL JSON : $level', 'Cant parse JSON for level: $level\n\n${e.message}');
 		}
 
-		return DEFAULT_LEVEL_JSON;
+		return null;
 	}
 
 	public static function getRandomEnemyVariation(data:Array<EnemyVariationData>):EnemyVariationData
