@@ -93,7 +93,6 @@ class SurvivalModeState extends SpinningPlayerState
 
 		MenuStateControls.controlsOther(function()
 		{
-			PlayState.SURVIVAL_MODE = true;
 			switchState(() -> new PlayState(randomLevel));
 		}, () -> new MainMenuState(), false);
 

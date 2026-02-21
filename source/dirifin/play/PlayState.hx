@@ -103,13 +103,6 @@ class PlayState extends PauseMState
 	public static var LAST_PLAYED_LEVEL:String = null;
 
 	/**
-		Boolean to control
-		if survival mode functionality
-		should be enabled
-	**/
-	public static var SURVIVAL_MODE:Bool = false;
-
-	/**
 		Current health
 	**/
 	public var health:Int = 1;
@@ -124,8 +117,6 @@ class PlayState extends PauseMState
 		super();
 
 		health = 1;
-		if (SURVIVAL_MODE)
-			health = 3;
 
 		this.levelID = levelID ?? 'level1';
 		LAST_PLAYED_LEVEL = this.levelID;
@@ -244,9 +235,6 @@ class PlayState extends PauseMState
 
 			FlxG.sound.play(MegaVars.SOUND_MENU_BACK, 1.0, false, null, true, function()
 			{
-				if (SURVIVAL_MODE)
-					switchState(() -> new SurvivalModeState());
-
 				switchState(() -> new LevelSelectState());
 			});
 		}
@@ -254,19 +242,10 @@ class PlayState extends PauseMState
 		FlxG.watch.addQuick('inputQueue', inputQueue);
 
 		leftWatermark.text = 'Level: ${levelID.toUpperCase()}\n';
+		leftWatermark.text += 'Health ${health}\n';
 		leftWatermark.text += 'Score: ${score}\n';
 
 		var hsta = '';
-
-		if (SURVIVAL_MODE)
-		{
-			leftWatermark.text += 'Health ${health}\n';
-
-			hsta += 'survival';
-
-			if (DirifinSave.instance.shootWithDirectionals.get())
-				hsta += '-';
-		}
 
 		if (DirifinSave.instance.shootWithDirectionals.get())
 			hsta += 'swd';
