@@ -115,8 +115,6 @@ class PlayState extends PauseMState
 		leftWatermark.size = 12;
 
 		initCameras();
-
-		startTime = Date.now();
 	}
 
 	public function initCameras()
@@ -140,8 +138,6 @@ class PlayState extends PauseMState
 			if (camHUDOBJ != null)
 				camHUDOBJ.cameras = [camHUD];
 	}
-
-	var timeSincePaused:Date;
 
 	override function update(elapsed:Float)
 	{
@@ -196,8 +192,6 @@ class PlayState extends PauseMState
 			hsta += 'swd';
 
 		addHighScoreText(hsta);
-
-		leftWatermark.text += 'Time Survived: ${(Date.now().getTime() - startTime.getTime()).convert_ms_to_s()}s\n';
 	}
 
 	public function addHighScoreText(suffix:String = '')
