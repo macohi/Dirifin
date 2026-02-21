@@ -22,42 +22,102 @@ using macohi.util.TimeUtil;
 
 class PlayState extends PauseMState
 {
+	/**
+		Level Background Asset
+	**/
 	public var levelBG:LevelBG;
+
+	/**
+		Level ID / Level Json Name
+	**/
 	public var levelID:String = 'level1';
+
+	/**
+		Level Json Data
+	**/
 	public var levelJSON:LevelJSONData;
 
+	/**
+		Player Object
+	**/
 	public var player:Player;
 
+	/**
+		Object required in `bullets` until
+		the player cannot fire anymore
+	**/
 	public var maxBullets:Int = 4;
+
+	/**
+		Bullets Sprite Group
+	**/
 	public var bullets:FlxTypedSpriteGroup<Bullet>;
 
-	public var score:Int = 0;
-
+	/**
+		Direction Arrows Sprite Group
+	**/
 	public var directionArrows:FlxTypedSpriteGroup<DirectionArrow>;
 
+	/**
+		Amount of objects in `enemies`
+		that will prevent further enemy
+		spawnings
+	**/
 	public var maxEnemies:Int = 6;
+
+	/**
+		Enemy Sprite Group
+	**/
 	public var enemies:FlxTypedSpriteGroup<Enemy>;
 
+	/**
+		Gameplay Camera
+	**/
 	public var camGame:FlxCamera;
+
+	/**
+		HUD Camera
+	**/
 	public var camHUD:FlxCamera;
 
+	/**
+		Objects to be added to `camGame`
+	**/
 	public var camGameObjects(get, never):Array<FlxBasic>;
 
 	function get_camGameObjects():Array<FlxBasic>
 		return [levelBG, player, bullets, directionArrows, enemies,];
 
+	/**
+		Objects to be added to `camHUD`
+	**/
 	public var camHUDObjects(get, never):Array<FlxBasic>;
 
 	function get_camHUDObjects():Array<FlxBasic>
 		return [leftWatermark, rightWatermark, pauseBG];
 
+	/**
+		The `levelID` from the
+		previous play session
+	**/
 	public static var LAST_PLAYED_LEVEL:String = null;
 
-	public var health:Int = 1;
-
+	/**
+		Boolean to control
+		if survival mode functionality
+		should be enabled
+	**/
 	public static var SURVIVAL_MODE:Bool = false;
 
-	public var startTime:Date;
+	/**
+		Current health
+	**/
+	public var health:Int = 1;
+
+	/**
+		Current score
+	**/
+	public var score:Int = 0;
 
 	override public function new(levelID:String = null)
 	{
@@ -103,7 +163,7 @@ class PlayState extends PauseMState
 
 		generateDirectionArrows();
 
-		directionUpdate();
+		directionArrowUpdate();
 
 		super.create();
 
@@ -115,8 +175,29 @@ class PlayState extends PauseMState
 		leftWatermark.size = 12;
 
 		initCameras();
+
+		directionArrowUpdate();
 	}
 
+	/**
+		Creates each directional arrow
+	**/
+	public function generateDirectionArrows()
+	{
+		Direction.forEachDirectional((i) ->
+		{
+			var da = new DirectionArrow();
+			da.screenCenter();
+			da.changeDirection(i, player);
+			directionArrows.add(da);
+		});
+	}
+
+	/**
+		Initalize the
+		gameplay and HUD cameras
+		and add their objects
+	**/
 	public function initCameras()
 	{
 		camHUD = new FlxCamera();
@@ -149,7 +230,6 @@ class PlayState extends PauseMState
 				addToInputQueue();
 			processInputQueue();
 
-			directionUpdate();
 			bulletUpdate();
 
 			enemyUpdate();
@@ -194,6 +274,11 @@ class PlayState extends PauseMState
 		addHighScoreText(hsta);
 	}
 
+	/**
+		Add the highscore text,
+		perform current score and current level highscore checks
+		and take into account suffixes for the saving
+	**/
 	public function addHighScoreText(suffix:String = '')
 	{
 		if (suffix.isBlankStr())
@@ -208,8 +293,17 @@ class PlayState extends PauseMState
 		leftWatermark.text += 'High Score${suffTXT}: ${Highscores.getHighscore(levelID + suff)}';
 	}
 
+	/**
+		Array of inputs
+		that were added
+	**/
 	public var inputQueue:Array<String> = [];
 
+	/**
+		Checks the gameplay controls
+		and if they're in use they're
+		added to `inputQueue`
+	**/
 	public function addToInputQueue()
 	{
 		for (control in [
@@ -223,15 +317,9 @@ class PlayState extends PauseMState
 				inputQueue.push(control);
 	}
 
-	public function playerFire()
-	{
-		if (bullets.members.length < maxBullets)
-		{
-			FlxG.sound.play(AssetPaths.sound('shoot'));
-			bullets.add(new Bullet().makeBullet(player));
-		}
-	}
-
+	/**
+		Parse all inputs inside of `inputQueue`
+	**/
 	public function processInputQueue()
 	{
 		for (input in inputQueue)
@@ -254,18 +342,43 @@ class PlayState extends PauseMState
 
 				if (DirifinSave.instance.shootWithDirectionals.get())
 					playerFire();
+
+				directionArrowUpdate();
 			}
 
 			inputQueue.remove(input);
 		}
 	}
 
-	public function directionUpdate()
+	/**
+		Spawns bullets if there
+		is no more bullets then `maxBullets`
+	**/
+	public function playerFire()
 	{
-		for (arrow in directionArrows.members)
-			arrow.alpha = (player.direction == arrow.direction) ? 0.6 : 1.0;
+		if (bullets.members.length >= maxBullets)
+			return;
+
+		FlxG.sound.play(AssetPaths.sound('shoot'));
+		bullets.add(new Bullet().makeBullet(player));
 	}
 
+	/**
+		Updates direction arrows to
+		change their visibility if they're
+		the current player direction arrow
+		or not
+	**/
+	public function directionArrowUpdate()
+	{
+		for (arrow in directionArrows.members)
+			arrow.alpha = (player.direction == arrow.direction) ? 1.0 : 0.3;
+	}
+
+	/**
+		Move bullets and perform checks and functions
+		for if or when they're going to deactivate
+	**/
 	public function bulletUpdate()
 	{
 		for (bullet in bullets.members)
@@ -274,7 +387,7 @@ class PlayState extends PauseMState
 				continue;
 
 			bullet.move();
-			
+
 			if (!(bullet.outOfBounds && !bullet.dying))
 				continue;
 
@@ -296,19 +409,17 @@ class PlayState extends PauseMState
 		}
 	}
 
-	public function generateDirectionArrows()
-	{
-		Direction.forEachDirectional((i) ->
-		{
-			var da = new DirectionArrow();
-			da.screenCenter();
-			da.changeDirection(i, player);
-			directionArrows.add(da);
-		});
-	}
-
+	/**
+		The direction of
+		the last spawned enemy
+	**/
 	public var previousEnemyDir:Direction = -1;
 
+	/**
+		Creates a new enemy
+		if certain conditions
+		are met
+	**/
 	public function makeEnemy()
 	{
 		var enemySpawningData:EnemySpawningData = levelJSON?.enemy_spawning ?? null;
@@ -347,6 +458,10 @@ class PlayState extends PauseMState
 		FlxG.sound.play(AssetPaths.sound('monster'));
 	}
 
+	/**
+		Perform Zindex sorting on the enemies sprite group and
+		performing update operations on enemies
+	**/
 	public function enemyUpdate()
 	{
 		makeEnemy();
@@ -367,7 +482,7 @@ class PlayState extends PauseMState
 			var destroyEnemy = enemy.outOfBounds;
 
 			if (!destroyEnemy)
-				checkForEnemyCollidingWithBullet(enemy);
+				enemyCheckForBulletCollision(enemy);
 
 			if (enemy.overlaps(player) && !destroyEnemy)
 			{
@@ -387,7 +502,13 @@ class PlayState extends PauseMState
 		}
 	}
 
-	function checkForEnemyCollidingWithBullet(enemy:Enemy)
+	/**
+		Performs checks on `enemy`
+		against every bullet in
+		the bullets sprite group
+		for collision
+	**/
+	function enemyCheckForBulletCollision(enemy:Enemy)
 	{
 		var destroyEnemy:Bool = false;
 
@@ -409,16 +530,27 @@ class PlayState extends PauseMState
 		return destroyEnemy;
 	}
 
+	/**
+		Perform scoring operations
+	**/
 	public function performScoring(enemy:Enemy)
 	{
 		score += 100;
 	}
 
+	/**
+		The keycheck for pausing
+	**/
 	override function getPauseBoolean():Bool
 	{
 		return Controls.instance.justPressed('ui_accept');
 	}
 
+	/**
+		When the game pauses or unpauses
+		this is run to perform the
+		required operations
+	**/
 	override function togglePaused()
 	{
 		super.togglePaused();
@@ -426,6 +558,10 @@ class PlayState extends PauseMState
 		rightWatermark.visible = paused;
 	}
 
+	/**
+		When the current health is lesser
+		then 1. This is run.
+	**/
 	public function deathFunction()
 	{
 		health = 0;
