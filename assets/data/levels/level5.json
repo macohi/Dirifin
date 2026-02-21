@@ -1,9 +1,16 @@
 {
 	"enemySpawning": {
-		"dupe_direction_chance": 30,
+		"dupe_direction_chance": 20,
 		"spawn_chance": {
-			"max": 30.0,
-			"min": 15.0
+			"max": 17.5,
+			"min": 5.0
 		}
-	}
+	},
+	"enemyVariations": [
+		null,
+		{
+			"graphic": "speed",
+			"speed_multiplier": 1.2
+		}
+	]
 }
