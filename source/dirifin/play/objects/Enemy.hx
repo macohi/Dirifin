@@ -10,7 +10,11 @@ class Enemy extends DirectionSprite
 	{
 		super(-0.1 * variationData?.speed_multiplier ?? 1.0, x, y);
 
-		loadGraphic(AssetPaths.image('enemies/${variationData?.graphic ?? 'default'}'), true, 16, 16);
+		if (variationData?.graphic != null)
+			loadGraphic(AssetPaths.image('enemies/${variationData?.graphic}'), true, 16, 16);
+		else
+			loadGraphic(AssetPaths.image('enemies/default'), true, 16, 16);
+
 		addAnimByFrames('LEFT', [0]);
 		addAnimByFrames('DOWN', [1]);
 		addAnimByFrames('UP', [2]);
