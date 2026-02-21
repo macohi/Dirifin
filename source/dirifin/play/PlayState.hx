@@ -407,7 +407,7 @@ class PlayState extends PauseMState
 
 	public function deathFunction()
 	{
-		health = -1;
+		health = 0;
 
 		togglePaused();
 
