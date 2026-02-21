@@ -1,1 +1,6 @@
-{}
+{
+	"difficulty": {
+		"regular": 1,
+		"swd": 0
+	}
+}

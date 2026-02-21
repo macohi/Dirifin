@@ -32,8 +32,15 @@ typedef LevelSettingsData =
 	?bg_scale_modifier:Array<Null<Float>>
 }
 
+typedef LevelDifficultyData =
+{
+	?regular:Int,
+	?swd:Int,
+}
+
 typedef LevelJSONData =
 {
+	?difficulty:LevelDifficultyData,
 	?enemySpawning:EnemySpawningData,
 	?enemyVariations:Array<EnemyVariationData>,
 	?settings:LevelSettingsData,
@@ -117,7 +124,7 @@ class LevelJSONClass
 			));
 
 			baseJson.enemyVariations.remove(variation);
-			
+
 			Reflect.deleteField(presentJson, 'present');
 			newEnemyVariations.push(presentJson);
 		}

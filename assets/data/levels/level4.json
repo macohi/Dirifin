@@ -1,4 +1,8 @@
 {
+	"difficulty": {
+		"regular": 3,
+		"swd": 1
+	},
 	"enemySpawning": {
 		"dupe_direction_chance": 15,
 		"spawn_chance": {
