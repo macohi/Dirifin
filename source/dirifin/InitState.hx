@@ -1,5 +1,6 @@
 package dirifin;
 
+import macohi.overrides.MText;
 import dirifin.ui.LevelSelectState;
 import dirifin.input.Controls;
 import dirifin.modding.DirifinModCore;
@@ -73,7 +74,12 @@ class InitState extends SpinningPlayerState
 
 		trace('Completed initalization');
 
-		new FlxTimer().start((spin_speed * 4) * FlxG.random.int(0, 2), (t) ->
+		var reportTip:MText = new MText().makeText('You can press SHIFT + R to go to the github issues page', 16);
+		reportTip.screenCenter();
+		reportTip.y = FlxG.height * 0.8;
+		add(reportTip);
+
+		new FlxTimer().start((spin_speed * 4) * FlxG.random.float(0.5, 2), (t) ->
 		{
 			switchState(() -> new MainMenuState());
 		});
