@@ -25,10 +25,10 @@ class SurvivalModeState extends MState
 				case LEFT:
 					player.changeDirection(DOWN);
 				case DOWN:
-					player.changeDirection(UP);
-				case UP:
 					player.changeDirection(RIGHT);
 				case RIGHT:
+					player.changeDirection(UP);
+				case UP:
 					player.changeDirection(LEFT);
 			}
 		}, 0);
