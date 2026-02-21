@@ -5,7 +5,6 @@ import dirifin.modding.DirifinModCore;
 import dirifin.save.DirifinSave;
 import dirifin.ui.MainMenuState;
 import flixel.FlxG;
-import macohi.backend.DefineManager;
 import macohi.backend.api.DiscordClient;
 import macohi.debugging.CrashHandler;
 import macohi.debugging.CustomTrace;
@@ -179,16 +178,5 @@ class InitState extends MState
 
 	public function defineManagement()
 	{
-		DefineManager.definesAndTheirFunctions.set('debug', [
-			(d) ->
-			{
-				trace('DEBUG BUILD!');
-			},
-			(d) ->
-			{
-				trace('RELEASE BUILD!');
-			},
-		]);
-		DefineManager.parseDefinesAndTheirFunctions();
 	}
 }
