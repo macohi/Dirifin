@@ -121,7 +121,6 @@ class LevelSelectState extends OptionsMenuState
 
 		for (levelBG in levelBGs)
 		{
-			levelBG.active = levelBG.alpha > 0;
 			levelBG.screenCenter();
 
 			if (menuType == Vertical)
