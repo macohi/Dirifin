@@ -1,10 +1,7 @@
 # Enemy Variation Data
 
 Entries of the `enemyVariations` level JSON field.
-
 Can be `null` in which a default enemy will be spawned.
-
-## Data
 
 All the data fields provided are optional.
 

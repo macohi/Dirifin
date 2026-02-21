@@ -1,9 +1,5 @@
 # Level Settings Data
 
-The `settings` field in level JSONS.
-
-## Data
-
 All the data fields provided are optional
 
 - `camera_zoom`: Zoom override
