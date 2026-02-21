@@ -20,6 +20,7 @@ import macohi.util.MusicManager;
 
 using macohi.funkin.vslice.util.AnsiUtil;
 using macohi.util.FlxKeyUtil;
+using macohi.util.StringUtil;
 
 class InitState extends MState
 {
@@ -182,12 +183,12 @@ class InitState extends MState
 		var defineShit = [
 			' Define Shit '.bg_bright_black(),
 			' * Build: ::buildtype::',
-
+			'',
 			' * CLEAR_LOGS: ::CLEAR_LOGS::',
-			' * ENABLE_DISCORDRPC: ::ENABLE_DISCORDRPC::',
 			' * ZOOM_OUT: ::ZOOM_OUT::',
-			' * CRASH_HANDLER: ::CRASH_HANDLER::',
 			' * MOD_SUPPORT: ::MOD_SUPPORT::',
+			' * CRASH_HANDLER: ::CRASH_HANDLER::',
+			' * ENABLE_DISCORDRPC: ::ENABLE_DISCORDRPC::',
 			' * ENABLE_NEWGROUNDS: ::ENABLE_NEWGROUNDS::',
 		];
 
@@ -196,6 +197,12 @@ class InitState extends MState
 
 		for (shit in defineShit)
 		{
+			if (shit.isBlankStr())
+			{
+				trace('');
+				continue;
+			}
+
 			var shitTemp = new Template(shit);
 			trace('${shitTemp.execute({
 				buildtype: #if debug 'Debug' #else 'Release' #end,
