@@ -180,7 +180,7 @@ class InitState extends MState
 	public function defineManagement()
 	{
 		var defineShit = [
-			'Define Shit',
+			' Define Shit '.bg_bright_black(),
 			' * Build: ::buildtype::',
 			' * CLEAR_LOGS:::CLEAR_LOGS::',
 		];
@@ -191,12 +191,11 @@ class InitState extends MState
 		for (shit in defineShit)
 		{
 			var shitTemp = new Template(shit);
-			trace(' ${shitTemp.execute({
+			trace('${shitTemp.execute({
 				buildtype: #if debug 'Debug' #else 'Release' #end,
 
 				CLEAR_LOGS: #if CLEAR_LOGS enabled_bg #else disabled_bg #end,
-			})} '.bold()
-				.bg_bright_black());
+			})}'.bold());
 		}
 	}
 }
