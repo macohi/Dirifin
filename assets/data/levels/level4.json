@@ -9,7 +9,8 @@
 	"enemyVariations": [
 		{
 			"graphic": "speed",
-			"speed_multiplier": 1.2
+			"speed_multiplier": 1.2,
+			"variation_chance": 15.0
 		}
 	]
 }
