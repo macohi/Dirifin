@@ -112,7 +112,7 @@ class PlayState extends PauseMState
 
 		leftWatermark.text = 'v';
 		leftWatermark.visible = true;
-		leftWatermark.size = 16;
+		leftWatermark.size = 12;
 
 		initCameras();
 
@@ -194,7 +194,7 @@ class PlayState extends PauseMState
 			hsta += 'swd';
 
 		addHighScoreText(hsta);
-		
+
 		leftWatermark.text += 'Time Survived: ${(Date.now().getTime() - startTime.getTime()).convert_ms_to_s()}s\n';
 	}
 
