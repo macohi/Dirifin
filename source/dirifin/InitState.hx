@@ -182,7 +182,13 @@ class InitState extends MState
 		var defineShit = [
 			' Define Shit '.bg_bright_black(),
 			' * Build: ::buildtype::',
+
 			' * CLEAR_LOGS: ::CLEAR_LOGS::',
+			' * ENABLE_DISCORDRPC: ::ENABLE_DISCORDRPC::',
+			' * ZOOM_OUT: ::ZOOM_OUT::',
+			' * CRASH_HANDLER: ::CRASH_HANDLER::',
+			' * MOD_SUPPORT: ::MOD_SUPPORT::',
+			' * ENABLE_NEWGROUNDS: ::ENABLE_NEWGROUNDS::',
 		];
 
 		var enabled_bg = ' enabled '.bg_bright_green();
@@ -194,6 +200,11 @@ class InitState extends MState
 			trace('${shitTemp.execute({
 				buildtype: #if debug 'Debug' #else 'Release' #end,
 
+				ENABLE_NEWGROUNDS: #if ENABLE_NEWGROUNDS enabled_bg #else disabled_bg #end,
+				MOD_SUPPORT: #if MOD_SUPPORT enabled_bg #else disabled_bg #end,
+				CRASH_HANDLER: #if CRASH_HANDLER enabled_bg #else disabled_bg #end,
+				ZOOM_OUT: #if ZOOM_OUT enabled_bg #else disabled_bg #end,
+				ENABLE_DISCORDRPC: #if ENABLE_DISCORDRPC enabled_bg #else disabled_bg #end,
 				CLEAR_LOGS: #if CLEAR_LOGS enabled_bg #else disabled_bg #end,
 			})}'.bold());
 		}
