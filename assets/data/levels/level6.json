@@ -2,7 +2,7 @@
 	"enemySpawning": {
 		"dupe_direction_chance": 25,
 		"spawn_chance": {
-			"max": 14.0,
+			"max": 10.0,
 			"min": 8.0
 		}
 	},
