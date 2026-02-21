@@ -1,8 +1,12 @@
 package dirifin.ui;
 
 import dirifin.input.MenuStateControls;
+import dirifin.play.LevelBG;
 import dirifin.play.PlayState;
 import flixel.FlxG;
+import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import macohi.backend.api.DiscordClient;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.koya.backend.AssetTextList;
@@ -12,6 +16,8 @@ import macohi.funkin.koya.frontend.ui.menustate.MenuState;
 class LevelSelectState extends MenuState
 {
 	public var levelsTextList:AssetTextList = new AssetTextList(AssetPaths.txt('data/levels'));
+
+	public var levelBGs:FlxTypedSpriteGroup<LevelBG> = new FlxTypedSpriteGroup<LevelBG>();
 
 	override public function new()
 	{
@@ -58,5 +64,41 @@ class LevelSelectState extends MenuState
 		super.create();
 
 		DiscordClient.changePresence('What to play...', 'Level Select');
+
+		add(levelBGs);
+
+		for (grp in [itemsAtlasTextGroup, itemsFlxTextGroup, itemsSpriteGroup])
+		{
+			remove(grp);
+			add(grp);
+		}
+
+		for (i => level in itemList)
+		{
+			var levelBG = new LevelBG(level);
+			
+			levelBG.screenCenter();
+			levelBG.ID = i;
+			levelBG.alpha = 0;
+
+			levelBGs.add(levelBG);
+		}
+
+		select();
+	}
+
+	override function select(change:Int = 0)
+	{
+		super.select(change);
+
+		for (levelBG in levelBGs)
+		{
+			FlxTween.cancelTweensOf(levelBG);
+			FlxTween.tween(levelBG, {
+				alpha: (currentSelection.value() == levelBG.ID) ? 0.4 : 0
+			}, 0.3, {
+				ease: FlxEase.quadInOut
+			});
+		}
 	}
 }

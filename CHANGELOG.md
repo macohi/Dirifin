@@ -11,6 +11,7 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ### Added
 
+- Added Level BGs in the BG of the level select
 - **ADDED ENEMY VARIATIONS!**
 	- They work via the new `enemyVariations` field in level JSONs. And you can use the new levels as an example as to how they work.
 - Added Levels 4, 5, and 6
