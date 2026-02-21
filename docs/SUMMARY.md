@@ -12,7 +12,7 @@
      
      - [Adding a Level]()
      - [Adding a Song](./03-modding-softcode/ADDING_SONG.md)
-     - [Adding Credits]()
+     - [Adding Credits](./03-modding-softcode/ADDING_CREDITS.md)
 
      - [Scripting]()
 	     - [Adding an Enemy Variation]()
