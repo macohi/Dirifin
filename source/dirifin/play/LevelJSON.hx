@@ -71,6 +71,8 @@ class LevelJSONClass
 
 	public static function loadEnemyVariationPresents(baseJson:LevelJSONData)
 	{
+		if (baseJson.enemyVariations == null || baseJson.enemyVariations.length == 0) return;
+
 		var newEnemyVariations:Array<EnemyVariationData> = [];
 
 		for (i => variation in baseJson.enemyVariations)
