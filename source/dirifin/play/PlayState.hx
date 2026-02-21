@@ -367,6 +367,8 @@ class PlayState extends PauseMState
 					destroyEnemy = true;
 					health -= 1;
 
+					FlxG.sound.play(AssetPaths.sound('hurt'));
+
 					FlxFlicker.stopFlickering(player);
 					FlxFlicker.flicker(player, 0.3);
 				}
