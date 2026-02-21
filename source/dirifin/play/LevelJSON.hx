@@ -62,7 +62,9 @@ class LevelJSONClass
 
 	public static function loadEnemyVariationPresents(baseJson:LevelJSONData)
 	{
-		for (variation in baseJson.enemyVariations)
+		var newEnemyVariations:Array<EnemyVariationData> = [];
+
+		for (i => variation in baseJson.enemyVariations)
 		{
 			if (variation == null || variation?.present == null)
 				continue;
@@ -110,11 +112,18 @@ class LevelJSONClass
 				}
 			}
 
-			Reflect.deleteField(variation, 'present');
-			variation = Json.parse(JsonMergeAndAppend.append(Json.stringify(variation), Json.stringify(presentJson),
+			presentJson = Json.parse(JsonMergeAndAppend.append(Json.stringify(presentJson), Json.stringify(variation),
 				variation.present // id does nothing with JSONS so yeah
 			));
+
+			baseJson.enemyVariations.remove(variation);
+			
+			Reflect.deleteField(presentJson, 'present');
+			newEnemyVariations.push(presentJson);
 		}
+
+		for (variation in newEnemyVariations)
+			baseJson.enemyVariations.push(variation);
 	}
 
 	public static function parseBaseJson(level:String):LevelJSONData
