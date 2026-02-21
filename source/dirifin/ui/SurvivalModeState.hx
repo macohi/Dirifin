@@ -1,5 +1,6 @@
 package dirifin.ui;
 
+import flixel.group.FlxSpriteGroup;
 import macohi.effects.DeltaruneKnight;
 import dirifin.input.MenuStateControls;
 import dirifin.play.PlayState;
@@ -13,14 +14,18 @@ class SurvivalModeState extends SpinningPlayerState
 
 	public var ogPlayerY:Float = 0;
 
-	override function create() {
+	public var playerTrail:FlxSpriteGroup;
+
+	override function create()
+	{
 		spin_speed = 0.1;
 
 		super.create();
 
 		ogPlayerY = player.y;
 
-		add(DeltaruneKnight.createYTrail(player, ogPlayerY, 0.1, .5, 3));
+		playerTrail = DeltaruneKnight.createYTrail(player, ogPlayerY, 0.1, .5, 3);
+		add(playerTrail);
 	}
 
 	override function update(elapsed:Float)
@@ -30,6 +35,12 @@ class SurvivalModeState extends SpinningPlayerState
 		float_tick++;
 
 		player.y = ogPlayerY + (Math.sin(float_tick * float_speed) * float_height);
+
+		for (trail in playerTrail.members)
+		{
+			trail.scale.set(player.scale.x, player.scale.y);
+			trail.updateHitbox();
+		}
 
 		MenuStateControls.controlsOther(function()
 		{
