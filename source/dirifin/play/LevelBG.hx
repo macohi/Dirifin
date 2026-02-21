@@ -31,7 +31,7 @@ class LevelBG extends MSprite
 			calc_height = height / (camera.height / camera.zoom);
 		}
 
-		scale.set(MSprite.PIXEL_SCALE + calc_width, MSprite.PIXEL_SCALE + calc_height);
+		scale.set((MSprite.PIXEL_SCALE * 2) + calc_width, (MSprite.PIXEL_SCALE * 2) + calc_height);
 
 		// trace(calc_width);
 		// trace(calc_height);
