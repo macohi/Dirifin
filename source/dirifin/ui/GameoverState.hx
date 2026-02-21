@@ -28,6 +28,7 @@ class GameoverState extends MState
 		add(gameoverText);
 		gameoverText.screenCenter();
 		gameoverText.color = FlxColor.RED;
+		gameoverText.alignment = CENTER;
 
 		DiscordClient.changePresence('DIED!', 'GAME OVER');
 	}
