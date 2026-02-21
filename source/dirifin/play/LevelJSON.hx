@@ -12,9 +12,15 @@ typedef EnemySpawningData =
 	spawn_chance:MinMaxTypedef
 }
 
+typedef EnemyVariationData =
+{
+	?speed_multiplier:Float
+}
+
 typedef LevelJSONData =
 {
-	enemySpawning:EnemySpawningData
+	enemySpawning:EnemySpawningData,
+	?enemyVariations:Array<EnemyVariationData>,
 }
 
 class LevelJSONClass
