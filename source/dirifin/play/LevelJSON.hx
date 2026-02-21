@@ -60,7 +60,9 @@ class LevelJSONClass
 						{
 							var mergeJson:LevelJSONData = Json.parse(KoyaAssets.getText(mergePath));
 
-							baseJson = Json.parse(JsonMergeAndAppend.merge(Json.stringify(baseJson), Json.stringify(mergeJson),
+							baseJson = Json.parse(JsonMergeAndAppend.merge(
+								Json.stringify(baseJson),
+								Json.stringify(mergeJson),
 								level // id does nothing with JSONS so yeah
 							));
 						}
