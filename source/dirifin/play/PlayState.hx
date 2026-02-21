@@ -161,7 +161,10 @@ class PlayState extends PauseMState
 			{
 				FlxG.sound.play(MegaVars.SOUND_MENU_BACK, 1.0, false, null, true, function()
 				{
-					switchState(() -> new MainMenuState());
+					if (SURVIVAL_MODE)
+						switchState(() -> new SurvivalModeState());
+
+					switchState(() -> new LevelSelectState());
 				});
 			}
 		}
