@@ -44,6 +44,9 @@ class DirectionSprite extends MSprite
 	{
 		this.direction = direction;
 
+		if (this.direction.toInt() > RIGHT.toInt())
+			direction = LEFT;
+
 		if (player == null)
 			return;
 
