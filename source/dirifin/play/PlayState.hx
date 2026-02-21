@@ -55,7 +55,7 @@ class PlayState extends PauseMState
 
 	public var health:Int = 1;
 
-	public static var SURVIVAL_MODE:Bool = true;
+	public static var SURVIVAL_MODE:Bool = false;
 
 	override public function new(levelID:String = null)
 	{
