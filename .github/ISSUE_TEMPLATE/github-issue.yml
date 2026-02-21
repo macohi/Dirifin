@@ -1,6 +1,6 @@
 name: "Github Issue"
 description: "Report an issue with the github"
-title: "[ISSUE-GITHUB] "
+title: "[GITHUB ISSUE] "
 labels: "bug, github"
 body:
 - type: textarea
