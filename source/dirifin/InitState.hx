@@ -6,6 +6,7 @@ import dirifin.save.DirifinSave;
 import dirifin.ui.MainMenuState;
 import flixel.FlxG;
 import haxe.Template;
+import lime.app.Application;
 import macohi.backend.api.DiscordClient;
 import macohi.debugging.CrashHandler;
 import macohi.debugging.CustomTrace;
@@ -34,6 +35,8 @@ class InitState extends MState
 		haxe.Log.trace = CustomTrace.newTrace;
 
 		CrashHandler.initalize('', 'Dirifin_', '', 'Dirifin');
+
+		Application.current.window.title = 'Dirifin ${Version.VERSION}';
 
 		initalizeInstances();
 
