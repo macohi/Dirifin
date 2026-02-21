@@ -182,7 +182,7 @@ class InitState extends MState
 		var defineShit = [
 			' Define Shit '.bg_bright_black(),
 			' * Build: ::buildtype::',
-			' * CLEAR_LOGS:::CLEAR_LOGS::',
+			' * CLEAR_LOGS: ::CLEAR_LOGS::',
 		];
 
 		var enabled_bg = ' enabled '.bg_bright_green();
