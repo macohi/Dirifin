@@ -1,5 +1,6 @@
 package dirifin.play;
 
+import flixel.FlxG;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.overrides.MSprite;
 
@@ -18,25 +19,5 @@ class LevelBG extends MSprite
 		}
 
 		applyPixelScale();
-	}
-
-	override function applyPixelScale()
-	{
-		var calc_width = width / (camera.width * camera.zoom);
-		var calc_height = height / (camera.height * camera.zoom);
-
-		if (camera.zoom < 1)
-		{
-			calc_width = width / (camera.width / camera.zoom);
-			calc_height = height / (camera.height / camera.zoom);
-		}
-
-		scale.set((MSprite.PIXEL_SCALE * 2) + calc_width, (MSprite.PIXEL_SCALE * 2) + calc_height);
-
-		// trace(calc_width);
-		// trace(calc_height);
-		// trace(scale);
-
-		updateHitbox();
 	}
 }
