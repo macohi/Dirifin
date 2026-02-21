@@ -7,10 +7,13 @@
 		}
 	},
 	"enemyVariations": [
-		null,
 		{
 			"graphic": "speed",
 			"speed_multiplier": 1.2
+		},
+		{
+			"graphic": "speed-tier2",
+			"speed_multiplier": 1.6
 		}
 	]
 }
