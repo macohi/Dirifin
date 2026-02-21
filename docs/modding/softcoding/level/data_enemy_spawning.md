@@ -1,6 +1,6 @@
 # Enemy Spawning Data
 
-The `enemySpawning` field in level JSONS.
+The `enemy_spawning` field in level JSONS.
 
 - `dupe_direction_chance`: Possibility of enemies spawning in the same direction
 - `spawn_chance`: Generated random chance of enemies spawning

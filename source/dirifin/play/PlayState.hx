@@ -280,19 +280,19 @@ class PlayState extends PauseMState
 
 	public function enemyUpdate()
 	{
-		var enemySpawningData:EnemySpawningData = levelJSON?.enemySpawning ?? null;
-		var enemyVariationData:Array<EnemyVariationData> = levelJSON?.enemyVariations ?? [];
+		var EnemySpawningData:EnemySpawningData = levelJSON?.enemy_spawning ?? null;
+		var enemyVariationData:Array<EnemyVariationData> = levelJSON?.enemy_variations ?? [];
 
 		var enemyVariation:EnemyVariationData = LevelJSONClass.getRandomEnemyVariation(enemyVariationData);
 
-		if (FlxG.random.bool(FlxG.random.float(enemySpawningData?.spawn_chance?.min ?? 0, enemySpawningData?.spawn_chance?.max ?? 3)))
+		if (FlxG.random.bool(FlxG.random.float(EnemySpawningData?.spawn_chance?.min ?? 0, EnemySpawningData?.spawn_chance?.max ?? 3)))
 		{
 			var newEnemyDir = Direction.randomDirection();
 
 			if (enemies.members.length >= maxEnemies)
 				return;
 
-			if (newEnemyDir == previousEnemyDir && !FlxG.random.bool(enemySpawningData?.dupe_direction_chance ?? 10))
+			if (newEnemyDir == previousEnemyDir && !FlxG.random.bool(EnemySpawningData?.dupe_direction_chance ?? 10))
 				return;
 
 			previousEnemyDir = newEnemyDir;

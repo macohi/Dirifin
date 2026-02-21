@@ -9,7 +9,7 @@ class DirifinModCore extends ModCore
 	{
 		super();
 
-		MOD_MIN_API_VERSION = 3.0;
+		MOD_MIN_API_VERSION = 3.1;
 	}
 
 	override function get_enabledMods():Array<String>

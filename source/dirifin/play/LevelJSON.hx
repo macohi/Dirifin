@@ -42,15 +42,15 @@ typedef LevelDifficultyData =
 
 typedef LevelJSONData =
 {
-	?enemySpawning:EnemySpawningData,
-	?enemyVariations:Array<EnemyVariationData>,
+	?enemy_spawning:EnemySpawningData,
+	?enemy_variations:Array<EnemyVariationData>,
 	?settings:LevelSettingsData,
 }
 
 class LevelJSONClass
 {
 	public static var DEFAULT_LEVEL_JSON:LevelJSONData = {
-		enemySpawning: {
+		enemy_spawning: {
 			dupe_direction_chance: 10.0,
 			spawn_chance: {
 				max: 3.0,
@@ -71,11 +71,11 @@ class LevelJSONClass
 
 	public static function loadEnemyVariationPresents(baseJson:LevelJSONData)
 	{
-		if (baseJson.enemyVariations == null || baseJson.enemyVariations.length == 0) return;
+		if (baseJson.enemy_variations == null || baseJson.enemy_variations.length == 0) return;
 
-		var newEnemyVariations:Array<EnemyVariationData> = [];
+		var newenemy_variations:Array<EnemyVariationData> = [];
 
-		for (i => variation in baseJson.enemyVariations)
+		for (i => variation in baseJson.enemy_variations)
 		{
 			if (variation == null || variation?.present == null)
 				continue;
@@ -127,14 +127,14 @@ class LevelJSONClass
 				variation.present // id does nothing with JSONS so yeah
 			));
 
-			baseJson.enemyVariations.remove(variation);
+			baseJson.enemy_variations.remove(variation);
 
 			Reflect.deleteField(presentJson, 'present');
-			newEnemyVariations.push(presentJson);
+			newenemy_variations.push(presentJson);
 		}
 
-		for (variation in newEnemyVariations)
-			baseJson.enemyVariations.push(variation);
+		for (variation in newenemy_variations)
+			baseJson.enemy_variations.push(variation);
 	}
 
 	public static function parseBaseJson(level:String):LevelJSONData
