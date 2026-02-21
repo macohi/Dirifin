@@ -1,5 +1,6 @@
 package dirifin.play;
 
+import flixel.FlxG;
 import haxe.Json;
 import macohi.backend.JsonMergeAndAppend;
 import macohi.funkin.koya.backend.AssetPaths;
@@ -17,6 +18,8 @@ typedef EnemySpawningData =
 
 typedef EnemyVariationData =
 {
+	?variation_chance:Float,
+
 	?speed_multiplier:Float,
 	?graphic:String,
 }
@@ -89,5 +92,20 @@ class LevelJSONClass
 		}
 
 		return DEFAULT_LEVEL_JSON;
+	}
+
+	public static function getRandomEnemyVariation(data:Array<EnemyVariationData>):EnemyVariationData
+	{
+		if (data == null || data.length == 0)
+			return null;
+
+		var random_int = FlxG.random.int(0, data.length - 1);
+		for (i => variation in data)
+		{
+			if (FlxG.random.bool(variation?.variation_chance ?? ((random_int == i) ? 100 : 0)))
+				return variation;
+		}
+
+		return null;
 	}
 }

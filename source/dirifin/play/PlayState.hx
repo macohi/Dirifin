@@ -283,7 +283,7 @@ class PlayState extends PauseMState
 		var enemySpawningData:EnemySpawningData = levelJSON?.enemySpawning ?? null;
 		var enemyVariationData:Array<EnemyVariationData> = levelJSON?.enemyVariations ?? [];
 
-		var enemyVariation:EnemyVariationData = enemyVariationData[FlxG.random.int(0, enemyVariationData.length - 1)] ?? null;
+		var enemyVariation:EnemyVariationData = LevelJSONClass.getRandomEnemyVariation(enemyVariationData);
 
 		if (FlxG.random.bool(FlxG.random.float(enemySpawningData?.spawn_chance?.min ?? 0, enemySpawningData?.spawn_chance?.max ?? 3)))
 		{
