@@ -11,7 +11,4 @@ then it's not a guarentee it'll happen
 
 - [ ] Bonus: MEDALS!
 
-- [ ] Level 4
-- [ ] Level 5
-- [ ] Level 6
 - [ ] ENEMY VARIATIONS
