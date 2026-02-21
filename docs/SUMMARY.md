@@ -12,7 +12,9 @@
 		- [Creating your mod](./03-modding/softcoding/CREATING_MOD.md)
 		
 		- [Adding a Level](./03-modding/softcoding/ADDING_LEVEL.md)
-			- [Enemy Variations]()
+			- [Enemy Spawning Data]()
+			- [Enemy Variation Data]()
+			- [Level Settings Data]()
 
 		- [Adding a Song](./03-modding/softcoding/ADDING_SONG.md)
 		- [Adding Credits](./03-modding/softcoding/ADDING_CREDITS.md)
