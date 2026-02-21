@@ -5,6 +5,7 @@ import dirifin.play.LevelBG;
 import dirifin.play.PlayState;
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
+import flixel.math.FlxMath;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import macohi.backend.api.DiscordClient;
@@ -87,7 +88,14 @@ class LevelSelectState extends MenuState
 		super.update(elapsed);
 
 		for (levelBG in levelBGs)
-			levelBG.setPosition(pinkBG.getGraphicMidpoint().x, pinkBG.getGraphicMidpoint().y);
+		{
+			levelBG.screenCenter();
+
+			if (menuType == Vertical)
+				levelBG.y = FlxMath.lerp(levelBG.y, (FlxG.height - levelBG.height) / 2 - (currentSelection.value() * 6), .1);
+			else
+				levelBG.x = FlxMath.lerp(levelBG.x, (FlxG.width - levelBG.width) / 2 - (currentSelection.value() * 6), .1);
+		}
 	}
 
 	override function select(change:Int = 0)
