@@ -5,12 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 This project adheres to [a custom version format](https://github.com/macohi/Dirifin/blob/main/docs/VERSION_FORMAT.md)
 
-## [Unreleased] - 2/??/2026
+## [Unreleased] - 2/27/2026
 
 - [DESKTOP] `api_version` should be 3.0+ for mods to not be labelled as outdated
 
 ### Added
 
+- **ADDED ENEMY VARIATIONS!**
+	- They work via the new `enemyVariations` field in level JSONs. And you can use the new levels as an example as to how they work.
 - Added Levels 4, 5, and 6
 
 ### Changed
