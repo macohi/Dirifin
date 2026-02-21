@@ -5,25 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 This project adheres to [a custom version format](https://github.com/macohi/Dirifin/blob/main/docs/VERSION_FORMAT.md)
 
-## [3.00] - 2/27/2026
-
-- [DESKTOP] `api_version` should be 3.0+ for mods to not be labelled as outdated
+## [3.00 Pre-Release 1] - 2/21/2026
 
 ### Added
 
-- Added `settings` field to level JSONs
-- Added Level BGs in the BG of the level select
 - **ADDED ENEMY VARIATIONS!**
-	- They work via the new `enemyVariations` field in level JSONs. And you can use the new levels as an example as to how they work.
-- Added Levels 4, 5, and 6
+	- They work via the new `enemyVariations` field in level JSONs.
+		- `speed_multiplier`
+		- `graphic`
+- **ADDED 3 NEW LEVELS!**
+	- Level 4 is complete
+	- Level 5 and 6 are still Work in Progresses
+- Added `settings` field to level JSONs
+	- `camera_zoom`
+	- `bg_scale_modifier`
+- Added Level BGs in the BG of the level select
+
+### Changed
+
+- [DESKTOP] `api_version` should be 3.0+ for mods to not be labelled as outdated
+- Changed directory of the (now default) enemy asset to `assets/images/enemies/default` (this is where all enemy assets will go obv)
 
 ### Removed
 
 - Removed Panning and Pitching depending on what direction an enemy spawns in
-
-### Changed
-
-- Changed directory of the (now default) enemy asset to `assets/images/enemies/default` (this is where all enemy assets will go obv)
 
 ## [2.21] - 2/20/2026
 
