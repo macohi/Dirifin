@@ -175,6 +175,9 @@ class PlayState extends PauseMState
 			addHighScoreText('swd');
 		else
 			addHighScoreText();
+
+		if (SURVIVAL_MODE)
+			leftWatermark.text += 'Health ${health}\n';
 	}
 
 	public function addHighScoreText(suffix:String = '')
