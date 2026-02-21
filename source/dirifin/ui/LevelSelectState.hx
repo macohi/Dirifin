@@ -10,6 +10,7 @@ import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.math.FlxMath;
 import flixel.sound.FlxSound;
+import flixel.system.FlxAssets;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import macohi.backend.api.DiscordClient;
@@ -32,6 +33,8 @@ class LevelSelectState extends OptionsMenuState
 		menuType = Horizontal;
 
 		itemIncOffset = 160;
+
+		text = false;
 	}
 
 	override function addItems()
@@ -95,6 +98,9 @@ class LevelSelectState extends OptionsMenuState
 		super.create();
 
 		DiscordClient.changePresence('What to play...', 'Level Select');
+
+		valueText.font = FlxAssets.FONT_DEFAULT;
+		valueText.size = 16;
 
 		insert(0, levelBGs);
 
