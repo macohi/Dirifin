@@ -1,5 +1,6 @@
 package dirifin;
 
+import dirifin.ui.LevelSelectState;
 import dirifin.input.Controls;
 import dirifin.modding.DirifinModCore;
 import dirifin.save.DirifinSave;
@@ -63,6 +64,8 @@ class InitState extends SpinningPlayerState
 		});
 
 		defineManagement();
+
+		LevelSelectState.levelsTextList = new AssetTextList(AssetPaths.txt('data/levels'));
 
 		trace('Completed initalization');
 

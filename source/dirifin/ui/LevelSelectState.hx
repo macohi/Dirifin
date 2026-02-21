@@ -28,8 +28,6 @@ class LevelSelectState extends OptionsMenuState
 
 	override public function new()
 	{
-		if (levelsTextList == null)
-			levelsTextList = new AssetTextList(AssetPaths.txt('data/levels'));
 
 		super();
 
