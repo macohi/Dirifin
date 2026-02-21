@@ -38,6 +38,8 @@ class SurvivalModeState extends SpinningPlayerState
 
 		for (trail in playerTrail.members)
 		{
+			if (trail == null) continue;
+
 			trail.scale.set(player.scale.x, player.scale.y);
 			trail.updateHitbox();
 		}
