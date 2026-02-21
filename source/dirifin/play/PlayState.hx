@@ -290,7 +290,7 @@ class PlayState extends PauseMState
 			previousEnemyDir = newEnemyDir;
 
 			if (enemyVariation != null)
-				trace('Spawning enemy of variation: $enemyVariation');
+				FlxG.log.add('Spawning enemy of variation: $enemyVariation');
 
 			var newEnemy:Enemy = new Enemy(enemyVariation);
 			newEnemy.screenCenter();
