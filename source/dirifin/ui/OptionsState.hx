@@ -3,6 +3,7 @@ package dirifin.ui;
 import dirifin.input.MenuStateControls;
 import dirifin.save.DirifinSave;
 import flixel.FlxG;
+import flixel.sound.FlxSound;
 import flixel.system.FlxAssets;
 import macohi.backend.api.DiscordClient;
 import macohi.funkin.koya.frontend.scenes.menustates.OptionsMenuState;
@@ -51,4 +52,11 @@ class OptionsState extends OptionsMenuState
 
 	override function controlsOther()
 		MenuStateControls.controlsOther(acceptFunction, () -> new MainMenuState());
+
+	override function acceptedFlicker(confirmMenu:FlxSound, item:String)
+	{
+		transitioning = true;
+
+		super.acceptedFlicker(confirmMenu, item);
+	}
 }

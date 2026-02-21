@@ -6,6 +6,7 @@ import dirifin.play.PlayState;
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.math.FlxMath;
+import flixel.sound.FlxSound;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import macohi.backend.api.DiscordClient;
@@ -111,5 +112,12 @@ class LevelSelectState extends MenuState
 				ease: FlxEase.quadInOut
 			});
 		}
+	}
+
+	override function acceptedFlicker(confirmMenu:FlxSound, item:String)
+	{
+		transitioning = true;
+
+		super.acceptedFlicker(confirmMenu, item);
 	}
 }
