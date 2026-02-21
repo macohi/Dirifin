@@ -22,7 +22,7 @@ import macohi.funkin.koya.frontend.ui.menustate.MenuItem;
 
 class LevelSelectState extends OptionsMenuState
 {
-	public var levelsTextList:AssetTextList = new AssetTextList(AssetPaths.txt('data/levels'));
+	public static var levelsTextList:AssetTextList;
 
 	public var levelBGs:FlxTypedSpriteGroup<LevelBG> = new FlxTypedSpriteGroup<LevelBG>();
 
@@ -36,6 +36,9 @@ class LevelSelectState extends OptionsMenuState
 		itemIncOffset = 160;
 
 		text = false;
+
+		if (levelsTextList == null)
+			levelsTextList = new AssetTextList(AssetPaths.txt('data/levels'));
 	}
 
 	override function addItems()
