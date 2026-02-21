@@ -1,0 +1,9 @@
+{
+	"enemyVariations": [
+		null,
+		{
+			"graphic": "speed",
+			"speed_multiplier": 2
+		}
+	]
+}
