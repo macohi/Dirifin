@@ -141,6 +141,8 @@ class PlayState extends PauseMState
 				camHUDOBJ.cameras = [camHUD];
 	}
 
+	var timeSincePaused:Date;
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
