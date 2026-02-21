@@ -1,0 +1,14 @@
+name: "Github Issue"
+description: "Report an issue with the github"
+title: "[ISSUE-GITHUB] "
+labels: "bug, github"
+body:
+- type: textarea
+  id: description
+  attributes:
+    label: "Description"
+    description: "What's wrong with the github?"
+    value: |
+      N / A
+  validations:
+    required: true
