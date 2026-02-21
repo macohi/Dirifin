@@ -17,9 +17,12 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 	- They work via the new `enemyVariations` field in level JSONs. And you can use the new levels as an example as to how they work.
 - Added Levels 4, 5, and 6
 
+### Removed
+
+- Removed Panning and Pitching depending on what direction an enemy spawns in
+
 ### Changed
 
-- Level BGs automatically scale to fit based on width and height now
 - Changed directory of the (now default) enemy asset to `assets/images/enemies/default` (this is where all enemy assets will go obv)
 
 ## [2.21] - 2/20/2026

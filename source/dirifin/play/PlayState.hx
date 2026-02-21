@@ -316,7 +316,7 @@ class PlayState extends PauseMState
 
 			enemies.add(newEnemy);
 
-			playMonsterSpawnSound(newEnemy.direction);
+			FlxG.sound.play(AssetPaths.sound('monster'));
 		}
 
 		enemies.members.sort(function(o1, o2)
@@ -398,32 +398,5 @@ class PlayState extends PauseMState
 			if (Controls.instance.justPressed('ui_accept'))
 				f.completionCallback(f);
 		});
-	}
-
-	public var monsterSpawn:FlxSound;
-
-	public function playMonsterSpawnSound(direction:Direction)
-	{
-		monsterSpawn = new FlxSound().loadEmbedded(AssetPaths.sound('monster'));
-
-		monsterSpawn.pan = 0;
-		monsterSpawn.pitch = 1;
-
-		switch (direction)
-		{
-			case LEFT:
-				monsterSpawn.pan = -10;
-			case RIGHT:
-				monsterSpawn.pan = 10;
-
-			#if FLX_PITCH
-			case DOWN:
-				monsterSpawn.pitch = -10;
-			case UP:
-				monsterSpawn.pitch = 10;
-			#end
-		}
-
-		monsterSpawn.play();
 	}
 }
