@@ -87,7 +87,7 @@ class LevelSelectState extends MenuState
 		super.update(elapsed);
 
 		for (levelBG in levelBGs)
-			levelBG.setPosition(pinkBG.x, pinkBG.y);
+			levelBG.setPosition(pinkBG.getGraphicMidpoint().x, pinkBG.getGraphicMidpoint().y);
 	}
 
 	override function select(change:Int = 0)
