@@ -25,7 +25,7 @@ class SurvivalModeState extends SpinningPlayerState
 
 		ogPlayerY = player.y;
 
-		playerTrail = DeltaruneKnight.createYTrail(player, -float_height, spin_speed, .5, 4);
+		playerTrail = DeltaruneKnight.createYTrailTargetY(player, ogPlayerY, spin_speed, .5, 4);
 		insert(members.indexOf(player) - 1, playerTrail);
 	}
 
