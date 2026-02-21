@@ -48,17 +48,17 @@ class LevelJSONClass
 		{
 			try
 			{
-				var baseJson = Json.parse(KoyaAssets.getText(levelJSONPath));
+				var baseJson:LevelJSONData = Json.parse(KoyaAssets.getText(levelJSONPath));
 
 				for (path in levelJSONPathMerge)
 				{
-					var mergePath = path;
+					var mergePath:String = path;
 
 					if (KoyaAssets.exists(mergePath))
 					{
 						try
 						{
-							var mergeJson = Json.parse(KoyaAssets.getText(mergePath));
+							var mergeJson:LevelJSONData = Json.parse(KoyaAssets.getText(mergePath));
 
 							baseJson = Json.parse(JsonMergeAndAppend.merge(Json.stringify(baseJson), Json.stringify(mergeJson),
 								level // id does nothing with JSONS so yeah
