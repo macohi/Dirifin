@@ -1,19 +1,15 @@
 package dirifin.play;
 
 import dirifin.input.Controls;
-import dirifin.play.LevelJSON.LevelJSONClass;
-import dirifin.play.LevelJSON.LevelJSONData;
+import dirifin.play.LevelJSON;
+import dirifin.play.objects.*;
 import dirifin.save.DirifinSave;
-import dirifin.ui.GameoverState;
-import dirifin.ui.MainMenuState;
-import flixel.FlxBasic;
-import flixel.FlxCamera;
-import flixel.FlxG;
+import dirifin.ui.*;
+import flixel.*;
 import flixel.effects.FlxFlicker;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.sound.FlxSound;
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
+import flixel.tweens.*;
 import flixel.util.FlxSort;
 import macohi.backend.PauseMState;
 import macohi.backend.api.DiscordClient;

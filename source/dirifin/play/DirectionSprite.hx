@@ -1,5 +1,6 @@
 package dirifin.play;
 
+import dirifin.play.objects.Player;
 import flixel.FlxG;
 import macohi.overrides.MSprite;
 import macohi.util.Direction;

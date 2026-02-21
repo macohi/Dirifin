@@ -1,4 +1,4 @@
-package dirifin.play;
+package dirifin.play.objects;
 
 class Bullet extends DirectionSprite
 {
