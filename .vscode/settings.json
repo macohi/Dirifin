@@ -1,7 +1,4 @@
 {
-	"editor.codeActionsOnSave": {
-		"source.sortImports": "explicit"
-	},
 	"search.exclude": {
 		"export/**/*.*": true
 	}

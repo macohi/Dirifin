@@ -4,7 +4,9 @@ import dirifin.input.Controls;
 import dirifin.modding.DirifinModCore;
 import dirifin.save.DirifinSave;
 import dirifin.ui.MainMenuState;
+import dirifin.ui.SpinningPlayerState;
 import flixel.FlxG;
+import flixel.util.FlxTimer;
 import haxe.Template;
 import lime.app.Application;
 import macohi.backend.api.DiscordClient;
@@ -16,14 +18,13 @@ import macohi.funkin.koya.backend.AssetTextList;
 import macohi.funkin.koya.backend.modding.ModCore;
 import macohi.funkin.koya.backend.plugins.Cursor;
 import macohi.funkin.koya.frontend.scenes.menustates.options.KeybindPrompt;
-import macohi.overrides.MState;
 import macohi.util.MusicManager;
 
 using macohi.funkin.vslice.util.AnsiUtil;
 using macohi.util.FlxKeyUtil;
 using macohi.util.StringUtil;
 
-class InitState extends MState
+class InitState extends SpinningPlayerState
 {
 	public static var musicTextList:AssetTextList;
 
@@ -65,7 +66,10 @@ class InitState extends MState
 
 		trace('Completed initalization');
 
-		switchState(() -> new MainMenuState());
+		new FlxTimer().start((0.4 * 4) * #if debug 2 #else FlxG.random.int(0,1) #end, (t) ->
+		{
+			switchState(() -> new MainMenuState());
+		});
 	}
 
 	public function compareMusicTracks():Bool
