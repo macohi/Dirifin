@@ -11,4 +11,4 @@ then it's not a guarentee it'll happen
 
 - [ ] Bonus: MEDALS!
 
-- [ ] ENEMY VARIATIONS
+- [x] ENEMY VARIATIONS
