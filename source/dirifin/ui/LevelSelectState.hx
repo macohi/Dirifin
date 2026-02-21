@@ -96,7 +96,7 @@ class LevelSelectState extends OptionsMenuState
 	{
 		super.accept(item);
 
-		PlayState.SURVIVAL_MODE = true;
+		PlayState.SURVIVAL_MODE = false;
 		FlxG.switchState(() -> new PlayState(item));
 	}
 

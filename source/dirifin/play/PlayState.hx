@@ -151,6 +151,9 @@ class PlayState extends PauseMState
 			bulletUpdate();
 
 			enemyUpdate();
+
+			if (health < 1)
+				deathFunction();
 		}
 		else
 		{
@@ -363,9 +366,6 @@ class PlayState extends PauseMState
 				{
 					destroyEnemy = true;
 					health -= 1;
-
-					if (health < 1)
-						deathFunction();
 
 					FlxG.sound.play(AssetPaths.sound('hurt'));
 
