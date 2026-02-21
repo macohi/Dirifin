@@ -28,6 +28,9 @@ class LevelSelectState extends OptionsMenuState
 
 	override public function new()
 	{
+		if (levelsTextList == null)
+			levelsTextList = new AssetTextList(AssetPaths.txt('data/levels'));
+
 		super();
 
 		menuItemPathPrefix = 'levelIcons/';
@@ -36,9 +39,6 @@ class LevelSelectState extends OptionsMenuState
 		itemIncOffset = 160;
 
 		text = false;
-
-		if (levelsTextList == null)
-			levelsTextList = new AssetTextList(AssetPaths.txt('data/levels'));
 	}
 
 	override function addItems()
