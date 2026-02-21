@@ -8,7 +8,8 @@ class LoadingScreen extends MSubState
 {
 	public var loadingString(default, set):String = '';
 
-	function set_loadingString(value:String):String {
+	function set_loadingString(value:String):String
+	{
 		trace('Loading : ' + value);
 		return value;
 	}
@@ -23,12 +24,12 @@ class LoadingScreen extends MSubState
 		add(loadingText);
 		loadingText.color = FlxColor.WHITE;
 	}
-	
-	override function update(elapsed:Float) {
+
+	override function update(elapsed:Float)
+	{
 		super.update(elapsed);
 
 		loadingText.screenCenter();
 		loadingText.text = 'Loading : $loadingString';
 	}
-
 }
