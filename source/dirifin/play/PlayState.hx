@@ -97,6 +97,8 @@ class PlayState extends PauseMState
 		leftWatermark.size = 16;
 
 		initCameras();
+
+		levelBG.applyPixelScale();
 	}
 
 	public function initCameras()

@@ -23,8 +23,8 @@ class LevelBG extends MSprite
 
 	override function applyPixelScale()
 	{
-		var calc_width = width / FlxG.width;
-		var calc_height = height / FlxG.height;
+		var calc_width = width / camera.width;
+		var calc_height = height / camera.height;
 
 		scale.set(
 			MSprite.PIXEL_SCALE + calc_width,
