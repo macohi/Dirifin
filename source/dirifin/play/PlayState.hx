@@ -369,7 +369,6 @@ class PlayState extends PauseMState
 
 					FlxG.sound.play(AssetPaths.sound('hurt'));
 
-					FlxFlicker.stopFlickering(player);
 					FlxFlicker.flicker(player, 0.3);
 				}
 			}
@@ -396,6 +395,8 @@ class PlayState extends PauseMState
 
 	public function deathFunction()
 	{
+		health = -1;
+
 		togglePaused();
 
 		rightWatermark.visible = false;
@@ -409,7 +410,6 @@ class PlayState extends PauseMState
 		var deathSound = new FlxSound().loadEmbedded(AssetPaths.sound('death'));
 		deathSound.play();
 
-		FlxFlicker.stopFlickering(player);
 		FlxFlicker.flicker(player, deathSound.length.convert_ms_to_s() + 100.convert_ms_to_s(), 0.04, false, true, function(f)
 		{
 			switchState(() -> new GameoverState());
