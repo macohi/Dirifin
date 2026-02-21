@@ -1,7 +1,7 @@
 package dirifin.play;
 
 import haxe.Json;
-import macohi.backend.polymod.JsonMergeAndAppend;
+import macohi.backend.JsonMergeAndAppend;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.koya.backend.KoyaAssets;
 import macohi.typedefs.MinMaxTypedef;
@@ -60,9 +60,7 @@ class LevelJSONClass
 						{
 							var mergeJson = Json.parse(KoyaAssets.getText(mergePath));
 
-							baseJson = Json.parse(JsonMergeAndAppend.merge(
-								Json.stringify(baseJson),
-								Json.stringify(mergeJson),
+							baseJson = Json.parse(JsonMergeAndAppend.merge(Json.stringify(baseJson), Json.stringify(mergeJson),
 								level // id does nothing with JSONS so yeah
 							));
 						}
