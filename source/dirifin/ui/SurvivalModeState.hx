@@ -1,5 +1,9 @@
 package dirifin.ui;
 
+import dirifin.play.Highscores;
+import dirifin.save.DirifinSave;
+import dirifin.play.LevelJSON;
+import macohi.overrides.MText;
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup;
 import macohi.effects.DeltaruneKnight;
@@ -17,6 +21,10 @@ class SurvivalModeState extends SpinningPlayerState
 
 	public var playerTrail:FlxSpriteGroup;
 
+	public var randomLevel:String = '';
+
+	public var levelText:MText;
+
 	override function create()
 	{
 		spin_speed = 0.1;
@@ -27,6 +35,32 @@ class SurvivalModeState extends SpinningPlayerState
 
 		playerTrail = DeltaruneKnight.createYTrailTargetY(player, ogPlayerY, spin_speed, .5, 4);
 		insert(members.indexOf(player) - 1, playerTrail);
+
+		randomLevel = LevelSelectState.levelsTextList.textList[FlxG.random.int(0, LevelSelectState.levelsTextList.textList.length - 1)];
+
+		var levelJSON:LevelJSONData = LevelJSONClass.loadLevelJSON(randomLevel, false);
+
+		function getLevelInfo(level:String)
+		{
+			var level:String = 'Level: ${level.toUpperCase()}';
+
+			var suffix:String = '-survival';
+			var hss:String = '(SURVIVAL';
+
+			if (DirifinSave.instance.shootWithDirectionals.get())
+			{
+				suffix += '-swd';
+				hss += '-SWD';
+			}
+
+			hss += ')';
+
+			var highscore:String = 'Highscore$hss: ${Highscores.getHighscore(level + suffix)}';
+
+			return '${level}\n${highscore}';
+		}
+
+		levelText = new MText().makeText(getLevelInfo(randomLevel), 16);
 	}
 
 	override function update(elapsed:Float)
@@ -39,7 +73,8 @@ class SurvivalModeState extends SpinningPlayerState
 
 		for (trail in playerTrail.members)
 		{
-			if (trail == null) continue;
+			if (trail == null)
+				continue;
 
 			trail.scale.set(player.scale.x, player.scale.y);
 			trail.updateHitbox();
@@ -48,7 +83,7 @@ class SurvivalModeState extends SpinningPlayerState
 		MenuStateControls.controlsOther(function()
 		{
 			PlayState.SURVIVAL_MODE = true;
-			switchState(() -> new PlayState(LevelSelectState.levelsTextList.textList[FlxG.random.int(0, LevelSelectState.levelsTextList.textList.length - 1)]));
+			switchState(() -> new PlayState(randomLevel));
 		}, () -> new MainMenuState(), false);
 	}
 }

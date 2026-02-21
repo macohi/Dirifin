@@ -171,22 +171,22 @@ class PlayState extends PauseMState
 		leftWatermark.text = 'Level: ${levelID.toUpperCase()}\n';
 		leftWatermark.text += 'Score: ${score}\n';
 
+		var hsta = '';
+
 		if (SURVIVAL_MODE)
 		{
 			leftWatermark.text += 'Health ${health}\n';
 
+			hsta += 'survival';
+
 			if (DirifinSave.instance.shootWithDirectionals.get())
-				addHighScoreText('survival-swd');
-			else
-				addHighScoreText('survival');
+				hsta += '-';
 		}
-		else
-		{
-			if (DirifinSave.instance.shootWithDirectionals.get())
-				addHighScoreText('swd');
-			else
-				addHighScoreText();
-		}
+
+		if (DirifinSave.instance.shootWithDirectionals.get())
+			hsta += 'swd';
+
+		addHighScoreText(hsta);
 	}
 
 	public function addHighScoreText(suffix:String = '')

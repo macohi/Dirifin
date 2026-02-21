@@ -28,7 +28,6 @@ class LevelSelectState extends OptionsMenuState
 
 	override public function new()
 	{
-
 		super();
 
 		menuItemPathPrefix = 'levelIcons/';
