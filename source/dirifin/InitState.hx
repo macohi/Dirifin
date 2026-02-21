@@ -5,6 +5,7 @@ import dirifin.modding.DirifinModCore;
 import dirifin.save.DirifinSave;
 import dirifin.ui.MainMenuState;
 import flixel.FlxG;
+import haxe.Template;
 import macohi.backend.api.DiscordClient;
 import macohi.debugging.CrashHandler;
 import macohi.debugging.CustomTrace;
@@ -180,10 +181,19 @@ class InitState extends MState
 	{
 		trace('Define Shit'.bold());
 
-		#if debug
-		trace('* Build: Debug'.bold());
-		#else
-		trace('* Build: Release'.bold());
-		#end
+		var defineShit = [
+			'* Build: ::buildtype::',
+			'* CLEAR_LOGS: ::CLEAR_LOGS::'
+		];
+
+		for (shit in defineShit)
+		{
+			var shitTemp = new Template(shit);
+			trace(shitTemp.execute({
+				buildtype: #if debug 'Debug' #else 'Release' #end,
+				
+				CLEAR_LOGS: #if CLEAR_LOGS 'enabled' #else 'disabled' #end,
+			}));
+		}
 	}
 }
