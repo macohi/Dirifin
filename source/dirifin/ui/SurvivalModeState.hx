@@ -61,6 +61,9 @@ class SurvivalModeState extends SpinningPlayerState
 		}
 
 		levelText = new MText().makeText(getLevelInfo(randomLevel), 16);
+		add(levelText);
+		levelText.screenCenter();
+		levelText.y = (FlxG.height * 0.9) - (levelText.height * 1);
 	}
 
 	override function update(elapsed:Float)
