@@ -62,6 +62,6 @@ class CreditsRoll extends MState
 	{
 		super.update(elapsed);
 
-		MenuStateControls.controlsOther(null, () -> new MainMenuState());
+		MenuStateControls.controlsOther(null, () -> new MainMenuState(), false);
 	}
 }

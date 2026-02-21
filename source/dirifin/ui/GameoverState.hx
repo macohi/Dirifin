@@ -36,6 +36,6 @@ class GameoverState extends MState
 	{
 		super.update(elapsed);
 
-		MenuStateControls.controlsOther(() -> switchState(() -> new PlayState(PlayState.LAST_PLAYED_LEVEL)), () -> new MainMenuState());
+		MenuStateControls.controlsOther(() -> switchState(() -> new PlayState(PlayState.LAST_PLAYED_LEVEL)), () -> new MainMenuState(), false);
 	}
 }

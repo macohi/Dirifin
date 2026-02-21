@@ -48,10 +48,10 @@ class OptionsState extends OptionsMenuState
 	}
 
 	override function controlsMoveVertical()
-		MenuStateControls.controlsMoveVertical(select);
+		MenuStateControls.controlsMoveVertical(select, transitioning);
 
 	override function controlsOther()
-		MenuStateControls.controlsOther(acceptFunction, () -> new MainMenuState());
+		MenuStateControls.controlsOther(acceptFunction, () -> new MainMenuState(), transitioning);
 
 	override function acceptedFlicker(confirmMenu:FlxSound, item:String)
 	{

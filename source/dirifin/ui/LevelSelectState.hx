@@ -49,10 +49,10 @@ class LevelSelectState extends MenuState
 	}
 
 	override function controlsMoveHorizontal()
-		MenuStateControls.controlsMoveHorizontal(select);
+		MenuStateControls.controlsMoveHorizontal(select, transitioning);
 
 	override function controlsOther()
-		MenuStateControls.controlsOther(acceptFunction, () -> new MainMenuState());
+		MenuStateControls.controlsOther(acceptFunction, () -> new MainMenuState(), transitioning);
 
 	override function accepted(item:String)
 	{

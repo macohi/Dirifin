@@ -52,10 +52,10 @@ class MainMenuState extends MenuState
 	}
 
 	override function controlsMoveVertical()
-		MenuStateControls.controlsMoveVertical(select);
+		MenuStateControls.controlsMoveVertical(select, transitioning);
 
 	override function controlsOther()
-		MenuStateControls.controlsOther(acceptFunction, null);
+		MenuStateControls.controlsOther(acceptFunction, null, transitioning);
 
 	override function select(change:Int = 0)
 	{
