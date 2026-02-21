@@ -17,6 +17,7 @@ import macohi.funkin.MegaVars;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.util.Direction;
 
+using macohi.util.StringUtil;
 using macohi.util.TimeUtil;
 
 class PlayState extends PauseMState
@@ -153,20 +154,24 @@ class PlayState extends PauseMState
 		leftWatermark.text = 'Level: ${levelID.toUpperCase()}\n';
 		leftWatermark.text += 'Score: ${score}\n';
 
-		if (!DirifinSave.instance.shootWithDirectionals.get())
-		{
-			if (score > Highscores.getHighscore(levelID))
-				Highscores.setHighscore(levelID, score);
-
-			leftWatermark.text += 'High Score: ${Highscores.getHighscore(levelID)}';
-		}
+		if (DirifinSave.instance.shootWithDirectionals.get())
+			addHighScoreText('swd');
 		else
-		{
-			if (score > Highscores.getHighscore(levelID + '-swd'))
-				Highscores.setHighscore(levelID + '-swd', score);
+			addHighScoreText();
+	}
 
-			leftWatermark.text += 'High Score (SWD): ${Highscores.getHighscore(levelID + '-swd')}';
-		}
+	public function addHighScoreText(suffix:String = '')
+	{
+		if (suffix.isBlankStr())
+			suffix = '';
+
+		var suff = (suffix == '') ? '' : '-$suffix';
+		var suffTXT = (suff == '') ? '' : ' (${suffix.toUpperCase()})';
+
+		if (score > Highscores.getHighscore(levelID + suff))
+			Highscores.setHighscore(levelID + suff, score);
+
+		leftWatermark.text += 'High Score${suffTXT}: ${Highscores.getHighscore(levelID + suff)}';
 	}
 
 	public var inputQueue:Array<String> = [];
