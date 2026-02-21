@@ -28,6 +28,8 @@ typedef EnemyVariationData =
 
 typedef LevelSettingsData =
 {
+	?difficulty:LevelDifficultyData,
+	
 	?camera_zoom:Float,
 	?bg_scale_modifier:Array<Null<Float>>
 }
@@ -40,7 +42,6 @@ typedef LevelDifficultyData =
 
 typedef LevelJSONData =
 {
-	?difficulty:LevelDifficultyData,
 	?enemySpawning:EnemySpawningData,
 	?enemyVariations:Array<EnemyVariationData>,
 	?settings:LevelSettingsData,

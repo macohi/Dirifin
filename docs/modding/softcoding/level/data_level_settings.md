@@ -2,6 +2,9 @@
 
 All the data fields provided are optional
 
+- `difficulty`: Controls the difficulty number displayed on the Level Select
+	- `regular` : This is the default difficulty displayed
+	- `swd` : This is the difficulty displayed for the "Shoot With Directional" option enabled
 - `camera_zoom`: Zoom override
 - `bg_scale_modifier`: Array of scale value modifiers
 	- Value 1 : scale X modifier

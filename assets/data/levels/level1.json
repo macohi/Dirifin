@@ -1,6 +1,8 @@
 {
-	"difficulty": {
-		"regular": 1,
-		"swd": 0
+	"settings": {
+		"difficulty": {
+			"regular": 1,
+			"swd": 0
+		}
 	}
 }
