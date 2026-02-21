@@ -392,9 +392,12 @@ class PlayState extends PauseMState
 		});
 	}
 
+	public var monsterSpawn = new FlxSound().loadEmbedded(AssetPaths.sound('monster'));
+
 	public function playMonsterSpawnSound(direction:Direction)
 	{
-		var monsterSpawn = new FlxSound().loadEmbedded(AssetPaths.sound('monster'));
+		monsterSpawn.pan = 0;
+		monsterSpawn.pitch = 0;
 
 		switch (direction)
 		{
