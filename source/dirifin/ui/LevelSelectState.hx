@@ -48,13 +48,9 @@ class LevelSelectState extends OptionsMenuState
 			function getDifficulty(level:String)
 			{
 				if (DirifinSave.instance.shootWithDirectionals.get())
-					if (levelJSON?.settings?.difficulty?.swd != null)
-						return 'Difficulty (SWD): ${levelJSON.settings.difficulty.swd ?? 0}';
+					return 'Difficulty (SWD): ${levelJSON?.settings?.difficulty?.swd ?? 0}';
 
-				if (levelJSON?.settings?.difficulty?.regular != null)
-					return 'Difficulty: ${levelJSON.settings.difficulty.regular ?? 0}';
-
-				return 'Difficulty: Unknown';
+				return 'Difficulty: ${levelJSON?.settings?.difficulty?.regular ?? 0}';
 			}
 
 			addItem(level, getDifficulty(level), null);
@@ -125,6 +121,7 @@ class LevelSelectState extends OptionsMenuState
 
 		for (levelBG in levelBGs)
 		{
+			levelBG.active = levelBG.alpha > 0;
 			levelBG.screenCenter();
 
 			if (menuType == Vertical)
