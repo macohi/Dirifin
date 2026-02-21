@@ -42,7 +42,7 @@ class LevelJSONClass
 	public static function loadLevelJSON(level:String):LevelJSONData
 	{
 		var levelJSONPath:String = AssetPaths.json('data/levels/$level');
-		var levelJSONPathMerge:Array<String> = AssetPaths.getAllModPaths(levelJSONPath.replace('assets', '_merge'));
+		var levelJSONPathAppend:Array<String> = AssetPaths.getAllModPaths(levelJSONPath.replace('assets', '_append'));
 
 		if (KoyaAssets.exists(levelJSONPath))
 		{
@@ -50,17 +50,17 @@ class LevelJSONClass
 			{
 				var baseJson:LevelJSONData = Json.parse(KoyaAssets.getText(levelJSONPath));
 
-				for (path in levelJSONPathMerge)
+				for (path in levelJSONPathAppend)
 				{
-					var mergePath:String = path;
+					var appendPath:String = path;
 
-					if (KoyaAssets.exists(mergePath))
+					if (KoyaAssets.exists(appendPath))
 					{
 						try
 						{
-							var mergeJson:LevelJSONData = Json.parse(KoyaAssets.getText(mergePath));
+							var mergeJson:LevelJSONData = Json.parse(KoyaAssets.getText(appendPath));
 
-							baseJson = Json.parse(JsonMergeAndAppend.merge(
+							baseJson = Json.parse(JsonMergeAndAppend.append(
 								Json.stringify(baseJson),
 								Json.stringify(mergeJson),
 								level // id does nothing with JSONS so yeah
@@ -69,7 +69,7 @@ class LevelJSONClass
 						catch (e)
 						{
 							trace(e.message);
-							WindowUtil.alert('Couldnt parse $mergePath', 'Cant parse Merge JSON for level: $level\n\n${e.message}');
+							WindowUtil.alert('Couldnt parse $appendPath', 'Cant parse Merge JSON for level: $level\n\n${e.message}');
 						}
 					}
 				}
