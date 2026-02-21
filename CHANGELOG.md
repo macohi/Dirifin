@@ -2,10 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+The format *was* based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 This project adheres to [a custom version format](https://github.com/macohi/Dirifin/blob/main/docs/VERSION_FORMAT.md)
 
 ## [3.00 Pre-Release 2] - 2/??/2026
+
+### Menus
+
+- Fixed being able to select options while selecting an option in all menus
 
 ## [3.00 Pre-Release 1] - 2/21/2026
 

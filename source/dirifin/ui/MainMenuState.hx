@@ -3,6 +3,7 @@ package dirifin.ui;
 import dirifin.input.MenuStateControls;
 import dirifin.ui.ModMenuState.ModsMenuState;
 import flixel.FlxG;
+import flixel.sound.FlxSound;
 import flixel.system.FlxAssets;
 import flixel.util.FlxColor;
 import macohi.backend.api.DiscordClient;
@@ -66,6 +67,13 @@ class MainMenuState extends MenuState
 				if (!(ModCore.instance.allMods.length > 0) && menuItem.text.toLowerCase() == 'mods')
 					menuItem.alpha -= 0.4;
 			}
+	}
+
+	override function acceptedFlicker(confirmMenu:FlxSound, item:String)
+	{
+		transitioning = true;
+
+		super.acceptedFlicker(confirmMenu, item);
 	}
 
 	override function accept(item:String)
