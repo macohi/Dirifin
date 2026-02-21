@@ -7,16 +7,13 @@
 - [Source Code](./02-source-code/category.md)
      - [Compiling](./02-source-code/COMPILING.md)
 
-- [Modding (Softcode)](./03-modding-softcode/category.md)
-     - [Creating your mod](./03-modding-softcode/CREATING_MOD.md)
-     
-     - [Adding a Level]()
-     - [Adding a Song](./03-modding-softcode/ADDING_SONG.md)
-     - [Adding Credits](./03-modding-softcode/ADDING_CREDITS.md)
-
-     - [Scripting]()
-	     - [Adding an Enemy Variation]()
-
-- [Modding (Hardcoding)]()
-     - [Adding a new Medal]()
-     - [Adding a new Option]()
+- [Modding](./03-modding/category.md)
+	- [Softcoding]()
+		- [Creating your mod](./03-modding/softcoding/CREATING_MOD.md)
+		
+		- [Adding a Level](./03-modding/softcoding/ADDING_LEVEL.md)
+			- [Enemy Variations]()
+        	- [Adding a Song](./03-modding/softcoding/ADDING_SONG.md)
+        	- [Adding Credits](./03-modding/softcoding/ADDING_CREDITS.md)
+	- [Hardcoding]()
+		- [Adding a new Option]()

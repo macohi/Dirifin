@@ -19,6 +19,7 @@ Major versions reset the second version number to 00 and increment the first ver
 
 - `1.00`
 - `2.00`
+- `3.00`
 
 ## Minor versions
 
@@ -31,6 +32,7 @@ Minor versions increment the second version number by 10.
 - `1.10`
 - `1.21`
 - `2.10`
+- `2.20`
 
 ## Patch versions
 
@@ -41,6 +43,7 @@ Patch versions increment the second version number by 1.
 ### Example (existing) Versions
 
 - `1.11`
+- `2.21`
 
 ## Pre-Release versions
 
