@@ -77,7 +77,7 @@ class LevelJSONClass
 
 			try
 			{
-				presentJson = Json.parse(presentPath);
+				presentJson = Json.parse(KoyaAssets.getText(presentPath));
 			}
 			catch (e)
 			{
