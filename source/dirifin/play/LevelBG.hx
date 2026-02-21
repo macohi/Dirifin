@@ -23,13 +23,11 @@ class LevelBG extends MSprite
 
 	override function applyPixelScale()
 	{
-		super.applyPixelScale();
-
-		scale.add(
-			Math.round((FlxG.width / width) * 1),
-			Math.round((FlxG.height / height) * 1)
+		scale.set(
+			1 + (MSprite.PIXEL_SCALE * (FlxG.width / width)),
+			1 + (MSprite.PIXEL_SCALE * (FlxG.height / height))
 		);
-		// trace(scale);
+		trace(scale);
 		updateHitbox();
 	}
 }
