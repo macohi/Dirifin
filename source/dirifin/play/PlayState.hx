@@ -53,9 +53,13 @@ class PlayState extends PauseMState
 
 	public static var LAST_PLAYED_LEVEL:String = null;
 
+	public var health:Int = 1;
+
 	override public function new(levelID:String = null)
 	{
 		super();
+
+		health = 1;
 
 		this.levelID = levelID ?? 'level1';
 		LAST_PLAYED_LEVEL = this.levelID;
@@ -143,6 +147,9 @@ class PlayState extends PauseMState
 			bulletUpdate();
 
 			enemyUpdate();
+
+			if (health < 1)
+				deathFunction();
 		}
 		else
 		{
@@ -335,6 +342,7 @@ class PlayState extends PauseMState
 			var destroyEnemy = enemy.outOfBounds;
 
 			if (!destroyEnemy)
+			{
 				for (bullet in bullets.members)
 					if (!destroyEnemy)
 					{
@@ -350,15 +358,17 @@ class PlayState extends PauseMState
 						}
 					}
 
+				if (enemy.overlaps(player))
+				{
+					destroyEnemy = true;
+					health -= 1;
+				}
+			}
+
 			if (destroyEnemy)
 			{
 				enemies.members.remove(enemy);
 				enemy.destroy();
-			}
-
-			if (enemy.overlaps(player))
-			{
-				deathFunction();
 			}
 		}
 	}
