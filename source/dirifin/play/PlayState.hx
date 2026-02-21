@@ -67,8 +67,6 @@ class PlayState extends PauseMState
 	override function create()
 	{
 		levelBG = new LevelBG(levelID);
-		levelBG.scale.add(levelBG.scale.x, levelBG.scale.y);
-		levelBG.updateHitbox();
 		levelBG.screenCenter();
 		add(levelBG);
 
