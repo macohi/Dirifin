@@ -62,6 +62,7 @@ class SurvivalModeState extends SpinningPlayerState
 
 		levelText = new MText().makeText(getLevelInfo(randomLevel), 16);
 		add(levelText);
+		levelText.alignment = CENTER;
 		levelText.screenCenter();
 		levelText.y = (FlxG.height * 0.9) - (levelText.height * 1);
 	}
