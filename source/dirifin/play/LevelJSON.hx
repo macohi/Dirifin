@@ -73,7 +73,7 @@ class LevelJSONClass
 	{
 		if (baseJson.enemy_variations == null || baseJson.enemy_variations.length == 0) return;
 
-		var newenemy_variations:Array<EnemyVariationData> = [];
+		var newEnemyVariations:Array<EnemyVariationData> = [];
 
 		for (i => variation in baseJson.enemy_variations)
 		{
@@ -130,10 +130,10 @@ class LevelJSONClass
 			baseJson.enemy_variations.remove(variation);
 
 			Reflect.deleteField(presentJson, 'present');
-			newenemy_variations.push(presentJson);
+			newEnemyVariations.push(presentJson);
 		}
 
-		for (variation in newenemy_variations)
+		for (variation in newEnemyVariations)
 			baseJson.enemy_variations.push(variation);
 	}
 
@@ -185,10 +185,10 @@ class LevelJSONClass
 		if (data == null || data.length == 0)
 			return null;
 
-		var random_int = FlxG.random.int(0, data.length - 1);
+		var randomInt = FlxG.random.int(0, data.length - 1);
 		for (i => variation in data)
 		{
-			if (FlxG.random.bool(variation?.variation_chance ?? ((random_int == i) ? 100 : 0)))
+			if (FlxG.random.bool(variation?.variation_chance ?? ((randomInt == i) ? 100 : 0)))
 				return variation;
 		}
 

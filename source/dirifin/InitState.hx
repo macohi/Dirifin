@@ -196,8 +196,8 @@ class InitState extends MState
 			' * ENABLE_NEWGROUNDS: ::ENABLE_NEWGROUNDS::',
 		];
 
-		var enabled_bg = ' ✔ '.bg_bright_green();
-		var disabled_bg = ' ✖ '.bg_bright_red();
+		var enabledBG = ' ✔ '.bg_bright_green();
+		var disabledBG = ' ✖ '.bg_bright_red();
 
 		for (shit in defineShit)
 		{
@@ -211,12 +211,12 @@ class InitState extends MState
 			trace('${shitTemp.execute({
 				buildtype: #if debug 'Debug' #else 'Release' #end,
 
-				ENABLE_NEWGROUNDS: #if ENABLE_NEWGROUNDS enabled_bg #else disabled_bg #end,
-				MOD_SUPPORT: #if MOD_SUPPORT enabled_bg #else disabled_bg #end,
-				CRASH_HANDLER: #if CRASH_HANDLER enabled_bg #else disabled_bg #end,
-				ZOOM_OUT: #if ZOOM_OUT enabled_bg #else disabled_bg #end,
-				ENABLE_DISCORDRPC: #if ENABLE_DISCORDRPC enabled_bg #else disabled_bg #end,
-				CLEAR_LOGS: #if CLEAR_LOGS enabled_bg #else disabled_bg #end,
+				ENABLE_NEWGROUNDS: #if ENABLE_NEWGROUNDS enabledBG #else disabledBG #end,
+				MOD_SUPPORT: #if MOD_SUPPORT enabledBG #else disabledBG #end,
+				CRASH_HANDLER: #if CRASH_HANDLER enabledBG #else disabledBG #end,
+				ZOOM_OUT: #if ZOOM_OUT enabledBG #else disabledBG #end,
+				ENABLE_DISCORDRPC: #if ENABLE_DISCORDRPC enabledBG #else disabledBG #end,
+				CLEAR_LOGS: #if CLEAR_LOGS enabledBG #else disabledBG #end,
 			})}'.bold());
 		}
 	}
