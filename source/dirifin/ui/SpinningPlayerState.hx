@@ -8,6 +8,8 @@ class SpinningPlayerState extends MState
 {
 	public var player:Player;
 
+	public var spin_speed:Float = 0.4;
+
 	override function create()
 	{
 		super.create();
@@ -16,7 +18,7 @@ class SpinningPlayerState extends MState
 		player.screenCenter();
 		add(player);
 
-		new FlxTimer().start(0.4, function(t)
+		new FlxTimer().start(spin_speed, function(t)
 		{
 			switch (player.direction)
 			{
