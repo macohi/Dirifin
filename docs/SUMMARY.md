@@ -8,7 +8,7 @@
      - [Compiling](./02-source-code/COMPILING.md)
 
 - [Modding](./03-modding/category.md)
-	- [Softcoding]()
+	- [Softcoding](./03-modding/softcoding/subcategory.md)
 		- [Creating your mod](./03-modding/softcoding/CREATING_MOD.md)
 		
 		- [Adding a Level](./03-modding/softcoding/ADDING_LEVEL.md)
