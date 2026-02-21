@@ -56,7 +56,11 @@ class InitState extends SpinningPlayerState
 
 				trace('Track list:');
 				for (track in MusicManager.tracks)
+				{
 					trace(' * $track');
+					
+					FlxG.assets.loadSound(track, true);
+				}
 			}
 
 			if (FlxG.keys.justReleased.R)
@@ -69,7 +73,7 @@ class InitState extends SpinningPlayerState
 
 		trace('Completed initalization');
 
-		new FlxTimer().start((spin_speed * 4) * FlxG.random.int(0,2), (t) ->
+		new FlxTimer().start((spin_speed * 4) * FlxG.random.int(0, 2), (t) ->
 		{
 			switchState(() -> new MainMenuState());
 		});
