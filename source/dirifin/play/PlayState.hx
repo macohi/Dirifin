@@ -54,6 +54,7 @@ class PlayState extends PauseMState
 	public static var LAST_PLAYED_LEVEL:String = null;
 
 	public var health:Int = 1;
+
 	public static var SURVIVAL_MODE:Bool = true;
 
 	override public function new(levelID:String = null)
@@ -61,7 +62,8 @@ class PlayState extends PauseMState
 		super();
 
 		health = 1;
-		if (SURVIVAL_MODE) health = 3;
+		if (SURVIVAL_MODE)
+			health = 3;
 
 		this.levelID = levelID ?? 'level1';
 		LAST_PLAYED_LEVEL = this.levelID;
@@ -364,6 +366,9 @@ class PlayState extends PauseMState
 				{
 					destroyEnemy = true;
 					health -= 1;
+
+					FlxFlicker.stopFlickering(player);
+					FlxFlicker.flicker(player, 0.3);
 				}
 			}
 
@@ -402,6 +407,7 @@ class PlayState extends PauseMState
 		var deathSound = new FlxSound().loadEmbedded(AssetPaths.sound('death'));
 		deathSound.play();
 
+		FlxFlicker.stopFlickering(player);
 		FlxFlicker.flicker(player, deathSound.length.convert_ms_to_s() + 100.convert_ms_to_s(), 0.04, false, true, function(f)
 		{
 			switchState(() -> new GameoverState());
