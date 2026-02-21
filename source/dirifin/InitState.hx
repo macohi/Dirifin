@@ -191,8 +191,8 @@ class InitState extends MState
 			' * ENABLE_NEWGROUNDS: ::ENABLE_NEWGROUNDS::',
 		];
 
-		var enabled_bg = ' enabled '.bg_bright_green();
-		var disabled_bg = ' disabled '.bg_bright_red();
+		var enabled_bg = ' ✔ '.bg_bright_green();
+		var disabled_bg = ' ✖ '.bg_bright_red();
 
 		for (shit in defineShit)
 		{
