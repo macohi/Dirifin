@@ -45,7 +45,7 @@ class SurvivalModeState extends SpinningPlayerState
 			var level:String = 'Level: ${level.toUpperCase()}';
 
 			var suffix:String = '-survival';
-			var hss:String = '(SURVIVAL';
+			var hss:String = ' (SURVIVAL';
 
 			if (DirifinSave.instance.shootWithDirectionals.get())
 			{
