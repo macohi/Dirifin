@@ -5,9 +5,9 @@ import flixel.util.typeLimit.NextState;
 
 class MenuStateControls
 {
-	public static function controlsMoveVertical(select:Int->Void)
+	public static function controlsMoveVertical(select:Int->Void, transitioning:Bool)
 	{
-		if (select == null)
+		if (select == null || transitioning)
 			return;
 
 		if (Controls.instance.justPressed('ui_up'))
@@ -16,9 +16,9 @@ class MenuStateControls
 			select(1);
 	}
 
-	public static function controlsMoveHorizontal(select:Int->Void)
+	public static function controlsMoveHorizontal(select:Int->Void, transitioning:Bool)
 	{
-		if (select == null)
+		if (select == null || transitioning)
 			return;
 
 		if (Controls.instance.justPressed('ui_left'))
@@ -27,8 +27,11 @@ class MenuStateControls
 			select(1);
 	}
 
-	public static function controlsOther(acceptFunction:Void->Void, backState:NextState)
+	public static function controlsOther(?acceptFunction:Void->Void, ?backState:NextState, transitioning:Bool)
 	{
+		if (transitioning)
+			return;
+
 		if (acceptFunction != null)
 			if (Controls.instance.justPressed('ui_accept'))
 				acceptFunction();
