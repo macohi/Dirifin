@@ -7,9 +7,16 @@ This project adheres to [a custom version format](https://github.com/macohi/Diri
 
 ## [Unreleased] - 2/??/2026
 
+- [DESKTOP] `api_version` should be 3.0+ for mods to not be labelled as outdated
+
 ### Added
 
 - Added Levels 4, 5, and 6
+
+### Changed
+
+- Level BGs automatically scale to fit based on width and height now
+- Changed directory of the (now default) enemy asset to `assets/images/enemies/default` (this is where all enemy assets will go obv)
 
 ## [2.21] - 2/20/2026
 
