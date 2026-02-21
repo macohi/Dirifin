@@ -132,6 +132,9 @@ class LevelSelectState extends OptionsMenuState
 			else
 				levelBG.x = FlxMath.lerp(levelBG.x, (FlxG.width - levelBG.width) / 2 - (currentSelection.value() * 6), .1);
 		}
+
+		valueText.text = '${this.itemListValues.get(this.itemList[currentSelection.value()])}';
+		valueText.y = valueBG.getGraphicMidpoint().y - (valueText.height / 2);
 	}
 
 	override function select(change:Int = 0)
