@@ -274,22 +274,33 @@ class PlayState extends PauseMState
 
 	public function enemyUpdate()
 	{
-		if (FlxG.random.bool(FlxG.random.float(levelJSON?.enemySpawning?.spawn_chance?.min ?? 0, levelJSON?.enemySpawning?.spawn_chance?.max ?? 0)))
+		var enemySpawningData:EnemySpawningData = levelJSON?.enemySpawning ?? null;
+		var enemyVariationData:Array<EnemyVariationData> = levelJSON?.enemyVariations ?? [];
+
+		var enemyVariation:EnemyVariationData = enemyVariationData[FlxG.random.int(0, enemyVariationData.length)] ?? null;
+
+		if (FlxG.random.bool(
+			FlxG.random.float(
+				enemySpawningData?.spawn_chance?.min ?? 0, 
+				enemySpawningData?.spawn_chance?.max ?? 0)
+			)
+		)
 		{
 			var newEnemyDir = FlxG.random.int(0, 3);
 
 			if (enemies.members.length >= maxEnemies)
 				return;
 
-			if (newEnemyDir == previousEnemyDir && !FlxG.random.bool(levelJSON?.enemySpawning?.dupe_direction_chance ?? 10))
+			if (newEnemyDir == previousEnemyDir && !FlxG.random.bool(enemySpawningData?.dupe_direction_chance ?? 10))
 				return;
 
 			previousEnemyDir = newEnemyDir;
 
-			var newEnemy:Enemy = new Enemy();
+			var newEnemy:Enemy = new Enemy(enemyVariation?.speed_multiplier ?? 1.0);
 			newEnemy.screenCenter();
 			newEnemy.changeDirection(newEnemyDir, player);
 			newEnemy.alpha = 0;
+
 			FlxTween.tween(newEnemy, {x: newEnemy.x, y: newEnemy.y, alpha: 1}, 0.3, {
 				ease: FlxEase.quadInOut,
 				onUpdate: tween ->
@@ -298,26 +309,10 @@ class PlayState extends PauseMState
 						tween.cancel();
 				}
 			});
+			
 			enemies.add(newEnemy);
 
-			var monsterSpawn = new FlxSound().loadEmbedded(AssetPaths.sound('monster'));
-
-			switch (newEnemy.direction)
-			{
-				case LEFT:
-					monsterSpawn.pan = -10;
-				case RIGHT:
-					monsterSpawn.pan = 10;
-
-				#if FLX_PITCH
-				case DOWN:
-					monsterSpawn.pitch = -10;
-				case UP:
-					monsterSpawn.pitch = 10;
-				#end
-			}
-
-			monsterSpawn.play();
+			playMonsterSpawnSound(newEnemy.direction);
 		}
 
 		enemies.members.sort(function(o1, o2)
@@ -359,27 +354,7 @@ class PlayState extends PauseMState
 
 			if (enemy.overlaps(player))
 			{
-				togglePaused();
-
-				rightWatermark.visible = false;
-				canPause = false;
-
-				directionArrows.clear();
-
-				remove(player);
-				insert(members.length, player);
-
-				var deathSound = new FlxSound().loadEmbedded(AssetPaths.sound('death'));
-				deathSound.play();
-
-				FlxFlicker.flicker(player, deathSound.length.convert_ms_to_s() + 100.convert_ms_to_s(), 0.04, false, true, function(f)
-				{
-					switchState(() -> new GameoverState());
-				}, function(f)
-				{
-					if (Controls.instance.justPressed('ui_accept'))
-						f.completionCallback(f);
-				});
+				deathFunction();
 			}
 		}
 	}
@@ -394,5 +369,52 @@ class PlayState extends PauseMState
 		super.togglePaused();
 
 		rightWatermark.visible = paused;
+	}
+
+	public function deathFunction()
+	{
+		togglePaused();
+
+		rightWatermark.visible = false;
+		canPause = false;
+
+		directionArrows.clear();
+
+		remove(player);
+		insert(members.length, player);
+
+		var deathSound = new FlxSound().loadEmbedded(AssetPaths.sound('death'));
+		deathSound.play();
+
+		FlxFlicker.flicker(player, deathSound.length.convert_ms_to_s() + 100.convert_ms_to_s(), 0.04, false, true, function(f)
+		{
+			switchState(() -> new GameoverState());
+		}, function(f)
+		{
+			if (Controls.instance.justPressed('ui_accept'))
+				f.completionCallback(f);
+		});
+	}
+
+	public function playMonsterSpawnSound(direction:Direction)
+	{
+		var monsterSpawn = new FlxSound().loadEmbedded(AssetPaths.sound('monster'));
+
+		switch (direction)
+		{
+			case LEFT:
+				monsterSpawn.pan = -10;
+			case RIGHT:
+				monsterSpawn.pan = 10;
+
+			#if FLX_PITCH
+			case DOWN:
+				monsterSpawn.pitch = -10;
+			case UP:
+				monsterSpawn.pitch = 10;
+			#end
+		}
+
+		monsterSpawn.play();
 	}
 }
