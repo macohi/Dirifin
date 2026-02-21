@@ -66,7 +66,7 @@ class InitState extends SpinningPlayerState
 
 		trace('Completed initalization');
 
-		new FlxTimer().start((0.4 * 4) * #if debug 2 #else FlxG.random.int(0,2) #end, (t) ->
+		new FlxTimer().start((0.4 * 4) * FlxG.random.int(0,2), (t) ->
 		{
 			switchState(() -> new MainMenuState());
 		});
