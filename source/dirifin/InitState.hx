@@ -34,10 +34,10 @@ class InitState extends MState
 		CustomTrace.ALLOW_ANSI = false;
 		haxe.Log.trace = CustomTrace.newTrace;
 
-		CrashHandler.initalize('', 'Dirifin_', '', 'Dirifin');
-
 		Application.current.window.title = 'Dirifin ${Version.VERSION}';
-		trace(Application.current.window.title);
+		trace(Application.current.window.title.bold().bg_bright_green());
+
+		CrashHandler.initalize('', 'Dirifin_', '', 'Dirifin');
 
 		initalizeInstances();
 
