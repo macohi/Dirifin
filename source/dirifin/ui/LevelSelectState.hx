@@ -65,13 +65,7 @@ class LevelSelectState extends MenuState
 
 		DiscordClient.changePresence('What to play...', 'Level Select');
 
-		add(levelBGs);
-
-		for (grp in [itemsAtlasTextGroup, itemsFlxTextGroup, itemsSpriteGroup])
-		{
-			remove(grp);
-			add(grp);
-		}
+		insert(0, levelBGs);
 
 		for (i => level in itemList)
 		{
@@ -86,6 +80,14 @@ class LevelSelectState extends MenuState
 		}
 
 		select();
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		for (levelBG in levelBGs)
+			levelBG.setPosition(pinkBG.x, pinkBG.y);
 	}
 
 	override function select(change:Int = 0)
