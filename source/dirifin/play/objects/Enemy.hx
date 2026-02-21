@@ -8,7 +8,7 @@ class Enemy extends DirectionSprite
 {
 	override public function new(variationData:EnemyVariationData = null, ?x:Float, ?y:Float)
 	{
-		super(-0.1 * variationData?.speed_multiplier ?? 1.0, x, y);
+		super(-0.1 * (variationData?.speed_multiplier ?? 1.0), x, y);
 
 		loadGraphic(AssetPaths.image('enemies/${variationData?.graphic ?? 'default'}'), true, 16, 16);
 
