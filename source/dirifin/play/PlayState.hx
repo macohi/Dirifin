@@ -286,7 +286,7 @@ class PlayState extends PauseMState
 			)
 		)
 		{
-			var newEnemyDir = FlxG.random.int(0, 3);
+			var newEnemyDir = Direction.randomDirection();
 
 			if (enemies.members.length >= maxEnemies)
 				return;
