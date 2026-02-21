@@ -29,7 +29,7 @@ class LevelBG extends MSprite
 			Math.round((FlxG.width / width) * 1),
 			Math.round((FlxG.height / height) * 1)
 		);
-		trace(scale);
+		// trace(scale);
 		updateHitbox();
 	}
 }
