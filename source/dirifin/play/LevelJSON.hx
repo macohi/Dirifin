@@ -29,7 +29,7 @@ typedef EnemyVariationData =
 typedef LevelSettingsData =
 {
 	?difficulty:LevelDifficultyData,
-	
+
 	?camera_zoom:Float,
 	?bg_scale_modifier:Array<Null<Float>>
 }
@@ -59,11 +59,12 @@ class LevelJSONClass
 		}
 	}
 
-	public static function loadLevelJSON(level:String):LevelJSONData
+	public static function loadLevelJSON(level:String, parseEVP:Bool):LevelJSONData
 	{
 		var lvlJson:LevelJSONData = parseBaseJson(level) ?? DEFAULT_LEVEL_JSON;
 
-		loadEnemyVariationPresents(lvlJson);
+		if (parseEVP)
+			loadEnemyVariationPresents(lvlJson);
 
 		return lvlJson;
 	}

@@ -2,7 +2,10 @@ package dirifin.ui;
 
 import dirifin.input.MenuStateControls;
 import dirifin.play.LevelBG;
+import dirifin.play.LevelJSON.LevelJSONClass;
+import dirifin.play.LevelJSON.LevelJSONData;
 import dirifin.play.PlayState;
+import dirifin.save.DirifinSave;
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.math.FlxMath;
@@ -12,10 +15,10 @@ import flixel.tweens.FlxTween;
 import macohi.backend.api.DiscordClient;
 import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.koya.backend.AssetTextList;
+import macohi.funkin.koya.frontend.scenes.menustates.OptionsMenuState;
 import macohi.funkin.koya.frontend.ui.menustate.MenuItem;
-import macohi.funkin.koya.frontend.ui.menustate.MenuState;
 
-class LevelSelectState extends MenuState
+class LevelSelectState extends OptionsMenuState
 {
 	public var levelsTextList:AssetTextList = new AssetTextList(AssetPaths.txt('data/levels'));
 
@@ -23,10 +26,36 @@ class LevelSelectState extends MenuState
 
 	override public function new()
 	{
-		super('levelIcons/', Horizontal);
+		super();
+
+		menuItemPathPrefix = 'levelIcons/';
+		menuType = Horizontal;
 
 		itemIncOffset = 160;
-		itemList = levelsTextList.textList;
+	}
+
+	override function addItems()
+	{
+		super.addItems();
+
+		for (level in levelsTextList.textList)
+		{
+			var levelJSON:LevelJSONData = LevelJSONClass.loadLevelJSON(level, false);
+
+			function getDifficulty(level:String)
+			{
+				if (DirifinSave.instance.shootWithDirectionals.get())
+					if (levelJSON?.settings?.difficulty?.swd != null)
+						return 'Difficulty (SWD): ${levelJSON.settings.difficulty.swd ?? 0}';
+
+				if (levelJSON?.settings?.difficulty?.regular != null)
+					return 'Difficulty: ${levelJSON.settings.difficulty.regular ?? 0}';
+
+				return 'Difficulty: Unknown';
+			}
+
+			addItem(level, getDifficulty(level), null);
+		}
 	}
 
 	override function makeSprite(item:String, i:Int)
@@ -54,9 +83,9 @@ class LevelSelectState extends MenuState
 	override function controlsOther()
 		MenuStateControls.controlsOther(acceptFunction, () -> new MainMenuState(), transitioning);
 
-	override function accepted(item:String)
+	override function accept(item:String)
 	{
-		super.accepted(item);
+		super.accept(item);
 
 		FlxG.switchState(() -> new PlayState(item));
 	}

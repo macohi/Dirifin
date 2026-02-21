@@ -1,8 +1,7 @@
 {
 	"settings": {
 		"difficulty": {
-			"regular": 1,
-			"swd": 0
+			"regular": 1
 		}
 	}
 }
