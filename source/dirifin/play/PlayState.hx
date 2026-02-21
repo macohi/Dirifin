@@ -159,16 +159,16 @@ class PlayState extends PauseMState
 		}
 		else
 		{
-			if (Controls.instance.justPressed('ui_back'))
-			{
-				FlxG.sound.play(MegaVars.SOUND_MENU_BACK, 1.0, false, null, true, function()
-				{
-					if (SURVIVAL_MODE)
-						switchState(() -> new SurvivalModeState());
+			if (!Controls.instance.justPressed('ui_back'))
+				return;
 
-					switchState(() -> new LevelSelectState());
-				});
-			}
+			FlxG.sound.play(MegaVars.SOUND_MENU_BACK, 1.0, false, null, true, function()
+			{
+				if (SURVIVAL_MODE)
+					switchState(() -> new SurvivalModeState());
+
+				switchState(() -> new LevelSelectState());
+			});
 		}
 
 		FlxG.watch.addQuick('inputQueue', inputQueue);
@@ -270,26 +270,29 @@ class PlayState extends PauseMState
 	{
 		for (bullet in bullets.members)
 		{
-			bullet.move();
-			if (bullet.outOfBounds && !bullet.dying)
-			{
-				bullet.dying = true;
+			if (bullet == null)
+				continue;
 
-				if (bullet != null)
-					FlxTween.tween(bullet, {alpha: 0}, 0.15, {
-						ease: FlxEase.quadInOut,
-						onComplete: tween ->
-						{
-							bullets.members.remove(bullet);
-							bullet.destroy();
-						},
-						onUpdate: tween ->
-						{
-							if (bullet == null)
-								tween.cancel();
-						},
-					});
-			}
+			bullet.move();
+			
+			if (!(bullet.outOfBounds && !bullet.dying))
+				continue;
+
+			bullet.dying = true;
+
+			FlxTween.tween(bullet, {alpha: 0}, 0.15, {
+				ease: FlxEase.quadInOut,
+				onComplete: tween ->
+				{
+					bullets.members.remove(bullet);
+					bullet.destroy();
+				},
+				onUpdate: tween ->
+				{
+					if (bullet == null)
+						tween.cancel();
+				},
+			});
 		}
 	}
 
@@ -306,46 +309,47 @@ class PlayState extends PauseMState
 
 	public var previousEnemyDir:Direction = -1;
 
-	public function enemyUpdate()
+	public function makeEnemy()
 	{
-		var EnemySpawningData:EnemySpawningData = levelJSON?.enemy_spawning ?? null;
+		var enemySpawningData:EnemySpawningData = levelJSON?.enemy_spawning ?? null;
 		var enemyVariationData:Array<EnemyVariationData> = levelJSON?.enemy_variations ?? [];
 
 		var enemyVariation:EnemyVariationData = LevelJSONClass.getRandomEnemyVariation(enemyVariationData);
 
-		if (FlxG.random.bool(FlxG.random.float(EnemySpawningData?.spawn_chance?.min ?? 0, EnemySpawningData?.spawn_chance?.max ?? 3)))
-		{
-			var newEnemyDir = Direction.randomDirection();
+		var newEnemyDir = Direction.randomDirection();
 
-			if (enemies.members.length >= maxEnemies)
-				return;
+		var spawnChance = FlxG.random.float(enemySpawningData?.spawn_chance?.min ?? 0, enemySpawningData?.spawn_chance?.max ?? 3);
 
-			if (newEnemyDir == previousEnemyDir && !FlxG.random.bool(EnemySpawningData?.dupe_direction_chance ?? 10))
-				return;
+		if (!FlxG.random.bool(spawnChance)
+			|| enemies.members.length >= maxEnemies
+			|| newEnemyDir == previousEnemyDir
+			&& !FlxG.random.bool(enemySpawningData?.dupe_direction_chance ?? 10))
+			return;
 
-			previousEnemyDir = newEnemyDir;
+		previousEnemyDir = newEnemyDir;
 
-			if (enemyVariation != null)
-				FlxG.log.add('Spawning enemy of variation: $enemyVariation');
+		var newEnemy:Enemy = new Enemy(enemyVariation);
+		newEnemy.screenCenter();
+		newEnemy.changeDirection(newEnemyDir, player);
+		newEnemy.alpha = 0;
 
-			var newEnemy:Enemy = new Enemy(enemyVariation);
-			newEnemy.screenCenter();
-			newEnemy.changeDirection(newEnemyDir, player);
-			newEnemy.alpha = 0;
+		FlxTween.tween(newEnemy, {x: newEnemy.x, y: newEnemy.y, alpha: 1}, 0.3, {
+			ease: FlxEase.quadInOut,
+			onUpdate: tween ->
+			{
+				if (newEnemy == null)
+					tween.cancel();
+			}
+		});
 
-			FlxTween.tween(newEnemy, {x: newEnemy.x, y: newEnemy.y, alpha: 1}, 0.3, {
-				ease: FlxEase.quadInOut,
-				onUpdate: tween ->
-				{
-					if (newEnemy == null)
-						tween.cancel();
-				}
-			});
+		enemies.add(newEnemy);
 
-			enemies.add(newEnemy);
+		FlxG.sound.play(AssetPaths.sound('monster'));
+	}
 
-			FlxG.sound.play(AssetPaths.sound('monster'));
-		}
+	public function enemyUpdate()
+	{
+		makeEnemy();
 
 		enemies.members.sort(function(o1, o2)
 		{
@@ -363,31 +367,16 @@ class PlayState extends PauseMState
 			var destroyEnemy = enemy.outOfBounds;
 
 			if (!destroyEnemy)
+				checkForEnemyCollidingWithBullet(enemy);
+
+			if (enemy.overlaps(player) && !destroyEnemy)
 			{
-				for (bullet in bullets.members)
-					if (!destroyEnemy)
-					{
-						destroyEnemy = bullet.overlaps(enemy);
+				destroyEnemy = true;
+				health -= 1;
 
-						if (destroyEnemy)
-						{
-							score += 100;
-							FlxG.sound.play(AssetPaths.sound('explosion'));
+				FlxG.sound.play(AssetPaths.sound('hurt'));
 
-							bullets.members.remove(bullet);
-							bullet.destroy();
-						}
-					}
-
-				if (enemy.overlaps(player))
-				{
-					destroyEnemy = true;
-					health -= 1;
-
-					FlxG.sound.play(AssetPaths.sound('hurt'));
-
-					FlxFlicker.flicker(player, 0.3);
-				}
+				FlxFlicker.flicker(player, 0.3);
 			}
 
 			if (destroyEnemy)
@@ -396,6 +385,33 @@ class PlayState extends PauseMState
 				enemy.destroy();
 			}
 		}
+	}
+
+	function checkForEnemyCollidingWithBullet(enemy:Enemy)
+	{
+		var destroyEnemy:Bool = false;
+
+		for (bullet in bullets.members)
+		{
+			if (!destroyEnemy)
+				destroyEnemy = bullet.overlaps(enemy);
+
+			if (destroyEnemy)
+			{
+				performScoring(enemy);
+				FlxG.sound.play(AssetPaths.sound('explosion'));
+
+				bullets.members.remove(bullet);
+				bullet.destroy();
+			}
+		}
+
+		return destroyEnemy;
+	}
+
+	public function performScoring(enemy:Enemy)
+	{
+		score += 100;
 	}
 
 	override function getPauseBoolean():Bool
