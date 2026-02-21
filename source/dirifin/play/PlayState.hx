@@ -289,7 +289,8 @@ class PlayState extends PauseMState
 
 			previousEnemyDir = newEnemyDir;
 
-			trace('Spawning enemy of variation: $enemyVariation');
+			if (enemyVariation != null)
+				trace('Spawning enemy of variation: $enemyVariation');
 
 			var newEnemy:Enemy = new Enemy(enemyVariation);
 			newEnemy.screenCenter();
