@@ -5,9 +5,9 @@ import macohi.util.Direction;
 
 class Enemy extends DirectionSprite
 {
-	override public function new(?x:Float, ?y:Float)
+	override public function new(speedMulti:Float = 1.0, ?x:Float, ?y:Float)
 	{
-		super(-0.1, x, y);
+		super(-0.1 * speedMulti, x, y);
 
 		loadGraphic(AssetPaths.image('enemy'), true, 16, 16);
 		addAnimByFrames('LEFT', [0]);

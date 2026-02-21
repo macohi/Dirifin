@@ -8,7 +8,7 @@
 	},
 	"enemyVariations": [
 		{
-			"speed": 1.2
+			"speedMultiplier": 1.2
 		}
 	]
 }
