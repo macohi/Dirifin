@@ -9,7 +9,7 @@
 	"enemyVariations": [
 		{
 			"present": "speed-tier1",
-			"variation_chance": 45.0
+			"variation_chance": 75.0
 		},
 		{
 			"present": "speed-tier2",
