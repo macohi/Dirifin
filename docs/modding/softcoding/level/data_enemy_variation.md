@@ -13,6 +13,9 @@ All the data fields provided are optional.
 	
 - `variation_chance` : Overrides the chance of the variation being selected
 	- example: `23.5` would be a 23.5% chance
-	
+
+- `health` : Controls how many hits until the enemy is truely defeated
+	- example: `4` requires 4 hits until death
+
 - `present` : Controls what the base enemy variation data is
 	- example: `super-saiyan` would look for `data/enemy_variation_presents/super-saiyan.json` and use that as the present if found
