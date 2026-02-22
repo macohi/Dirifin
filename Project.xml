@@ -22,15 +22,6 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
 
 	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" />
-
-	<!-- _____________________________ Path Settings ____________________________ -->
-
-	<set name="BUILD_DIR" value="export/release" />
-	<set name="BUILD_DIR" value="export/debug" if="debug" />
-
-	<source path="source" />
-	<assets path="assets" />
-	<assets path="mods" />
 	
 	<!-- _________________________________ Custom _______________________________ -->
 
@@ -45,6 +36,15 @@
 	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
 	<haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
 	<haxedef name="HXCPP_STACK_TRACE" if="CRASH_HANDLER" />
+
+	<!-- _____________________________ Path Settings ____________________________ -->
+
+	<set name="BUILD_DIR" value="export/release" />
+	<set name="BUILD_DIR" value="export/debug" if="debug" />
+
+	<source path="source" />
+	<assets path="assets" />
+	<assets path="mods" if="MOD_SUPPORT"/>
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
