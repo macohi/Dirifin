@@ -209,10 +209,15 @@ class LevelJSONClass
 
 		var randomInt = FlxG.random.int(0, data.length - 1);
 		
-		for (variation in data)
+		for (i => variation in data)
 			if (FlxG.random.bool(variation?.variation_chance ?? 0))
-				return variation;
+				randomInt = i;
 
-		return data[randomInt];
+		var variation = data[randomInt];
+
+		if (variation?.present != null)
+			loadPresent(variation);
+
+		return variation;
 	}
 }
