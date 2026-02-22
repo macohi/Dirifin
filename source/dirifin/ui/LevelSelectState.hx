@@ -20,6 +20,8 @@ import macohi.funkin.koya.backend.AssetTextList;
 import macohi.funkin.koya.frontend.scenes.menustates.OptionsMenuState;
 import macohi.funkin.koya.frontend.ui.menustate.MenuItem;
 
+using macohi.util.StringUtil;
+
 class LevelSelectState extends OptionsMenuState
 {
 	public static var levelsTextList:AssetTextList;
@@ -57,11 +59,11 @@ class LevelSelectState extends OptionsMenuState
 					diff = 'Difficulty (SWD): ${levelJSON?.settings?.difficulty?.swd ?? 0}';
 					hsSuff += '-swd';
 				}
-				
+
 				if (DirifinSave.instance.extraLives.get() > 0)
 					hsSuff += '-eh';
 
-				var highscore:String = 'Highscore: ${Highscores.getHighscore(level + diff)}';
+				var highscore:String = 'Highscore${((hsSuff.isBlankStr()) ? '' : ' (${hsSuff.toUpperCase()})')}: ${Highscores.getHighscore(level + diff)}';
 
 				return '${diff}\n${highscore}';
 			}
