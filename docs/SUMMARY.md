@@ -1,7 +1,6 @@
 # Summary
 
 - [Miscellaneous](./misc/category.md)
-	- [Roadmap](./misc/ROADMAP.md)
 	- [Version Format](./misc/VERSION_FORMAT.md)
 	- [Changelogs](./misc/changelogs/subcategory.md)
 		- [1.00 Pre-Release 1](./misc/changelogs/1.00b1.md)
