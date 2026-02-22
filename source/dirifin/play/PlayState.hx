@@ -468,7 +468,7 @@ class PlayState extends PauseMState
 			var destroyEnemy = enemy.outOfBounds;
 
 			if (!destroyEnemy)
-				enemyCheckForBulletCollision(enemy);
+				destroyEnemy = enemyCheckForBulletCollision(enemy);
 
 			if (enemy.overlaps(player) && !destroyEnemy)
 			{
@@ -496,24 +496,19 @@ class PlayState extends PauseMState
 	**/
 	function enemyCheckForBulletCollision(enemy:Enemy)
 	{
-		var destroyEnemy:Bool = false;
-
 		for (bullet in bullets.members)
-		{
-			if (!destroyEnemy)
-				destroyEnemy = bullet.overlaps(enemy);
-
-			if (destroyEnemy)
+			if (bullet.overlaps(enemy))
 			{
 				performScoring(enemy);
 				FlxG.sound.play(AssetPaths.sound('explosion'));
 
 				bullets.members.remove(bullet);
 				bullet.destroy();
-			}
-		}
 
-		return destroyEnemy;
+				return true;
+			}
+
+		return false;
 	}
 
 	/**
