@@ -23,6 +23,8 @@ typedef EnemyVariationData =
 	?speed_multiplier:Float,
 	?graphic:String,
 
+	?health:Int,
+
 	?present:String,
 }
 
