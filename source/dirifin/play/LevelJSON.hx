@@ -81,7 +81,11 @@ class LevelJSONClass
 		var presentPathsAppend:Array<String> = AssetPaths.getAllModPaths(presentPath.replace('assets', '_append'));
 
 		if (!KoyaAssets.exists(presentPath))
+		{
+			trace('Non-existant EVP path: $presentPath');
+			WindowUtil.alert('Non-existant EVP path', 'Non-existant Enemy Variation Present path:\n$presentPath');
 			return null;
+		}
 
 		var presentJson:EnemyVariationData = null;
 
@@ -139,18 +143,13 @@ class LevelJSONClass
 		if (baseJson.enemy_variations == null || baseJson.enemy_variations.length == 0)
 			return;
 
-		var newEnemyVariations:Array<EnemyVariationData> = [];
-
-		trace(baseJson.enemy_variations);
 		for (index => value in baseJson.enemy_variations)
 		{
 			trace(index);
+
 			baseJson.enemy_variations.push(loadPresent(value));
 			baseJson.enemy_variations.remove(value);
 		}
-
-		for (variation in newEnemyVariations)
-			baseJson.enemy_variations.push(variation);
 	}
 
 	public static function parseBaseJson(level:String):LevelJSONData
