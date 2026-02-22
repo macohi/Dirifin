@@ -116,7 +116,7 @@ class PlayState extends PauseMState
 	{
 		super();
 
-		health = 1;
+		health = 1 + DirifinSave.instance.extraLives.get();
 
 		this.levelID = levelID ?? 'level1';
 		LAST_PLAYED_LEVEL = this.levelID;
@@ -248,7 +248,14 @@ class PlayState extends PauseMState
 		var hsta = '';
 
 		if (DirifinSave.instance.shootWithDirectionals.get())
+		{
 			hsta += 'swd';
+			if (DirifinSave.instance.extraLives.get() > 0)
+				hsta += '-';
+		}
+
+		if (DirifinSave.instance.extraLives.get() > 0)
+			hsta += 'eh';
 
 		addHighScoreText(hsta);
 	}

@@ -49,13 +49,19 @@ class LevelSelectState extends OptionsMenuState
 			function getLevelInfo(level:String)
 			{
 				var diff:String = 'Difficulty: ${levelJSON?.settings?.difficulty?.regular ?? 0}';
-				var highscore:String = 'Highscore: ${Highscores.getHighscore(level)}';
+
+				var hsSuff = '';
 
 				if (DirifinSave.instance.shootWithDirectionals.get())
 				{
 					diff = 'Difficulty (SWD): ${levelJSON?.settings?.difficulty?.swd ?? 0}';
-					highscore = 'Highscore (SWD): ${Highscores.getHighscore(level + '-swd')}';
+					hsSuff += '-swd';
 				}
+				
+				if (DirifinSave.instance.extraLives.get() > 0)
+					hsSuff += '-eh';
+
+				var highscore:String = 'Highscore: ${Highscores.getHighscore(level + diff)}';
 
 				return '${diff}\n${highscore}';
 			}

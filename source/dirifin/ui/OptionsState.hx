@@ -33,6 +33,14 @@ class OptionsState extends OptionsMenuState
 		{
 			DirifinSave.instance.shootWithDirectionals.set(!DirifinSave.instance.shootWithDirectionals.get());
 		});
+
+		addItemBasedOnSaveField(DirifinSave.instance.extraLives, function()
+		{
+			DirifinSave.instance.extraLives.set(DirifinSave.instance.extraLives.get() + 1);
+
+			if (DirifinSave.instance.extraLives.get() >= 3)
+				DirifinSave.instance.extraLives.set(0);
+		});
 	}
 
 	override function create()

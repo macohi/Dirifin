@@ -17,11 +17,13 @@ class DirifinSave extends Save
 
 	public var shootWithDirectionals:SaveField<Bool>;
 
+	public var extraLives:SaveField<Int>;
+
 	override public function new()
 	{
 		super();
 
-		SAVE_VERSION = 5;
+		SAVE_VERSION = 6;
 		init('Dirifin');
 	}
 
@@ -68,5 +70,8 @@ class DirifinSave extends Save
 
 		shootWithDirectionals = new SaveField<Bool>('shootWithDirectionals', false, 'Shoot with Directionals');
 		shootWithDirectionals.description = 'Toggles if you shoot by changing direction\nEnabled: ';
+
+		extraLives = new SaveField<Int>('extraLives', 0, 'Extra Health');
+		extraLives.description = 'How much extra health you have (Max: 3)\nValue: ';
 	}
 }
