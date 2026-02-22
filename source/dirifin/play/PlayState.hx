@@ -499,13 +499,14 @@ class PlayState extends PauseMState
 		for (bullet in bullets.members)
 			if (bullet.overlaps(enemy))
 			{
+				enemy.health -= 0;
 				performScoring(enemy);
 				FlxG.sound.play(AssetPaths.sound('explosion'));
 
 				bullets.members.remove(bullet);
 				bullet.destroy();
 
-				return true;
+				return enemy.health == 0;
 			}
 
 		return false;
@@ -516,7 +517,9 @@ class PlayState extends PauseMState
 	**/
 	public function performScoring(enemy:Enemy)
 	{
-		score += 100;
+		var defaultScoringValue = 100;
+
+		score += Math.round((1 / enemy.maxHealth) * defaultScoringValue);
 	}
 
 	/**

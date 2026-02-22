@@ -20,12 +20,12 @@ typedef EnemyVariationData =
 {
 	?variation_chance:Float,
 
+	?present:String,
+
 	?speed_multiplier:Float,
 	?graphic:String,
 
 	?health:Int,
-
-	?present:String,
 }
 
 typedef LevelSettingsData =

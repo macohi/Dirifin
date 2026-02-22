@@ -6,6 +6,9 @@ import macohi.util.Direction;
 
 class Enemy extends DirectionSprite
 {
+	public var maxHealth:Int = 1;
+	public var health:Int = 1;
+
 	override public function new(variationData:EnemyVariationData = null, ?x:Float, ?y:Float)
 	{
 		super(-0.1 * (variationData?.speed_multiplier ?? 1.0), x, y);
@@ -19,6 +22,9 @@ class Enemy extends DirectionSprite
 		applyPixelScale();
 
 		boundsPadding = this.width * 10;
+
+		health = variationData?.health ?? 1;
+		maxHealth = health;
 
 		changeDirection(direction);
 	}
