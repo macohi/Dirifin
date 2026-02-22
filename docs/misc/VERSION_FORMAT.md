@@ -56,3 +56,5 @@ Pre-Release versions add "Pre-Release #" to the end of the version number.
 - `1.00 Pre-Release 1`
 - `2.00 Pre-Release 1`
 - `3.00 Pre-Release 1`
+- `3.00 Pre-Release 2`
+- `3.00 Pre-Release 3`
