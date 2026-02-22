@@ -145,10 +145,10 @@ class LevelJSONClass
 
 		for (index => value in baseJson.enemy_variations)
 		{
-			trace(index);
+			trace(index + ' : ' + value.present);
 
 			baseJson.enemy_variations.push(loadPresent(value));
-			baseJson.enemy_variations.remove(value);
+			// baseJson.enemy_variations.remove(value);
 		}
 	}
 
