@@ -63,7 +63,7 @@ class LevelSelectState extends OptionsMenuState
 				if (DirifinSave.instance.extraLives.get() > 0)
 					hsSuff += '-eh';
 
-				var highscore:String = 'Highscore${((hsSuff.isBlankStr()) ? '' : ' (${hsSuff.toUpperCase()})')}: ${Highscores.getHighscore(level + diff)}';
+				var highscore:String = 'Highscore${((hsSuff.isBlankStr()) ? '' : ' (${hsSuff.substr(1).toUpperCase()})')}: ${Highscores.getHighscore(level + hsSuff)}';
 
 				return '${diff}\n${highscore}';
 			}
