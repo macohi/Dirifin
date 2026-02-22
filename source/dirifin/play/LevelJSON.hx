@@ -68,6 +68,7 @@ class LevelJSONClass
 		if (parseEVP)
 			loadEnemyVariationPresents(lvlJson);
 
+		trace(lvlJson.enemy_variations);
 		return lvlJson;
 	}
 
