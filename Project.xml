@@ -6,7 +6,7 @@
 	<!-- _________________________ Application Settings _________________________ -->
 
 	<app title="Dirifin" file="Dirifin" main="Main" version="3.00" company="Macohi" />
-	<define name="PRE_RELEASE" value="2" />
+	<define name="PRE_RELEASE" value="3" />
 
 	<app preloader="flixel.system.FlxPreloader" />
 
