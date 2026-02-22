@@ -38,7 +38,7 @@ class OptionsState extends OptionsMenuState
 		{
 			DirifinSave.instance.extraLives.set(DirifinSave.instance.extraLives.get() + 1);
 
-			if (DirifinSave.instance.extraLives.get() >= 3)
+			if (DirifinSave.instance.extraLives.get() > 3)
 				DirifinSave.instance.extraLives.set(0);
 		});
 	}
