@@ -143,6 +143,7 @@ class LevelJSONClass
 		if (baseJson.enemy_variations == null || baseJson.enemy_variations.length == 0)
 			return [];
 
+		var indexCheck = baseJson.enemy_variations.length - 1;
 		var removeValues:Array<Int> = [];
 
 		for (index => value in baseJson.enemy_variations)
@@ -153,6 +154,9 @@ class LevelJSONClass
 				trace('Null Variation');
 				continue;
 			}
+
+			if (index > indexCheck)
+				continue;
 
 			trace(index + ' : ' + value?.present);
 
