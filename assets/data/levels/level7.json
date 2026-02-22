@@ -1,0 +1,24 @@
+{
+	"enemy_spawning": {
+		"dupe_direction_chance": 30,
+		"spawn_chance": {
+			"max": 6.0,
+			"min": 2.0
+		}
+	},
+	"enemy_variations": [
+		{
+			"present": "healthy-tier1"
+		},
+		{
+			"present": "healthy-tier2",
+			"variation_chance": 6.66
+		}
+	],
+	"settings": {
+		"difficulty": {
+			"regular": 4,
+			"swd": 2
+		}
+	}
+}
