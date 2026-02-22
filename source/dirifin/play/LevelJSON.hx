@@ -80,7 +80,7 @@ class LevelJSONClass
 		var presentPathsAppend:Array<String> = AssetPaths.getAllModPaths(presentPath.replace('assets', '_append'));
 
 		if (!KoyaAssets.exists(presentPath))
-			continue;
+			return null;
 
 		var presentJson:EnemyVariationData = null;
 
@@ -96,7 +96,7 @@ class LevelJSONClass
 		}
 
 		if (presentJson == null)
-			continue;
+			return null;
 
 		for (path in presentPathsAppend)
 		{
