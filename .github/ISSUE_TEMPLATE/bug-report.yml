@@ -13,6 +13,7 @@ body:
       - Newgrounds (Web/HTML5)
       - Itch.io (Web/HTML5)
       - Windows
+      - Compiled
   validations:
     required: true
 - type: input
@@ -23,13 +24,12 @@ body:
     placeholder: "The sponsor of todays video Opera GX"
   validations:
     required: false
-- type: textarea
+- type: input
   id: version
   attributes:
     label: "Game version"
     description: "The current game version, you can use the main menu to see what your version is"
-    value: |
-      N / A
+    placeholder: "3.00 Pre-Release 3"
   validations:
     required: true
 - type: textarea
