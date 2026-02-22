@@ -154,6 +154,7 @@ class LevelJSONClass
 				trace('Null Variation');
 				continue;
 			}
+			var presentObj = loadPresent(value);
 
 			if (index > indexCheck)
 				continue;
@@ -161,7 +162,9 @@ class LevelJSONClass
 			trace(index + ' : ' + value?.present);
 
 			removeValues.push(index);
-			baseJson.enemy_variations.push(loadPresent(value));
+
+			if (presentObj != null)
+				baseJson.enemy_variations.push(presentObj);
 		}
 
 		for (value in removeValues)
