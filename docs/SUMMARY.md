@@ -18,7 +18,7 @@
 		- [3.00 Pre-Release 1](./misc/changelogs/3.00b1.md)
 		- [3.00 Pre-Release 2](./misc/changelogs/3.00b2.md)
 		- [3.00 Pre-Release 3](./misc/changelogs/3.00b3.md)
-		- [3.00 Pre-Release 4](./misc/changelogs/3.00b4.md)
+		- [3.00](./misc/changelogs/3.00a.md)
 
 - [Source Code](./source-code/category.md)
 	- [Compiling](./source-code/COMPILING.md)
