@@ -143,7 +143,8 @@ class LevelJSONClass
 
 			var presentJson:EnemyVariationData = loadPresent(variation);
 
-			if (presentJson == null) continue;
+			if (presentJson == null)
+				continue;
 
 			baseJson.enemy_variations.remove(variation);
 
@@ -203,13 +204,15 @@ class LevelJSONClass
 		if (data == null || data.length == 0)
 			return null;
 
-		var randomInt = FlxG.random.int(0, data.length - 1);
-		for (i => variation in data)
-		{
-			if (FlxG.random.bool(variation?.variation_chance ?? ((randomInt == i) ? 100 : 0)))
-				return variation;
-		}
+		if (data.length == 1)
+			return data[0];
 
-		return null;
+		var randomInt = FlxG.random.int(0, data.length - 1);
+		
+		for (variation in data)
+			if (FlxG.random.bool(variation?.variation_chance ?? 0))
+				return variation;
+
+		return data[randomInt];
 	}
 }
