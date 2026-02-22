@@ -16,7 +16,7 @@
 			"variation_chance": 15.0
 		},
 		{
-			"health": 2,
+			"present": "healthy-tier1",
 			"variation_chance": 20.0
 		}
 	],
