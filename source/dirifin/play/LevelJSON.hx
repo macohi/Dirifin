@@ -77,6 +77,9 @@ class LevelJSONClass
 
 	static function loadPresent(variation:EnemyVariationData)
 	{
+		if (variation == null || variation.present == null)
+			return null;
+
 		var presentPath:String = AssetPaths.json('data/enemy_variation_presents/${variation.present}');
 		var presentPathsAppend:Array<String> = AssetPaths.getAllModPaths(presentPath.replace('assets', '_append'));
 
