@@ -19,7 +19,7 @@ class MainMenuState extends MenuState
 
 		this.text = true;
 		this.atlasText = false;
-		this.itemList = ['Level Select', 'Survival Mode', 'Credits', 'Mods', 'Options',];
+		this.itemList = ['Level Select', 'Credits', 'Mods', 'Options',];
 		this.itemIncOffset = 80;
 	}
 
@@ -84,8 +84,6 @@ class MainMenuState extends MenuState
 		{
 			case 'level select':
 				FlxG.switchState(() -> new LevelSelectState());
-			case 'survival mode':
-				FlxG.switchState(() -> new SurvivalModeState());
 			case 'credits':
 				FlxG.switchState(() -> new CreditsRoll());
 			case 'mods':
