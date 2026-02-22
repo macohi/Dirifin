@@ -143,12 +143,19 @@ class LevelJSONClass
 		if (baseJson.enemy_variations == null || baseJson.enemy_variations.length == 0)
 			return;
 
+		var valuesToReplace:Array<EnemyVariationData> = [];
+
 		for (index => value in baseJson.enemy_variations)
 		{
 			trace(index + ' : ' + value.present);
 
+			valuesToReplace.push(value);
 			baseJson.enemy_variations.push(loadPresent(value));
-			// baseJson.enemy_variations.remove(value);
+		}
+
+		for (index => value in valuesToReplace)
+		{
+			baseJson.enemy_variations.remove(value);
 		}
 	}
 
