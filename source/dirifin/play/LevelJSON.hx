@@ -66,17 +66,17 @@ class LevelJSONClass
 		var lvlJson:LevelJSONData = parseBaseJson(level) ?? DEFAULT_LEVEL_JSON;
 
 		if (parseEVP)
+		{
 			loadEnemyVariationPresents(lvlJson);
 
-		trace(lvlJson.enemy_variations);
+			trace(lvlJson.enemy_variations);
+		}
+
 		return lvlJson;
 	}
 
 	static function loadPresent(variation:EnemyVariationData)
 	{
-		if (variation == null || variation?.present == null)
-			return null;
-
 		var presentPath:String = AssetPaths.json('data/enemy_variation_presents/${variation.present}');
 		var presentPathsAppend:Array<String> = AssetPaths.getAllModPaths(presentPath.replace('assets', '_append'));
 
@@ -121,7 +121,10 @@ class LevelJSONClass
 		}
 
 		if (presentJson.present != null)
+		{
+			Reflect.deleteField(presentJson, 'present');
 			presentJson = loadPresent(presentJson);
+		}
 
 		presentJson = Json.parse(JsonMergeAndAppend.append(Json.stringify(presentJson), Json.stringify(variation),
 			variation.present // id does nothing with JSONS so yeah
@@ -138,20 +141,12 @@ class LevelJSONClass
 
 		var newEnemyVariations:Array<EnemyVariationData> = [];
 
-		for (i => variation in baseJson.enemy_variations)
+		trace(baseJson.enemy_variations);
+		for (index => value in baseJson.enemy_variations)
 		{
-			if (variation == null || variation?.present == null)
-				continue;
-
-			var presentJson:EnemyVariationData = loadPresent(variation);
-
-			if (presentJson == null)
-				continue;
-
-			baseJson.enemy_variations.remove(variation);
-
-			Reflect.deleteField(presentJson, 'present');
-			newEnemyVariations.push(presentJson);
+			trace(index);
+			baseJson.enemy_variations.push(loadPresent(value));
+			baseJson.enemy_variations.remove(value);
 		}
 
 		for (variation in newEnemyVariations)
@@ -210,7 +205,7 @@ class LevelJSONClass
 			return data[0];
 
 		var randomInt = FlxG.random.int(0, data.length - 1);
-		
+
 		for (i => variation in data)
 			if (FlxG.random.bool(variation?.variation_chance ?? 0))
 				randomInt = i;
