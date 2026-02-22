@@ -6,12 +6,6 @@ These are things I wanna do eventually.
 Use `FlxRuntimeShader`
 Main issue is types I'm pretty sure
 
-## Survival mode
-
-you get health
-and then youre going through ALL the levels
-and there are items n stuff that you can use to live longer
-
 ## Commands
 
 A menu that allows commands, idk, minecraft chat command stuffs
