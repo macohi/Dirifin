@@ -125,6 +125,7 @@ class LevelJSONClass
 		presentJson = Json.parse(JsonMergeAndAppend.append(Json.stringify(presentJson), Json.stringify(variation),
 			variation.present // id does nothing with JSONS so yeah
 		));
+		Reflect.deleteField(presentJson, 'present');
 
 		return presentJson;
 	}
