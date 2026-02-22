@@ -71,9 +71,68 @@ class LevelJSONClass
 		return lvlJson;
 	}
 
+	static function loadPresent(variation:EnemyVariationData)
+	{
+		if (variation == null || variation?.present == null)
+			return null;
+
+		var presentPath:String = AssetPaths.json('data/enemy_variation_presents/${variation.present}');
+		var presentPathsAppend:Array<String> = AssetPaths.getAllModPaths(presentPath.replace('assets', '_append'));
+
+		if (!KoyaAssets.exists(presentPath))
+			continue;
+
+		var presentJson:EnemyVariationData = null;
+
+		try
+		{
+			presentJson = Json.parse(KoyaAssets.getText(presentPath));
+		}
+		catch (e)
+		{
+			presentJson = null;
+			trace(e.message);
+			WindowUtil.alert('Couldnt parse Enemy Variation Present', 'Cant parse Enemy Variation Present: $presentPath\n\n${e.message}');
+		}
+
+		if (presentJson == null)
+			continue;
+
+		for (path in presentPathsAppend)
+		{
+			if (!KoyaAssets.exists(path))
+				continue;
+
+			try
+			{
+				var mergePresentJson:EnemyVariationData = Json.parse(KoyaAssets.getText(path));
+
+				presentJson = Json.parse(JsonMergeAndAppend.append(Json.stringify(presentJson), Json.stringify(mergePresentJson),
+					variation.present // id does nothing with JSONS so yeah
+				));
+			}
+			catch (e)
+			{
+				trace(e.message);
+				WindowUtil.alert('Couldnt append mod enemy variation present',
+					'Cant parse append JSON for enemy variation present: ${variation.present}\n\n${e.message}');
+			}
+		}
+
+		if (presentJson.present != null)
+			presentJson = loadPresent(presentJson);
+
+		presentJson = Json.parse(JsonMergeAndAppend.append(Json.stringify(presentJson), Json.stringify(variation),
+			variation.present // id does nothing with JSONS so yeah
+		));
+
+		return presentJson;
+	}
+
 	public static function loadEnemyVariationPresents(baseJson:LevelJSONData)
 	{
-		if (baseJson.enemy_variations == null || baseJson.enemy_variations.length == 0) return;
+		if (baseJson.enemy_variations == null || baseJson.enemy_variations.length == 0)
+			return;
 
 		var newEnemyVariations:Array<EnemyVariationData> = [];
 
@@ -82,52 +141,9 @@ class LevelJSONClass
 			if (variation == null || variation?.present == null)
 				continue;
 
-			var presentPath:String = AssetPaths.json('data/enemy_variation_presents/${variation.present}');
-			var presentPathsAppend:Array<String> = AssetPaths.getAllModPaths(presentPath.replace('assets', '_append'));
+			var presentJson:EnemyVariationData = loadPresent(variation);
 
-			if (!KoyaAssets.exists(presentPath))
-				continue;
-
-			var presentJson:EnemyVariationData = null;
-
-			try
-			{
-				presentJson = Json.parse(KoyaAssets.getText(presentPath));
-			}
-			catch (e)
-			{
-				presentJson = null;
-				trace(e.message);
-				WindowUtil.alert('Couldnt parse Enemy Variation Present', 'Cant parse Enemy Variation Present: $presentPath\n\n${e.message}');
-			}
-
-			if (presentJson == null)
-				continue;
-
-			for (path in presentPathsAppend)
-			{
-				if (!KoyaAssets.exists(path))
-					continue;
-
-				try
-				{
-					var mergePresentJson:EnemyVariationData = Json.parse(KoyaAssets.getText(path));
-
-					presentJson = Json.parse(JsonMergeAndAppend.append(Json.stringify(presentJson), Json.stringify(mergePresentJson),
-						variation.present // id does nothing with JSONS so yeah
-					));
-				}
-				catch (e)
-				{
-					trace(e.message);
-					WindowUtil.alert('Couldnt append mod enemy variation present',
-						'Cant parse append JSON for enemy variation present: ${variation.present}\n\n${e.message}');
-				}
-			}
-
-			presentJson = Json.parse(JsonMergeAndAppend.append(Json.stringify(presentJson), Json.stringify(variation),
-				variation.present // id does nothing with JSONS so yeah
-			));
+			if (presentJson == null) continue;
 
 			baseJson.enemy_variations.remove(variation);
 
