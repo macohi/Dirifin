@@ -61,16 +61,11 @@ class LevelJSONClass
 		}
 	}
 
-	public static function loadLevelJSON(level:String, ?parseEVP:Bool = true):LevelJSONData
+	public static function loadLevelJSON(level:String):LevelJSONData
 	{
+		trace(level.toUpperCase());
+
 		var lvlJson:LevelJSONData = parseBaseJson(level) ?? DEFAULT_LEVEL_JSON;
-
-		if (parseEVP)
-		{
-			lvlJson = loadEnemyVariationPresents(lvlJson);
-
-			trace(lvlJson.enemy_variations);
-		}
 
 		return lvlJson;
 	}
@@ -144,10 +139,9 @@ class LevelJSONClass
 	public static function loadEnemyVariationPresents(baseJson:LevelJSONData)
 	{
 		if (baseJson.enemy_variations == null || baseJson.enemy_variations.length == 0)
-			return baseJson;
+			return;
 
 		var indexCheck = baseJson.enemy_variations.length - 1;
-		var removeValues:Array<Int> = [];
 
 		for (index => value in baseJson.enemy_variations)
 		{
@@ -162,20 +156,11 @@ class LevelJSONClass
 			if (index > indexCheck)
 				continue;
 
-			trace(index + ' : ' + value?.present);
-
-			removeValues.push(index);
-
 			if (presentObj != null)
-				baseJson.enemy_variations.push(presentObj);
+				baseJson.enemy_variations[index] = presentObj;
 		}
 
-		for (value in removeValues)
-		{
-			baseJson.enemy_variations.remove(baseJson.enemy_variations[value]);
-		}
-
-		return baseJson;
+		trace(baseJson.enemy_variations);
 	}
 
 	public static function parseBaseJson(level:String):LevelJSONData
@@ -209,6 +194,8 @@ class LevelJSONClass
 					WindowUtil.alert('Couldnt append mod level JSON', 'Cant parse Merge JSON for level: $level\n\n${e.message}');
 				}
 			}
+
+			loadEnemyVariationPresents(baseJson);
 
 			return baseJson;
 		}

@@ -46,7 +46,7 @@ class LevelSelectState extends OptionsMenuState
 
 		for (level in levelsTextList.textList)
 		{
-			var levelJSON:LevelJSONData = LevelJSONClass.loadLevelJSON(level, false);
+			var levelJSON:LevelJSONData = LevelJSONClass.loadLevelJSON(level);
 
 			function getLevelInfo(level:String)
 			{
