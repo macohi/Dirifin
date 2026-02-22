@@ -237,9 +237,6 @@ class LevelJSONClass
 
 		var variation = data[randomInt];
 
-		if (variation?.present != null)
-			loadPresent(variation);
-
 		return variation;
 	}
 }
