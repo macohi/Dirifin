@@ -11,6 +11,7 @@
 		- [1.21](./misc/changelogs/1.21a.md)
 		- [2.00 Pre-Release 1](./misc/changelogs/2.00b1.md)
 		- [2.00](./misc/changelogs/2.00a.md)
+			- [Compared to 1.21](./misc/changelogs/2.00c.md)
 		- [2.10](./misc/changelogs/2.10a.md)
 		- [2.20](./misc/changelogs/2.20a.md)
 		- [2.21](./misc/changelogs/2.21a.md)
