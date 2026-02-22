@@ -14,10 +14,6 @@
 		{
 			"present": "speed-tier2",
 			"variation_chance": 15.0
-		},
-		{
-			"present": "healthy-tier1",
-			"variation_chance": 20.0
 		}
 	],
 	"settings": {

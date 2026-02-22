@@ -61,11 +61,13 @@ class LevelJSONClass
 		}
 	}
 
-	public static function loadLevelJSON(level:String):LevelJSONData
+	public static function loadLevelJSON(level:String, parseEVP:Bool = true):LevelJSONData
 	{
 		trace(level.toUpperCase());
 
 		var lvlJson:LevelJSONData = parseBaseJson(level) ?? DEFAULT_LEVEL_JSON;
+		if (parseEVP)
+			loadEnemyVariationPresents(lvlJson);
 
 		return lvlJson;
 	}
@@ -194,8 +196,6 @@ class LevelJSONClass
 					WindowUtil.alert('Couldnt append mod level JSON', 'Cant parse Merge JSON for level: $level\n\n${e.message}');
 				}
 			}
-
-			loadEnemyVariationPresents(baseJson);
 
 			return baseJson;
 		}
