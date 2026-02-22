@@ -67,7 +67,7 @@ class LevelJSONClass
 
 		if (parseEVP)
 		{
-			loadEnemyVariationPresents(lvlJson);
+			lvlJson.enemy_variations = loadEnemyVariationPresents(lvlJson);
 
 			trace(lvlJson.enemy_variations);
 		}
@@ -141,7 +141,7 @@ class LevelJSONClass
 	public static function loadEnemyVariationPresents(baseJson:LevelJSONData)
 	{
 		if (baseJson.enemy_variations == null || baseJson.enemy_variations.length == 0)
-			return;
+			return [];
 
 		var removeValues:Array<Int> = [];
 
@@ -164,6 +164,8 @@ class LevelJSONClass
 		{
 			baseJson.enemy_variations.remove(baseJson.enemy_variations[value]);
 		}
+
+		return baseJson.enemy_variations;
 	}
 
 	public static function parseBaseJson(level:String):LevelJSONData
